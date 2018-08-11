@@ -38,8 +38,6 @@ preload.prototype = {
 		this.game.load.spritesheet('progressBar2', 'assets/images/loading.png',40,21,10);
 		this.game.load.spritesheet('progressBar3', 'assets/images/loading.png',40,21,10);
 		this.game.load.spritesheet('progressBar4', 'assets/images/loading.png',40,21,10);
-
-		game.load.spritesheet('test', 'assets/images/testProgressBar.png', 128, 128,1);
 		//Image
 
 		this.game.load.image('button', 'assets/images/button.png');
