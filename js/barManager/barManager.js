@@ -94,7 +94,6 @@ barManager.prototype.create = function create() {
   this.search.animations.add('progressBar90', [9], 10, true);
   this.search.animations.add('progressBar100', [10], 10, true);
 
-    this.button = game.add.button(20, 200, 'test', actionOnClick, this, 2, 1, 0);
 };
 
 
@@ -182,7 +181,7 @@ switch (pourcentShield) {
 }
 };
 
-barManager.prototype.progresspassenger = function progress(pourcentPassenger) {
+barManager.prototype.progressPassenger = function progress(pourcentPassenger) {
 
 switch (pourcentPassenger) {
   case (pourcentPassenger <= 0):
@@ -221,7 +220,7 @@ switch (pourcentPassenger) {
   }
 };
 
-barManager.prototype.progresssearch = function progress(pourcentSearch) {
+barManager.prototype.progressSearch = function progress(pourcentSearch) {
 
 switch (pourcentSearch) {
   case (pourcentSearch <= 0):
@@ -259,29 +258,24 @@ switch (pourcentSearch) {
      break;
 }
 
-  barManager.prototype.actionOnClick = function actionOnClick(test) {
-
-    pourcent = pourcent + 10;
-    this.progressEnergy(pourcent);
-  }
 
   function updateProgessBars(passenger,energy,shield,search)
   {
     if(passenger!=null)
     {
-      progresspassenger(passenger);
+       progressPassenger(this.passenger += passenger);
     }
     if(energy!=null)
     {
-      progressEnergy(energy);
+       progressEnergy(this.energy += energy);
     }
     if(shield!=null)
     {
-      progressShield(shield);
+       progressShield(this.shield += shield);
     }
     if(search!=null)
     {
-      progressShield(search);
+       progressSearch(this.search += search);
     }
 
   }
