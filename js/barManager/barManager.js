@@ -1,24 +1,24 @@
 function barManager(game) {
-	this.game = game;
-	this.ressourcesManager = null;
-	this.player = null;
-	this.computer = null;
-	this.lvlManager = null;
-	this.beginEvent = true;
-	this.spriteBG = null;
-	this.fight = null;
-	this.fightCastle = null;
-	this.computeRessourcesTkt = null;
-	this.hero = null;
-	this.timeDelay = 0;
-	this.game.score = 0;
-	this.scoreText = '';
-	this.events = null;
+  this.game = game;
+  this.ressourcesManager = null;
+  this.player = null;
+  this.computer = null;
+  this.lvlManager = null;
+  this.beginEvent = true;
+  this.spriteBG = null;
+  this.fight = null;
+  this.fightCastle = null;
+  this.computeRessourcesTkt = null;
+  this.hero = null;
+  this.timeDelay = 0;
+  this.game.score = 0;
+  this.scoreText = '';
+  this.events = null;
   this.button = null;
-  this.passenger=null;
-  this.shield=null;
-  this.search=null;
-  this.energy=null;
+  this.passenger = null;
+  this.shield = null;
+  this.search = null;
+  this.energy = null;
 
 }
 
@@ -34,7 +34,7 @@ barManager.prototype.create = function create() {
   //////////////////PROGRESS BAR ENERGYBAR/////////////////
   /////////////////////////////////////////////////////////
   this.energyBar = this.game.add.sprite(10, 0, 'progressBar');
-	this.energyBar.animations.add('progressBar0', [0], 10, true);
+  this.energyBar.animations.add('progressBar0', [0], 10, true);
   this.energyBar.animations.add('progressBar10', [1], 10, true);
   this.energyBar.animations.add('progressBar20', [2], 10, true);
   this.energyBar.animations.add('progressBar30', [3], 10, true);
@@ -102,181 +102,177 @@ barManager.prototype.update = function update() {
 
 };
 
-barManager.prototype.progressEnergy = function progress(pourcentEnergy) {
+function progressEnergy(pourcentEnergy) {
 
-switch (pourcentEnergy) {
-  case (pourcentEnergy<= 0):
-  this.energyBar.animations.play('progressBar0', 2, true);
-    break;
-  case (pourcentEnergy < 10):
-    this.energyBar.animations.play('progressBar10', 2, true);
-    break;
-  case (pourcentEnergy < 20 ):
-    this.energyBar.animations.play('progressBar20', 2, true);
-    break;
-  case (pourcentEnergy < 30):
-    this.energyBar.animations.play('progressBar30', 2, true);
-    break;
-  case (pourcentEnergy < 40):
-    this.energyBar.animations.play('progressBar40', 2, true);
-    break;
-  case (pourcentEnergy < 50):
-    this.energyBar.animations.play('progressBar50', 2, true);
-    break;
-  case (pourcentEnergy < 60):
-    this.energyBar.animations.play('progressBar60', 2, true);
-    break;
-  case (pourcentEnergy < 70):
-    this.energyBar.animations.play('progressBar70', 2, true);
-    break;
-  case (pourcentEnergy < 80):
-    this.energyBar.animations.play('progressBar80', 2, true);
-    break;
-  case (pourcentEnergy < 90):
-    this.energyBar.animations.play('progressBar90', 2, true);
-    break;
-  case (pourcentEnergy <= 100):
-    this.energyBar.animations.play('progressBar100', 2, true);
-     break;
-}
-};
-
-
-barManager.prototype.progressShield = function progress(pourcentShield) {
-
-switch (pourcentShield) {
-  case (pourcentShield <= 0):
-  this.shield.animations.play('progressBar0', 2, true);
-    break;
-  case (pourcentShield < 10):
-    this.shield.animations.play('progressBar10', 2, true);
-    break;
-  case (pourcentShield < 20):
-    this.shield.animations.play('progressBar20', 2, true);
-    break;
-  case (pourcentShield < 30):
-    this.shield.animations.play('progressBar30', 2, true);
-    break;
-  case (pourcentShield < 40):
-    this.shield.animations.play('progressBar40', 2, true);
-    break;
-  case (pourcentShield < 50):
-    this.shield.animations.play('progressBar50', 2, true);
-    break;
-  case (pourcentShield < 60):
-    this.shield.animations.play('progressBar60', 2, true);
-    break;
-  case (pourcentShield < 70):
-    this.shield.animations.play('progressBar70', 2, true);
-    break;
-  case (pourcentShield < 80):
-    this.shield.animations.play('progressBar80', 2, true);
-    break;
-  case (pourcentShield < 90):
-    this.shield.animations.play('progressBar90', 2, true);
-    break;
-  case (pourcentShield <= 100):
-    this.shield.animations.play('progressBar100', 2, true);
-     break;
-}
-};
-
-barManager.prototype.progressPassenger = function progress(pourcentPassenger) {
-
-switch (pourcentPassenger) {
-  case (pourcentPassenger <= 0):
-  this.passenger.animations.play('progressBar0', 2, true);
-    break;
-  case (pourcentPassenger < 10):
-    this.passenger.animations.play('progressBar10', 2, true);
-    break;
-  case (pourcentPassenger < 20):
-    this.passenger.animations.play('progressBar20', 2, true);
-    break;
-  case (pourcentPassenger < 30):
-    this.passenger.animations.play('progressBar30', 2, true);
-    break;
-  case (pourcentPassenger < 40):
-    this.passenger.animations.play('progressBar40', 2, true);
-    break;
-  case (pourcentPassenger < 50):
-    this.passenger.animations.play('progressBar50', 2, true);
-    break;
-  case (pourcentPassenger < 60):
-    this.passenger.animations.play('progressBar60', 2, true);
-    break;
-  case (pourcentPassenger < 70):
-    this.passenger.animations.play('progressBar70', 2, true);
-    break;
-  case (pourcentPassenger < 80):
-    this.passenger.animations.play('progressBar80', 2, true);
-    break;
-  case (pourcentPassenger < 90):
-    this.passenger.animations.play('progressBar90', 2, true);
-    break;
-  case (pourcentPassenger <= 100):
-    this.passenger.animations.play('progressBar100', 2, true);
-     break;
+  switch (true) {
+    case (pourcentEnergy <= 0):
+      this.energyBar.animations.play('progressBar0', 2, true);
+      break;
+    case (pourcentEnergy < 10):
+      this.energyBar.animations.play('progressBar10', 2, true);
+      break;
+    case (pourcentEnergy < 20):
+      this.energyBar.animations.play('progressBar20', 2, true);
+      break;
+    case (pourcentEnergy < 30):
+      this.energyBar.animations.play('progressBar30', 2, true);
+      break;
+    case (pourcentEnergy < 40):
+      this.energyBar.animations.play('progressBar40', 2, true);
+      break;
+    case (pourcentEnergy < 50):
+      this.energyBar.animations.play('progressBar50', 2, true);
+      break;
+    case (pourcentEnergy < 60):
+      this.energyBar.animations.play('progressBar60', 2, true);
+      break;
+    case (pourcentEnergy < 70):
+      this.energyBar.animations.play('progressBar70', 2, true);
+      break;
+    case (pourcentEnergy < 80):
+      this.energyBar.animations.play('progressBar80', 2, true);
+      break;
+    case (pourcentEnergy < 90):
+      this.energyBar.animations.play('progressBar90', 2, true);
+      break;
+    case (pourcentEnergy <= 100):
+      this.energyBar.animations.play('progressBar100', 2, true);
+      break;
   }
 };
 
-barManager.prototype.progressSearch = function progress(pourcentSearch) {
 
-switch (pourcentSearch) {
-  case (pourcentSearch <= 0):
-  this.search.animations.play('progressBar0', 2, true);
-    break;
-  case (pourcentSearch < 10):
-    this.search.animations.play('progressBar10', 2, true);
-    break;
-  case (pourcentSearch < 20):
-    this.search.animations.play('progressBar20', 2, true);
-    break;
-  case (pourcentSearch < 30):
-    this.search.animations.play('progressBar30', 2, true);
-    break;
-  case (pourcentSearch < 40):
-    this.search.animations.play('progressBar40', 2, true);
-    break;
-  case (pourcentSearch < 50):
-    this.search.animations.play('progressBar50', 2, true);
-    break;
-  case (pourcentSearch < 60):
-    this.search.animations.play('progressBar60', 2, true);
-    break;
-  case (pourcentSearch < 70):
-    this.search.animations.play('progressBar70', 2, true);
-    break;
-  case (pourcentSearch < 80):
-    this.search.animations.play('progressBar80', 2, true);
-    break;
-  case (pourcentSearch < 90):
-    this.search.animations.play('progressBar90', 2, true);
-    break;
-  case (pourcentSearch <= 100):
-    this.search.animations.play('progressBar100', 2, true);
-     break;
-}
+function progressShield(pourcentShield) {
 
-
-  function updateProgessBars(passenger,energy,shield,search)
-  {
-    if(passenger!=null)
-    {
-       progressPassenger(this.passenger += passenger);
-    }
-    if(energy!=null)
-    {
-       progressEnergy(this.energy += energy);
-    }
-    if(shield!=null)
-    {
-       progressShield(this.shield += shield);
-    }
-    if(search!=null)
-    {
-       progressSearch(this.search += search);
-    }
-
+  switch (true) {
+    case (pourcentShield <= 0):
+      this.shield.animations.play('progressBar0', 2, true);
+      break;
+    case (pourcentShield < 10):
+      this.shield.animations.play('progressBar10', 2, true);
+      break;
+    case (pourcentShield < 20):
+      this.shield.animations.play('progressBar20', 2, true);
+      break;
+    case (pourcentShield < 30):
+      this.shield.animations.play('progressBar30', 2, true);
+      break;
+    case (pourcentShield < 40):
+      this.shield.animations.play('progressBar40', 2, true);
+      break;
+    case (pourcentShield < 50):
+      this.shield.animations.play('progressBar50', 2, true);
+      break;
+    case (pourcentShield < 60):
+      this.shield.animations.play('progressBar60', 2, true);
+      break;
+    case (pourcentShield < 70):
+      this.shield.animations.play('progressBar70', 2, true);
+      break;
+    case (pourcentShield < 80):
+      this.shield.animations.play('progressBar80', 2, true);
+      break;
+    case (pourcentShield < 90):
+      this.shield.animations.play('progressBar90', 2, true);
+      break;
+    case (pourcentShield <= 100):
+      this.shield.animations.play('progressBar100', 2, true);
+      break;
   }
 };
+
+function progressPassenger(pourcentPassenger) {
+
+  switch (true) {
+    case (pourcentPassenger <= 0):
+      this.passenger.animations.play('progressBar0', 2, true);
+      break;
+    case (pourcentPassenger < 10):
+      this.passenger.animations.play('progressBar10', 2, true);
+      break;
+    case (pourcentPassenger < 20):
+      this.passenger.animations.play('progressBar20', 2, true);
+      break;
+    case (pourcentPassenger < 30):
+      this.passenger.animations.play('progressBar30', 2, true);
+      break;
+    case (pourcentPassenger < 40):
+      this.passenger.animations.play('progressBar40', 2, true);
+      break;
+    case (pourcentPassenger < 50):
+      this.passenger.animations.play('progressBar50', 2, true);
+      break;
+    case (pourcentPassenger < 60):
+      this.passenger.animations.play('progressBar60', 2, true);
+      break;
+    case (pourcentPassenger < 70):
+      this.passenger.animations.play('progressBar70', 2, true);
+      break;
+    case (pourcentPassenger < 80):
+      this.passenger.animations.play('progressBar80', 2, true);
+      break;
+    case (pourcentPassenger < 90):
+      this.passenger.animations.play('progressBar90', 2, true);
+      break;
+    case (pourcentPassenger <= 100):
+      this.passenger.animations.play('progressBar100', 2, true);
+      break;
+  }
+};
+
+function progressSearch(pourcentSearch) {
+
+  switch (true) {
+    case (pourcentSearch <= 0):
+      this.search.animations.play('progressBar0', 2, true);
+      break;
+    case (pourcentSearch < 10):
+      this.search.animations.play('progressBar10', 2, true);
+      break;
+    case (pourcentSearch < 20):
+      this.search.animations.play('progressBar20', 2, true);
+      break;
+    case (pourcentSearch < 30):
+      this.search.animations.play('progressBar30', 2, true);
+      break;
+    case (pourcentSearch < 40):
+      this.search.animations.play('progressBar40', 2, true);
+      break;
+    case (pourcentSearch < 50):
+      this.search.animations.play('progressBar50', 2, true);
+      break;
+    case (pourcentSearch < 60):
+      this.search.animations.play('progressBar60', 2, true);
+      break;
+    case (pourcentSearch < 70):
+      this.search.animations.play('progressBar70', 2, true);
+      break;
+    case (pourcentSearch < 80):
+      this.search.animations.play('progressBar80', 2, true);
+      break;
+    case (pourcentSearch < 90):
+      this.search.animations.play('progressBar90', 2, true);
+      break;
+    case (pourcentSearch <= 100):
+      this.search.animations.play('progressBar100', 2, true);
+      break;
+  }
+
+};
+
+function updateProgessBars(passenger, energy, shield, search) {
+  if (passenger != null) {
+    this.progressPassenger(this.passenger += passenger);
+  }
+  if (energy != null) {
+    this.progressEnergy(this.energy += energy);
+  }
+  if (shield != null) {
+    this.progressShield(this.shield += shield);
+  }
+  if (search != null) {
+    this.progressSearch(this.search += search);
+  }
+
+}
+
