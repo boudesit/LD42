@@ -15,6 +15,7 @@ function HUD(game) {
 	this.scoreText = '';
 	this.events = null;
 	this.currentEvent = null;
+	this.isSleeping = null;
 };
 var style = { font: "bold 16px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 HUD.prototype.create = function create() {
@@ -50,6 +51,8 @@ HUD.prototype.create = function create() {
 HUD.prototype.update = function update() {
 
 	if (this.beginEvent) {
+		console.log('test');
+		cleanCurrentEvent();
 		this.currentEvent = {};
 		let event = this.events[getRandomInt(0, this.events.length)];
 
@@ -64,7 +67,7 @@ HUD.prototype.update = function update() {
 			button.width = 500;
 			button.height = 30;
 			button.consequence = choice.consequence;
-			let textButton = game.add.text(this.currentEvent.posX + 50,this.currentEvent.posY + (35 * (1 + index) + 7), choice.text, style);
+			let textButton = game.add.text(this.currentEvent.posX + 50, this.currentEvent.posY + (35 * (1 + index) + 7), choice.text, style);
 			this.currentEvent.choiceButtons.push({ "button": button, "text": textButton });
 		});
 		this.beginEvent = false;
@@ -100,7 +103,29 @@ function getRandomInt(min, max) {
 }
 
 function actionOnClick(button) {
-	console.log(button.consequence);
-	this.currentEvent.consequenceText = game.add.text(50, 400, button.consequence.text, style);
-	this.beginEvent = true;
+	if (!this.isSleeping) {
+		console.log(button.consequence);
+		this.currentEvent.consequenceText = game.add.text(this.currentEvent.posX, this.currentEvent.posY + 200, button.consequence.text, style);
+		this.isSleeping = true;
+		sleep(3000);
+		this.beginEvent = true;
+		this.isSleeping = false;
+	}
+}
+
+function cleanCurrentEvent() {
+	if (this.textDescription && this.currentEvent.textDescription) {
+		console.log("destroy");
+		this.currentEvent.textDescription.destroy();
+		for (let button of this.currentEvent.choiceButtons) {
+			button.button.destroy();
+			button.text.destroy();
+		}
+		this.currentEvent.consequenceText.destroy();;
+	}
+}
+
+function sleep( sleepDuration ){
+	var now = new Date().getTime();
+	while(new Date().getTime() < now + sleepDuration){ /* do nothing */ } 
 }
