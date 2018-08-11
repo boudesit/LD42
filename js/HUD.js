@@ -4,7 +4,7 @@ function HUD(game) {
 	this.player = null;
 	this.computer = null;
 	this.lvlManager = null;
-
+	this.beginEvent = true;
 	this.spriteBG = null;
 	this.fight = null;
 	this.fightCastle = null;
@@ -13,6 +13,7 @@ function HUD(game) {
 	this.timeDelay = 0;
 	this.game.score = 0;
 	this.scoreText = '';
+	this.events = null;
 };
 
 HUD.prototype.create = function create() {
@@ -20,18 +21,7 @@ HUD.prototype.create = function create() {
 
 
 	this.timeDelay = 0;
-		let events = dataEvents;
-		console.log(events);
-		let eventId = getRandomInt(0, events.length) ;
-
-		var style = { font: "bold 16px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
-		game.add.text(0, 0, events[eventId].id, style);
-		game.add.text(0, 17, events[eventId].text, style);
-
-		events[eventId].choices.forEach((element, index) => {
-			game.add.text(0, 17 * (2 + index), element.text, style);
-		});
-
+	this.events = dataEvents;
 	//  this.lvlManager = new lvlManager(this.game, 0);
 	//  this.lvlManager.create();
 	//
@@ -56,6 +46,18 @@ HUD.prototype.create = function create() {
 
 HUD.prototype.update = function update() {
 
+if(this.beginEvent) {
+		let eventId = getRandomInt(0, this.events.length) ;
+
+		var style = { font: "bold 16px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+		game.add.text(0, 0, this.events[eventId].id, style);
+		game.add.text(0, 17, this.events[eventId].text, style);
+
+		this.events[eventId].choices.forEach((element, index) => {
+			game.add.text(0, 17 * (2 + index), element.text, style);
+		});
+		this.beginEvent = false;
+	}
 	// this.hero.update();
 	// this.lvlManager.update();
 	// this.scoreText.setText(this.game.score);
