@@ -13,13 +13,15 @@ var buttonPlus;
 var style = { font: "bold 16px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 HUD.prototype.create = function create() {
 	this.timeDelay = 0;
-	this.eventManager = new eventManager(this.game);
-	this.eventManager.create();
-
-	this.barManager = new barManager(this.game);
-	this.barManager.create();
 
 	this.passengerManager = new passengerManager();
+
+	this.eventManager = new eventManager(this.game, this.passengerManager);
+	this.eventManager.create();
+
+	this.barManager = new barManager(this.game, this.passengerManager);
+	this.barManager.create();
+
 
 
 };
