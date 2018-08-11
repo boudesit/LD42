@@ -5,6 +5,7 @@ function eventManager(game) {
 	this.currentEvent = null;
 	this.nextEventId = null;
 	this.canClickButton = true;
+
 };
 var style = {
 	font: "bold 16px Arial",
