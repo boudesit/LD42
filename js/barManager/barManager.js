@@ -1,11 +1,12 @@
-function barManager(game, passengerManager) {
+function barManager(game, passengerManager, resourceManager) {
 	this.game = game;
 	this.events = null;
   this.passenger=null;
   this.shield=null;
   this.search=null;
   this.energy=null;
-	this.passengerManager = passengerManager;
+  this.passengerManager = passengerManager;
+  this.resourceManager = resourceManager;
 }
 
 var pourcentEnergy = 100;

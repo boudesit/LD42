@@ -3,6 +3,7 @@ function HUD(game) {
 	this.barManager = null;
 	this.eventManager = null;
 	this.passengerManager = null;
+	this.resourceManager = null;
 	this.timeDelay = null;
 };
 var buttonPlus;
@@ -20,16 +21,16 @@ HUD.prototype.create = function create() {
 	this.timeDelay = 0;
 
 	this.passengerManager = new passengerManager();
+	this.resourceManager = new resourceManager();
 
-	this.barManager = new barManager(this.game, this.passengerManager);
+	this.barManager = new barManager(this.game, this.passengerManager, this.resourceManager);
 	this.barManager.create();
 
-	this.eventManager = new eventManager(this.game, this.passengerManager, this.barManager);
+	this.eventManager = new eventManager(this.game, this.passengerManager, this.resourceManager, this.barManager);
 	this.eventManager.create();
 
 };
 
 HUD.prototype.update = function update() {
-
 	this.eventManager.update();
 };

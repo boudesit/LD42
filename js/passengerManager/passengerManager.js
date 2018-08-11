@@ -77,3 +77,10 @@ passengerManager.prototype.getMaxPassenger = function getMaxPassenger(){
 
   return this.maxPassenger;
 };
+
+passengerManager.prototype.toString = function toString() {
+  return "Civilian : " + this.totalCivilian + "\n"
+      + "Engineer : " + this.totalEngineer + "\n"
+      + "Soldier : " + this.totalSoldier + "\n"
+      + "Total : " + this.totalPassenger + "/" + this.maxPassenger;
+};
