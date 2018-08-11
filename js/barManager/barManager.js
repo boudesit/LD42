@@ -14,10 +14,13 @@ function barManager(game) {
 	this.game.score = 0;
 	this.scoreText = '';
 	this.events = null;
+  this.button = null;
 
 }
 
+var pourcent = 0;
 barManager.prototype.create = function create() {
+
 
 
   //////////////////////////////////////////////////////////
@@ -84,7 +87,7 @@ barManager.prototype.create = function create() {
   this.search.animations.add('progressBar90', [9], 10, true);
   this.search.animations.add('progressBar100', [10], 10, true);
 
-
+    this.button = game.add.button(20, 200, 'test', actionOnClick, this, 2, 1, 0);
 };
 
 
@@ -256,4 +259,10 @@ switch (pourcent) {
   default:
     this.search.animations.play('progressBar0', 2, true);
 }
+
+  barManager.prototype.actionOnClick = function actionOnClick(test) {
+
+    pourcent = pourcent + 10;
+    this.progressEnergy(pourcent);
+  }
 };
