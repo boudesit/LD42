@@ -1,10 +1,11 @@
-function eventManager(game) {
+function eventManager(game, passengerManager) {
 	this.game = game;
 	this.beginEvent = true;
 	this.events = null;
 	this.currentEvent = null;
 	this.nextEventId = null;
 	this.canClickButton = true;
+	this.passengerManager = passengerManager;
 
 };
 var style = {

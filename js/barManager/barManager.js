@@ -1,25 +1,11 @@
-function barManager(game) {
+function barManager(game, passengerManager) {
 	this.game = game;
-	this.ressourcesManager = null;
-	this.player = null;
-	this.computer = null;
-	this.lvlManager = null;
-	this.beginEvent = true;
-	this.spriteBG = null;
-	this.fight = null;
-	this.fightCastle = null;
-	this.computeRessourcesTkt = null;
-	this.hero = null;
-	this.timeDelay = 0;
-	this.game.score = 0;
-	this.scoreText = '';
 	this.events = null;
-  this.button = null;
   this.passenger=null;
   this.shield=null;
   this.search=null;
   this.energy=null;
-
+	this.passengerManager = passengerManager;
 }
 
 var pourcentEnergy = 100;
