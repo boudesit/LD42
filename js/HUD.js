@@ -4,35 +4,32 @@ function HUD(game) {
 	this.player = null;
 	this.computer = null;
 	this.lvlManager = null;
-
-  this.spriteBG = null;
+	this.beginEvent = true;
+	this.spriteBG = null;
 	this.fight = null;
 	this.fightCastle = null;
 	this.computeRessourcesTkt = null;
 	this.hero = null;
 	this.timeDelay = 0;
 	this.game.score = 0;
-  this.scoreText = '';
+	this.scoreText = '';
+	this.events = null;
 };
-
+var style = { font: "bold 16px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 HUD.prototype.create = function create() {
 
 
 
-	 this.timeDelay = 0;
-   this.spriteBG =  this.game.add.tileSprite(0 , 0, 800, 600, 'background');
-
-	 this.spriteBG.animations.add('background', [0,1,2,3,4,5,6,7,8,9,10,11,10,9,8,7,6,5,4,3,2,1,0]);
-   this.spriteBG.animations.play('background', 4, true);
-
+	this.timeDelay = 0;
+	this.events = dataEvents;
 	//  this.lvlManager = new lvlManager(this.game, 0);
- 	//  this.lvlManager.create();
+	//  this.lvlManager.create();
 	//
 	//  this.hero = new HeroManager(this.game,this.lvlManager);
-  //  this.hero.create();
+	//  this.hero.create();
 	//
 	//  this.explosionSound = game.add.audio('explosionSound');
- 	//  this.explosion  = game.add.sprite(-100,-100, 'explosion');
+	//  this.explosion  = game.add.sprite(-100,-100, 'explosion');
 	//
 	//
 	// // this.spriteBG.animations.add('backgroundAnime');
@@ -49,7 +46,23 @@ HUD.prototype.create = function create() {
 
 HUD.prototype.update = function update() {
 
-  // this.hero.update();
+	if (this.beginEvent) {
+		let eventId = getRandomInt(0, this.events.length);
+
+		
+		game.add.text(0, 0, this.events[eventId].id, style);
+		game.add.text(0, 17, this.events[eventId].text, style);
+
+		this.events[eventId].choices.forEach((choice, index) => {
+			let button = game.add.button(5, 35 * (1 + index), 'button', actionOnClick, this, 2, 1, 0);
+			button.width = 500;
+			button.height = 30;
+			button.consequence = choice.consequence;
+			game.add.text(50, 35 * (1 + index) + 7, choice.text, style);
+		});
+		this.beginEvent = false;
+	}
+	// this.hero.update();
 	// this.lvlManager.update();
 	// this.scoreText.setText(this.game.score);
 	//
@@ -71,3 +84,15 @@ HUD.prototype.scoreScreen = function scoreScreen() {
 	this.music.pause();
 	this.game.state.start("GameScore");
 };
+
+
+function getRandomInt(min, max) {
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function actionOnClick(button) {
+	console.log(button.consequence);
+	game.add.text(50, 400, button.consequence.text, style);
+}
