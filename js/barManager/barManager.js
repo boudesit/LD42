@@ -33,18 +33,18 @@ barManager.prototype.create = function create() {
   //////////////////////////////////////////////////////////
   //////////////////PROGRESS BAR ENERGYBAR/////////////////
   /////////////////////////////////////////////////////////
-  this.energyBar = this.game.add.sprite(10, 0, 'progressBar');
-	this.energyBar.animations.add('progressBar0', [0], 10, true);
-  this.energyBar.animations.add('progressBar10', [1], 10, true);
-  this.energyBar.animations.add('progressBar20', [2], 10, true);
-  this.energyBar.animations.add('progressBar30', [3], 10, true);
-  this.energyBar.animations.add('progressBar40', [4], 10, true);
+  this.energyBar = this.game.add.sprite(10, 0, 'progressBarEnergy');
+	this.energyBar.animations.add('progressBar0', [9], 10, true);
+  this.energyBar.animations.add('progressBar10', [9], 10, true);
+  this.energyBar.animations.add('progressBar20', [8], 10, true);
+  this.energyBar.animations.add('progressBar30', [7], 10, true);
+  this.energyBar.animations.add('progressBar40', [6], 10, true);
   this.energyBar.animations.add('progressBar50', [5], 10, true);
-  this.energyBar.animations.add('progressBar60', [6], 10, true);
-  this.energyBar.animations.add('progressBar70', [7], 10, true);
-  this.energyBar.animations.add('progressBar80', [8], 10, true);
-  this.energyBar.animations.add('progressBar90', [9], 10, true);
-  this.energyBar.animations.add('progressBar100', [10], 10, true);
+  this.energyBar.animations.add('progressBar60', [4], 10, true);
+  this.energyBar.animations.add('progressBar70', [3], 10, true);
+  this.energyBar.animations.add('progressBar80', [2], 10, true);
+  this.energyBar.animations.add('progressBar90', [1], 10, true);
+  this.energyBar.animations.add('progressBar100', [0], 10, true);
 
   //////////////////////////////////////////////////////////
   //////////////////PROGRESS BAR SHIELD////////////////////
@@ -181,40 +181,40 @@ switch (pourcentShield) {
 }
 };
 
-barManager.prototype.progressPassenger = function progress(pourcentPassenger) {
+barManager.prototype.progressPassenger = function progress(pourcentPassenger,maxPassenger) {
 
 switch (pourcentPassenger) {
   case (pourcentPassenger <= 0):
   this.passenger.animations.play('progressBar0', 2, true);
     break;
-  case (pourcentPassenger < 10):
+  case (pourcentPassenger < maxPassenger/10):
     this.passenger.animations.play('progressBar10', 2, true);
     break;
-  case (pourcentPassenger < 20):
+  case (pourcentPassenger < (maxPassenger/10)*2):
     this.passenger.animations.play('progressBar20', 2, true);
     break;
-  case (pourcentPassenger < 30):
+  case (pourcentPassenger < (maxPassenger/10)*3):
     this.passenger.animations.play('progressBar30', 2, true);
     break;
-  case (pourcentPassenger < 40):
+  case (pourcentPassenger < (maxPassenger/10)*4):
     this.passenger.animations.play('progressBar40', 2, true);
     break;
-  case (pourcentPassenger < 50):
+  case (pourcentPassenger < (maxPassenger/10)*5):
     this.passenger.animations.play('progressBar50', 2, true);
     break;
-  case (pourcentPassenger < 60):
+  case (pourcentPassenger < (maxPassenger/10)*6):
     this.passenger.animations.play('progressBar60', 2, true);
     break;
-  case (pourcentPassenger < 70):
+  case (pourcentPassenger < (maxPassenger/10)*7):
     this.passenger.animations.play('progressBar70', 2, true);
     break;
-  case (pourcentPassenger < 80):
+  case (pourcentPassenger < (maxPassenger/10)*8):
     this.passenger.animations.play('progressBar80', 2, true);
     break;
-  case (pourcentPassenger < 90):
+  case (pourcentPassenger < (maxPassenger/10)*9):
     this.passenger.animations.play('progressBar90', 2, true);
     break;
-  case (pourcentPassenger <= 100):
+  case (pourcentPassenger <= (maxPassenger/10)*2):
     this.passenger.animations.play('progressBar100', 2, true);
      break;
   }
