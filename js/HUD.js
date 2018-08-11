@@ -4,6 +4,7 @@ function HUD(game) {
 	this.barManager = null;
 	//this.currentEvent = null;
 	this.eventManager = null;
+	this.passengerManager = null;
 	this.timeDelay = null;
 };
 var buttonPlus;
@@ -17,6 +18,8 @@ HUD.prototype.create = function create() {
 
 	this.barManager = new barManager(this.game);
 	this.barManager.create();
+
+	this.passengerManager = new passengerManager();
 
 
 };
