@@ -1,14 +1,21 @@
 function eventManager(game) {
 	this.game = game;
-  this.beginEvent = true;
+	this.beginEvent = true;
 	this.events = null;
 	this.currentEvent = null;
 	this.nextEventId = null;
+	this.canClickButton = true;
 };
-var style = { font: "bold 16px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+var style = {
+	font: "bold 16px Arial",
+	fill: "#fff",
+	boundsAlignH: "center",
+	boundsAlignV: "middle",
+	wordWrap: true,
+	wordWrapWidth: 450
+};
 
 eventManager.prototype.create = function create() {
-
 	this.events = dataEvents;
 };
 
@@ -19,27 +26,30 @@ eventManager.prototype.update = function update() {
 	if (this.beginEvent) {
 		cleanEvent(this.currentEvent);
 		this.currentEvent = {};
-		if(this.nextEventId) {
+		if (this.nextEventId) {
 			var event = this.events[this.nextEventId];
 		} else {
 			var event = this.events[getRandomInt(0, this.events.length)];
-			while(event.canBeRandomEvent === 'false'){
+			while (event.canBeRandomEvent === 'false') {
 				event = this.events[getRandomInt(0, this.events.length)];
 			}
 		}
-		
+
 		this.currentEvent.posX = 10;
 		this.currentEvent.posY = 40;
+		this.currentEvent.nexElementPosY = this.currentEvent.posY;
 
-		this.currentEvent.textDescription = this.game.add.text(this.currentEvent.posX, this.currentEvent.posY + 17, event.text, style);
+		this.currentEvent.textDescription = this.game.add.text(this.currentEvent.posX, this.currentEvent.nexElementPosY, event.text, style);
+		this.currentEvent.nexElementPosY = this.currentEvent.nexElementPosY + this.currentEvent.textDescription.height + 5;
 		this.currentEvent.choiceButtons = [];
 
 		event.choices.forEach((choice, index) => {
-			let button = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.posY + (35 * (1 + index)), 'button', actionOnClick, this, 2, 1, 0);
+			let button = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.nexElementPosY, 'button', actionOnClick, this, 2, 1, 0);
 			button.width = 500;
 			button.height = 30;
 			button.consequence = choice.consequence;
-			let textButton = this.game.add.text(this.currentEvent.posX + 50, this.currentEvent.posY + (35 * (1 + index) + 7), choice.text, style);
+			let textButton = this.game.add.text(this.currentEvent.posX + 50, this.currentEvent.nexElementPosY + 7, choice.text, style);
+			this.currentEvent.nexElementPosY = this.currentEvent.nexElementPosY + button.height + 5;
 			this.currentEvent.choiceButtons.push({ "button": button, "text": textButton });
 		});
 		this.beginEvent = false;
@@ -59,23 +69,29 @@ function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function actionOnClick(button) {
-	console.log(button.consequence);
-	this.currentEvent.consequenceText = this.game.add.text(this.currentEvent.posX, this.currentEvent.posY + 200, button.consequence.text, style);
-	this.nextEventId = button.consequence.nextEvent;
-	this.beginEvent = true;
+async function actionOnClick(button) {
+	if (this.canClickButton) {
+		console.log(button.consequence);
+		this.currentEvent.consequenceText = this.game.add.text(this.currentEvent.posX, this.currentEvent.nexElementPosY, button.consequence.text, style);
+		this.nextEventId = button.consequence.nextEvent;
+		this.canClickButton = false;
+		await sleep(3000);
+		this.beginEvent = true;
+		this.canClickButton = true;
+	}
 }
 
 function cleanEvent(event) {
-	if (event) {
-		console.log("destroy");
+	if (event && event.textDescription) {
 		event.textDescription.destroy();
 		for (let button of event.choiceButtons) {
 			button.button.destroy();
 			button.text.destroy();
 		}
 		event.consequenceText.destroy();
-	} else {
-		console.log("not");
 	}
+}
+
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
 }
