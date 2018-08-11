@@ -21,8 +21,16 @@ HUD.prototype.create = function create() {
 
 	this.timeDelay = 0;
 		let events = dataEvents;
-		var style = { font: "bold 32px Arial", fill: "#0f0", boundsAlignH: "center", boundsAlignV: "middle" };
-		game.add.text(0, 0, events[0].text, style);
+		console.log(events);
+		let eventId = getRandomInt(0, events.length) ;
+
+		var style = { font: "bold 16px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+		game.add.text(0, 0, events[eventId].id, style);
+		game.add.text(0, 17, events[eventId].text, style);
+
+		events[eventId].choices.forEach((element, index) => {
+			game.add.text(0, 17 * (2 + index), element.text, style);
+		});
 
 	//  this.lvlManager = new lvlManager(this.game, 0);
 	//  this.lvlManager.create();
@@ -70,3 +78,10 @@ HUD.prototype.scoreScreen = function scoreScreen() {
 	this.music.pause();
 	this.game.state.start("GameScore");
 };
+
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
