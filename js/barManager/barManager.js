@@ -100,7 +100,7 @@ barManager.prototype.update = function update() {
 
 barManager.prototype.progressEnergy = function progress(pourcentEnergy) {
 
-switch (pourcentEnergy) {
+switch (true) {
   case (pourcentEnergy<= 0):
   this.energyBar.animations.play('progressBar0', 2, true);
     break;
@@ -140,7 +140,7 @@ switch (pourcentEnergy) {
 
 barManager.prototype.progressShield = function progress(pourcentShield) {
 
-switch (pourcentShield) {
+switch (true) {
   case (pourcentShield <= 0):
   this.shield.animations.play('progressBar0', 2, true);
     break;
@@ -177,40 +177,60 @@ switch (pourcentShield) {
 }
 };
 
-barManager.prototype.progressPassenger = function progress(pourcentPassenger,maxPassenger) {
+barManager.prototype.progressPassenger = function progress(pourcentPassenger) {
 
-switch (pourcentPassenger) {
+switch (true) {
   case (pourcentPassenger <= 0):
+	console.log('bonjour');
   this.passenger.animations.play('progressBar0', 2, true);
     break;
-  case (pourcentPassenger < maxPassenger/10):
-    this.passenger.animations.play('progressBar10', 2, true);
+  case (pourcentPassenger <= this.passengerManager.getMaxPassenger()/10):
+console.log('bonjour2');
+		this.passenger.animations.play('progressBar10', 2, true);
     break;
-  case (pourcentPassenger < (maxPassenger/10)*2):
+  case (pourcentPassenger <= (this.passengerManager.getMaxPassenger()/10)*2):
+	console.log('toncul');
+
     this.passenger.animations.play('progressBar20', 2, true);
     break;
-  case (pourcentPassenger < (maxPassenger/10)*3):
+  case (pourcentPassenger <= (this.passengerManager.getMaxPassenger()/10)*3):
+	console.log('bonjour2');
+
     this.passenger.animations.play('progressBar30', 2, true);
     break;
-  case (pourcentPassenger < (maxPassenger/10)*4):
+  case (pourcentPassenger <= (this.passengerManager.getMaxPassenger()/10)*4):
+	console.log('tabite');
+
     this.passenger.animations.play('progressBar40', 2, true);
     break;
-  case (pourcentPassenger < (maxPassenger/10)*5):
+  case (pourcentPassenger <= (this.passengerManager.getMaxPassenger()/10)*5):
+	console.log('moncul');
+
     this.passenger.animations.play('progressBar50', 2, true);
     break;
-  case (pourcentPassenger < (maxPassenger/10)*6):
+  case (pourcentPassenger <= (this.passengerManager.getMaxPassenger()/10)*6):
+	console.log('mabite');
+
     this.passenger.animations.play('progressBar60', 2, true);
     break;
-  case (pourcentPassenger < (maxPassenger/10)*7):
+  case (pourcentPassenger < (this.passengerManager.getMaxPassenger()/10)*7):
+	console.log('salisalut');
+
     this.passenger.animations.play('progressBar70', 2, true);
     break;
-  case (pourcentPassenger < (maxPassenger/10)*8):
+  case (pourcentPassenger <= (this.passengerManager.getMaxPassenger()/10)*8):
+	console.log('popo');
+
     this.passenger.animations.play('progressBar80', 2, true);
     break;
-  case (pourcentPassenger < (maxPassenger/10)*9):
+  case (pourcentPassenger <= (this.passengerManager.getMaxPassenger()/10)*9):
+	console.log('foeeo');
+
     this.passenger.animations.play('progressBar90', 2, true);
     break;
-  case (pourcentPassenger <= (maxPassenger/10)*2):
+  case (pourcentPassenger <= this.passengerManager.getMaxPassenger()):
+	console.log('fjeoinf');
+
     this.passenger.animations.play('progressBar100', 2, true);
      break;
   }
@@ -220,7 +240,7 @@ switch (pourcentPassenger) {
 
 barManager.prototype.progressSearch = function progress(pourcentSearch) {
 
-	switch (pourcentSearch) {
+	switch (true) {
 	  case (pourcentSearch <= 0):
 	  this.search.animations.play('progressBar0', 2, true);
 	    break;
@@ -260,23 +280,25 @@ barManager.prototype.progressSearch = function progress(pourcentSearch) {
 
 };
 
-  function updateProgessBars(passenger,energy,shield,search)
+  barManager.prototype.updateProgessBars = function updateProgessBars(passenger,energy,shield,search)
   {
+
+		console.log('bonjour0');
     if(passenger!=null)
     {
-       progressPassenger(this.passenger += passenger);
+       this.progressPassenger(passenger);
     }
     if(energy!=null)
     {
-       progressEnergy(this.energy += energy);
+       this.progressEnergy(this.energy += energy);
     }
     if(shield!=null)
     {
-       progressShield(this.shield += shield);
+       this.progressShield(this.shield += shield);
     }
     if(search!=null)
     {
-       progressSearch(this.search += search);
+       this.progressSearch(this.search += search);
     }
 
-  }
+  };
