@@ -5,6 +5,7 @@ function eventManager(game) {
 	this.currentEvent = null;
 	this.nextEventId = null;
 	this.canClickButton = true;
+
 };
 var style = {
 	font: "bold 16px Arial",
@@ -44,7 +45,7 @@ eventManager.prototype.update = function update() {
 		this.currentEvent.choiceButtons = [];
 
 		event.choices.forEach((choice, index) => {
-			let button = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.nexElementPosY, 'button', actionOnClick, this, 2, 1, 0);
+			let button = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.nexElementPosY, 'button', actionOnClickChoice, this, 2, 1, 0);
 			button.width = 500;
 			button.height = 30;
 			button.consequence = choice.consequence;
@@ -69,7 +70,7 @@ function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
 }
 
-async function actionOnClick(button) {
+async function actionOnClickChoice(button) {
 	if (this.canClickButton) {
 		console.log(button.consequence);
 		this.currentEvent.consequenceText = this.game.add.text(this.currentEvent.posX, this.currentEvent.nexElementPosY, button.consequence.text, style);
