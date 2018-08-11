@@ -15,7 +15,6 @@ function HUD(game) {
 	this.scoreText = '';
 	this.events = null;
 	this.currentEvent = null;
-	this.isSleeping = null;
 };
 var style = { font: "bold 16px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 HUD.prototype.create = function create() {
@@ -52,7 +51,7 @@ HUD.prototype.update = function update() {
 
 	if (this.beginEvent) {
 		console.log('test');
-		cleanCurrentEvent();
+		cleanEvent(this.currentEvent);
 		this.currentEvent = {};
 		let event = this.events[getRandomInt(0, this.events.length)];
 
@@ -103,29 +102,21 @@ function getRandomInt(min, max) {
 }
 
 function actionOnClick(button) {
-	if (!this.isSleeping) {
-		console.log(button.consequence);
-		this.currentEvent.consequenceText = game.add.text(this.currentEvent.posX, this.currentEvent.posY + 200, button.consequence.text, style);
-		this.isSleeping = true;
-		sleep(3000);
-		this.beginEvent = true;
-		this.isSleeping = false;
-	}
+	console.log(button.consequence);
+	this.currentEvent.consequenceText = game.add.text(this.currentEvent.posX, this.currentEvent.posY + 200, button.consequence.text, style);
+	this.beginEvent = true;
 }
 
-function cleanCurrentEvent() {
-	if (this.textDescription && this.currentEvent.textDescription) {
+function cleanEvent(event) {
+	if (event) {
 		console.log("destroy");
-		this.currentEvent.textDescription.destroy();
-		for (let button of this.currentEvent.choiceButtons) {
+		event.textDescription.destroy();
+		for (let button of event.choiceButtons) {
 			button.button.destroy();
 			button.text.destroy();
 		}
-		this.currentEvent.consequenceText.destroy();;
+		event.consequenceText.destroy();
+	} else {
+		console.log("not");
 	}
-}
-
-function sleep( sleepDuration ){
-	var now = new Date().getTime();
-	while(new Date().getTime() < now + sleepDuration){ /* do nothing */ } 
 }
