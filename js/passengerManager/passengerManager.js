@@ -10,7 +10,10 @@ function passengerManager(game) {
 }
 
 
-passengerManager.prototype.create = function create() {};
+passengerManager.prototype.create = function create() {
+
+	
+};
 
 
 passengerManager.prototype.update = function update() {};
