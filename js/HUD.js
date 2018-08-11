@@ -18,7 +18,9 @@ function HUD(game) {
 
 HUD.prototype.create = function create() {
 
-
+	this.sprite = this.game.add.sprite(this.posX,this.posY, 'progressBar');
+	this.sprite.animations.add('idle');
+	this.sprite.animations.play('idle', 2, true);
 
 	this.timeDelay = 0;
 	this.events = dataEvents;
