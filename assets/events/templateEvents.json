@@ -1,23 +1,143 @@
-{
-    "id": "0",
-    "text": "Some guys want to kill, you what to do ?",
-    "choices": {
-        "1": {
-            "text": "I run away !",
-            "consequence": "energy -10"
-        },
-        "2": {
-            "text": "Fight !",
-            "consequence": "shield -10"
-        }
-        ,
-        "3": {
-            "text": "Be nice and invite them for tea.",
-            "consequence": "passenger +3"
-        },
-        "4": {
-            "text": "Some other choice",
-            "consequence": "do somthing"
-        }
+dataEvents = [
+    {
+        "id": "0",
+        "canBeRandomEvent": "true",
+        "text": "You encounter an unknown ship. The captain send you a message requesting that you give some fuel. What do you do ?",
+        "choices": [
+            {
+                "text": "I run away !",
+                "consequence": {
+                    "text": "You ran away using some energy",
+                    "energy": "-10",
+                    "nextEvent": "1"
+                }
+            },
+            {
+                "text": "Fight !",
+                "consequence": {
+                    "text": "You fought well",
+                    "shield": "-5"
+                }
+            },
+            {
+                "text": "Be nice and invite them for tea.",
+                "consequence": {
+                    "text": "These guys are nice actually",
+                    "passenger": "+3"
+                }
+            },
+            {
+                "text": "Comply and give them some fuel",
+                "consequence": {
+                    "text": "They take the fuel and go away",
+                    "energy": "-20"
+                }
+            }
+        ]
+    },
+    {
+        "id": "1",
+        "canBeRandomEvent": "false",
+        "text": "The ship from before followed you. What do you do ?",
+        "choices": [
+            {
+                "text": "I run away !",
+                "consequence": {
+                    "text": "You ran away using some energy",
+                    "energy": "-10",
+                    "nextEvent": "1"
+                }
+            },
+            {
+                "text": "Fight !",
+                "consequence": {
+                    "text": "You fought well",
+                    "shield": "-5"
+                }
+            },
+            {
+                "text": "Comply and give them some fuel",
+                "consequence": {
+                    "text": "They take the fuel and go away",
+                    "energy": "-20"
+                }
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "canBeRandomEvent": "true",
+        "text": "You receive a detress message. What do you do ?",
+        "choices": [
+            {
+                "text": "Follow it.",
+                "consequence": {
+                    "text": "You follow the trace of the message.",
+                    "nextEvent": "3"
+                }
+            },
+            {
+                "text": "Ignore it.",
+                "consequence": {
+                    "text": "You continue your travel.",
+                }
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "canBeRandomEvent": "false",
+        "text": "You arrive to a destroyed station, you detect three people in there. Who do you save first ?",
+        "choices": [
+            {
+                "text": "The civilian.",
+                "consequence": {
+                    "text": "You save a civilian, they join your crew.",
+                    "passenger": "+1",
+                    "nextEvent": "4"
+                }
+            },
+            {
+                "text": "The engineer.",
+                "consequence": {
+                    "text": "You save an engineer, they join your crew.",
+                    "engineer": "+1",
+                    "nextEvent": "4"
+                }
+            },
+            {
+                "text": "No one.",
+                "consequence": {
+                    "text": "You let them to die.",
+                    "nextEvent": "5"
+                }
+            }
+        ]
+    },
+    {
+        "id": "4",
+        "canBeRandomEvent": "false",
+        "text": "Sadly, you don't have enough time to save anyone else.",
+        "choices": [
+            {
+                "text": "Continue your travel.",
+                "consequence": {
+                    "text": "You continue your travel."
+                }
+            }
+        ]
+    },
+    {
+        "id": "5",
+        "canBeRandomEvent": "false",
+        "text": "The station explode.",
+        "choices": [
+            {
+                "text": "Continue your travel.",
+                "consequence": {
+                    "text": "You continue your travel."
+                }
+            }
+        ]
     }
-}
+]
