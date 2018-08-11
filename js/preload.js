@@ -12,9 +12,9 @@ preload.prototype = {
 		this.game.load.spritesheet('gametuto', 'assets/images/Backgrounds/background-tuto.png', 800, 600,1);
 
 		this.game.load.spritesheet('progressBarEnergy', 'assets/images/ProgressBar/ProgressBarEnergy.png',80,20,10);
-		this.game.load.spritesheet('progressBar2', 'assets/images/loading.png',40,21,10);
-		this.game.load.spritesheet('progressBar3', 'assets/images/loading.png',40,21,10);
-		this.game.load.spritesheet('progressBar4', 'assets/images/loading.png',40,21,10);
+		this.game.load.spritesheet('progressBarPassenger', 'assets/images/ProgressBar/ProgressBarPassenger.png',80,20,10);
+		this.game.load.spritesheet('progressBarSearch', 'assets/images/ProgressBar/progressBarSearch.png',80,20,10);
+		this.game.load.spritesheet('progressBarShield', 'assets/images/ProgressBar/progressBarShield.png',80,20,10);
 		//Image
 
 		this.game.load.image('button', 'assets/images/button.png');

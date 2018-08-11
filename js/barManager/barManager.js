@@ -45,7 +45,7 @@ barManager.prototype.create = function create() {
   //////////////////////////////////////////////////////////
   //////////////////PROGRESS BAR SHIELD////////////////////
   /////////////////////////////////////////////////////////
-  this.shield = this.game.add.sprite(150, 0, 'progressBar2');
+  this.shield = this.game.add.sprite(150, 0, 'progressBarShield');
   this.shield.animations.add('progressBar0', [0], 10, true);
   this.shield.animations.add('progressBar10', [1], 10, true);
   this.shield.animations.add('progressBar20', [2], 10, true);
@@ -61,7 +61,7 @@ barManager.prototype.create = function create() {
   //////////////////////////////////////////////////////////
   //////////////////PROGRESS BAR PASSENGER//////////////////
   /////////////////////////////////////////////////////////
-  this.passenger = this.game.add.sprite(350, 0, 'progressBar3');
+  this.passenger = this.game.add.sprite(350, 0, 'progressBarPassenger');
   this.passenger.animations.add('progressBar0', [0], 10, true);
   this.passenger.animations.add('progressBar10', [1], 10, true);
   this.passenger.animations.add('progressBar20', [2], 10, true);
@@ -77,7 +77,7 @@ barManager.prototype.create = function create() {
   //////////////////////////////////////////////////////////
   //////////////////PROGRESS BAR search//////////////////
   /////////////////////////////////////////////////////////
-  this.search = this.game.add.sprite(250, 0, 'progressBar4');
+  this.search = this.game.add.sprite(250, 0, 'progressBarSearch');
   this.search.animations.add('progressBar0', [0], 10, true);
   this.search.animations.add('progressBar10', [1], 10, true);
   this.search.animations.add('progressBar20', [2], 10, true);
