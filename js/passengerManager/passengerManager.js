@@ -1,5 +1,5 @@
 function passengerManager(game) {
-  this.game = game;
+	this.game = game;
 
   this.maxPassenger = 10;
   this.totalPassenger = 0;
@@ -10,91 +10,74 @@ function passengerManager(game) {
 }
 
 
-passengerManager.prototype.create = function create() { };
+passengerManager.prototype.create = function create() {};
 
 
-passengerManager.prototype.update = function update() { };
+passengerManager.prototype.update = function update() {};
 
-//number can be positive or negative; there is no need for a remove function
-passengerManager.prototype.addEngineer = function addEngineer(number) {
-  if (this.totalPassenger + number > this.maxPassenger) {
-    number = this.maxPassenger - this.totalPassenger;
-  }
-
-  if (this.totalEngineer + number < 0) {
-    number = -this.totalEngineer;
-  }
-
+passengerManager.prototype.addEngineer = function addEngineer(number){
   this.totalEngineer += number;
   this.totalPassenger += number;
-
-  if (this.totalPassenger < 0) {
-    this.totalPassenge = 0;
+  if(this.totalPassenger >= this.maxPassenger) {
+      this.totalPassenger = this.maxPassenger;
+      //TODO: call win title screen
   }
 };
 
-passengerManager.prototype.addSoldier = function addSoldier(number) {
-  if (this.totalPassenger + number > this.maxPassenger) {
-    number = this.maxPassenger - this.totalPassenger;
-  }
-
-  if (this.totalSoldier + number < 0) {
-    number = -this.totalSoldier;
-  }
-
+passengerManager.prototype.addSoldier = function addSoldier(number){
   this.totalSoldier += number;
   this.totalPassenger += number;
-
-  if (this.totalPassenger < 0) {
-    this.totalPassenge = 0;
-  }
 };
 
-passengerManager.prototype.addCivilian = function addCivilian(number) {
-  if (this.totalPassenger + number > this.maxPassenger) {
-    number = this.maxPassenger - this.totalPassenger;
-  }
-
-  if (this.totalCivilian + number < 0) {
-    number = -this.totalCivilian;
-  }
-
+passengerManager.prototype.addCivilian = function addCivilian(number){
   this.totalCivilian += number;
   this.totalPassenger += number;
-
-  if (this.totalPassenger < 0) {
-    this.totalPassenge = 0;
-  }
 };
 
-passengerManager.prototype.addMaxPassenger = function addMaxPassenger(number) {
+passengerManager.prototype.removeEngineer = function removeEngineer(number){
+  this.totalEngineer -= number;
+  this.totalPassenger -= number;
+};
+
+passengerManager.prototype.removeSoldier = function removeSoldier(number){
+  this.totalSoldier -= number;
+  this.totalPassenger -= number;
+};
+
+passengerManager.prototype.removeCivilian = function removeCivilian(number){
+  this.totalCivilian -= number;
+  this.totalPassenger -= number;
+};
+
+passengerManager.prototype.addMaxPassenger = function addMaxPassenger(number){
   this.maxPassenger += number;
 };
 
-passengerManager.prototype.getEngineer = function getEngineer() {
+passengerManager.prototype.removeMaxPassenger = function removeMaxPassenger(number){
+  this.maxPassenger -= number;
+};
+
+passengerManager.prototype.getEngineer = function getEngineer(){
 
   return this.totalEngineer;
 };
 
-passengerManager.prototype.getSoldier = function getSoldier() {
+passengerManager.prototype.getSoldier = function getSoldier(){
+
   return this.totalSoldier;
 };
 
-passengerManager.prototype.getCivilian = function getCivilian() {
+passengerManager.prototype.getCivilian = function getCivilian(){
+
   return this.totalCivilian;
 };
 
-passengerManager.prototype.getTotalPassenger = function getTotalPassenger() {
+passengerManager.prototype.getTotalPassenger = function getTotalPassenger(){
+
   return this.totalPassenger;
 };
 
-passengerManager.prototype.getMaxPassenger = function getMaxPassenger() {
-  return this.maxPassenger;
-};
+passengerManager.prototype.getMaxPassenger = function getMaxPassenger(){
 
-passengerManager.prototype.toString = function toString() {
-  return "Civilian : " + this.totalCivilian + "\n"
-    + "Engineer : " + this.totalEngineer + "\n"
-    + "Soldier : " + this.totalSoldier + "\n"
-    + "Total : " + this.totalPassenger + "/" + this.maxPassenger;
+  return this.maxPassenger;
 };
