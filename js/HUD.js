@@ -10,6 +10,7 @@ function HUD(game) {
 var buttonPlus;
 
 
+var style = { font: "bold 16px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 HUD.prototype.create = function create() {
 	this.timeDelay = 0;
 	this.eventManager = new eventManager(this.game);
