@@ -1,4 +1,4 @@
-function eventManager(game, passengerManager) {
+function eventManager(game, passengerManager, barManager) {
 	this.game = game;
 	this.beginEvent = true;
 	this.events = null;
@@ -6,6 +6,7 @@ function eventManager(game, passengerManager) {
 	this.nextEventId = null;
 	this.canClickButton = true;
 	this.passengerManager = passengerManager;
+	this.barManager = barManager;
 
 };
 var style = {
@@ -24,7 +25,7 @@ eventManager.prototype.create = function create() {
 
 
 eventManager.prototype.update = function update() {
-
+	console.log(this.passengerManager.getTotalPassenger());
 	if (this.beginEvent) {
 		cleanEvent(this.currentEvent);
 		this.currentEvent = {};
@@ -77,7 +78,22 @@ async function actionOnClickChoice(button) {
 		this.currentEvent.consequenceText = this.game.add.text(this.currentEvent.posX, this.currentEvent.nexElementPosY, button.consequence.text, style);
 		this.nextEventId = button.consequence.nextEvent;
 		this.canClickButton = false;
-		await sleep(3000);
+		// this.barManager.updateProgessBars(
+		// 	button.consequence.passenger ? Number(button.consequence.passenger) : null, 
+		// 	button.consequence.energy ? Number(button.consequence.energy) : null, 
+		// 	button.consequence.shield ? Number(button.consequence.shield) : null, 
+		// 	button.consequence.search ? Number(button.consequence.search) : null
+		// );
+		if(button.consequence.engineer){
+			this.passengerManager.addEngineer(Number(button.consequence.engineer));
+		}
+		if(button.consequence.soldier){
+			this.passengerManager.addSoldier(Number(button.consequence.soldier));
+		}
+		if(button.consequence.civilian){
+			this.passengerManager.addCivilian(Number(button.consequence.civilian));
+		}
+		await sleep(2000);
 		this.beginEvent = true;
 		this.canClickButton = true;
 	}
