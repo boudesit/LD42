@@ -37,7 +37,7 @@ preload.prototype = {
 		this.game.load.spritesheet('progressBar', 'assets/images/loading.png',40,21,10);
 		//Image
 
-
+		this.game.load.image('button', 'assets/images/button.png');
 		//Sound
     this.game.load.audio('gameSound', 'assets/sound/game.mp3');
     this.game.load.audio('introSound', 'assets/sound/intro.mp3');
