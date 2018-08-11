@@ -1,4 +1,4 @@
-function eventManager(game, passengerManager, barManager) {
+function eventManager(game, passengerManager, resourceManager, barManager) {
 	this.game = game;
 	this.beginEvent = true;
 	this.events = null;
@@ -6,16 +6,9 @@ function eventManager(game, passengerManager, barManager) {
 	this.nextEventId = null;
 	this.canClickButton = true;
 	this.passengerManager = passengerManager;
+	this.resourceManager = resourceManager;
 	this.barManager = barManager;
 
-};
-var style = {
-	font: "bold 16px Arial",
-	fill: "#fff",
-	boundsAlignH: "center",
-	boundsAlignV: "middle",
-	wordWrap: true,
-	wordWrapWidth: 450
 };
 
 eventManager.prototype.create = function create() {
@@ -25,8 +18,10 @@ eventManager.prototype.create = function create() {
 
 
 eventManager.prototype.update = function update() {
-	console.log(this.passengerManager.getTotalPassenger());
 	if (this.beginEvent) {
+		console.log(this.passengerManager.toString());
+		console.log(this.resourceManager.toString());
+
 		cleanEvent(this.currentEvent);
 		this.currentEvent = {};
 		if (this.nextEventId) {
@@ -65,27 +60,28 @@ eventManager.prototype.scoreScreen = function scoreScreen() {
 	this.game.state.start("GameScore");
 };
 
-
-function getRandomInt(min, max) {
-	min = Math.ceil(min);
-	max = Math.floor(max);
-	return Math.floor(Math.random() * (max - min)) + min;
-}
-
 async function actionOnClickChoice(button) {
 	if (this.canClickButton) {
-		console.log(button.consequence);
 		this.currentEvent.consequenceText = this.game.add.text(this.currentEvent.posX, this.currentEvent.nexElementPosY, button.consequence.text, style);
 		this.nextEventId = button.consequence.nextEvent;
 		this.canClickButton = false;
 
-		if(button.consequence.engineer){
+		if (button.consequence.energy) {
+			this.resourceManager.addEnergy(Number(button.consequence.energy));
+		}
+		if (button.consequence.search) {
+			this.resourceManager.addSearch(Number(button.consequence.search));
+		}
+		if (button.consequence.shield) {
+			this.resourceManager.addShield(Number(button.consequence.shield));
+		}
+		if (button.consequence.engineer) {
 			this.passengerManager.addEngineer(Number(button.consequence.engineer));
 		}
-		if(button.consequence.soldier){
+		if (button.consequence.soldier) {
 			this.passengerManager.addSoldier(Number(button.consequence.soldier));
 		}
-		if(button.consequence.civilian){
+		if (button.consequence.civilian) {
 			this.passengerManager.addCivilian(Number(button.consequence.civilian));
 		}
 
@@ -111,4 +107,10 @@ function cleanEvent(event) {
 
 function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function getRandomInt(min, max) {
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min)) + min;
 }
