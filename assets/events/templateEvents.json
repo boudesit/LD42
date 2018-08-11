@@ -1,4 +1,4 @@
-{
+[{
     "id": "0",
     "text": "Some guys want to kill, you what to do ?",
     "choices": {
@@ -20,4 +20,27 @@
             "consequence": "do somthing"
         }
     }
-}
+},
+{
+  "id": "1",
+  "text": "Some guys want to kill, you what to do ?",
+  "choices": {
+      "1": {
+          "text": "I run away !",
+          "consequence": "energy -10"
+      },
+      "2": {
+          "text": "Fight !",
+          "consequence": "shield -10"
+      }
+      ,
+      "3": {
+          "text": "Be nice and invite them for tea.",
+          "consequence": "passenger +3"
+      },
+      "4": {
+          "text": "Some other choice",
+          "consequence": "do somthing"
+      }
+  }
+  }]
