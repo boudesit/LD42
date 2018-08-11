@@ -28,7 +28,7 @@ eventManager.prototype.update = function update() {
 		this.currentEvent.choiceButtons = [];
 
 		event.choices.forEach((choice, index) => {
-			let button = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.posY + (35 * (1 + index)), 'button', actionOnClick, this, 2, 1, 0);
+			let button = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.posY + (35 * (1 + index)), 'button', actionOnClickChoice, this, 2, 1, 0);
 			button.width = 500;
 			button.height = 30;
 			button.consequence = choice.consequence;
@@ -52,7 +52,7 @@ function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function actionOnClick(button) {
+function actionOnClickChoice(button) {
 	console.log(button.consequence);
 	this.currentEvent.consequenceText = this.game.add.text(this.currentEvent.posX, this.currentEvent.posY + 200, button.consequence.text, style);
 	this.beginEvent = true;
