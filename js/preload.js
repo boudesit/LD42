@@ -35,6 +35,11 @@ preload.prototype = {
 
     this.game.load.spritesheet('hero', 'assets/images/Player/player.png',40,100,33);
 		this.game.load.spritesheet('progressBar', 'assets/images/loading.png',40,21,10);
+		this.game.load.spritesheet('progressBar2', 'assets/images/loading.png',40,21,10);
+		this.game.load.spritesheet('progressBar3', 'assets/images/loading.png',40,21,10);
+		this.game.load.spritesheet('progressBar4', 'assets/images/loading.png',40,21,10);
+
+		game.load.spritesheet('button', 'assets/images/testProgressBar.png', 128, 128,1);
 		//Image
 
 
