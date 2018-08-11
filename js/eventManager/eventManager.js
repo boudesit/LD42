@@ -7,6 +7,7 @@ function eventManager(game) {
 	this.canClickButton = true;
 
 };
+
 var style = {
 	font: "bold 16px Arial",
 	fill: "#fff",
@@ -82,7 +83,7 @@ async function actionOnClickChoice(button) {
 			button.consequence.search ? Number(button.consequence.search) : null
 		);
 		this.canClickButton = false;
-		await sleep(3000);
+		await sleep(1000);
 		this.beginEvent = true;
 		this.canClickButton = true;
 	}
