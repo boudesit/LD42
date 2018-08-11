@@ -3,6 +3,7 @@ function eventManager(game) {
   this.beginEvent = true;
 	this.events = null;
 	this.currentEvent = null;
+	this.nextEventId = null;
 };
 var style = { font: "bold 16px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 
@@ -16,11 +17,17 @@ eventManager.prototype.create = function create() {
 eventManager.prototype.update = function update() {
 
 	if (this.beginEvent) {
-		console.log('test');
 		cleanEvent(this.currentEvent);
 		this.currentEvent = {};
-		let event = this.events[getRandomInt(0, this.events.length)];
-
+		if(this.nextEventId) {
+			var event = this.events[this.nextEventId];
+		} else {
+			var event = this.events[getRandomInt(0, this.events.length)];
+			while(event.canBeRandomEvent === 'false'){
+				event = this.events[getRandomInt(0, this.events.length)];
+			}
+		}
+		
 		this.currentEvent.posX = 10;
 		this.currentEvent.posY = 40;
 
@@ -55,6 +62,7 @@ function getRandomInt(min, max) {
 function actionOnClick(button) {
 	console.log(button.consequence);
 	this.currentEvent.consequenceText = this.game.add.text(this.currentEvent.posX, this.currentEvent.posY + 200, button.consequence.text, style);
+	this.nextEventId = button.consequence.nextEvent;
 	this.beginEvent = true;
 }
 
