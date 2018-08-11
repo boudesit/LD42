@@ -7,6 +7,7 @@ function eventManager(game) {
 	this.canClickButton = true;
 
 };
+
 var style = {
 	font: "bold 16px Arial",
 	fill: "#fff",
@@ -75,8 +76,14 @@ async function actionOnClickChoice(button) {
 		console.log(button.consequence);
 		this.currentEvent.consequenceText = this.game.add.text(this.currentEvent.posX, this.currentEvent.nexElementPosY, button.consequence.text, style);
 		this.nextEventId = button.consequence.nextEvent;
+		updateProgessBars(
+			button.consequence.passenger ? Number(button.consequence.passenger) : null, 
+			button.consequence.energy ? Number(button.consequence.energy) : null, 
+			button.consequence.shield ? Number(button.consequence.shield) : null, 
+			button.consequence.search ? Number(button.consequence.search) : null
+		);
 		this.canClickButton = false;
-		await sleep(3000);
+		await sleep(1000);
 		this.beginEvent = true;
 		this.canClickButton = true;
 	}
