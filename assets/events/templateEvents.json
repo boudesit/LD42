@@ -1,23 +1,35 @@
-[{
+dataEvents = [{
     "id": "0",
     "text": "Some guys want to kill, you what to do ?",
     "choices": {
         "1": {
             "text": "I run away !",
-            "consequence": "energy -10"
+            "consequence": {
+                "text": "You ran away using some energy",
+                "energy": "-10",
+                "nextEvent": "1"
+            }
         },
         "2": {
             "text": "Fight !",
-            "consequence": "shield -10"
+            "consequence": {
+                "text": "You fought well",
+                "shield": "-5"
+            }
         }
         ,
         "3": {
             "text": "Be nice and invite them for tea.",
-            "consequence": "passenger +3"
+            "consequence": {
+                "text": "These guys are nice actually",
+                "passenger": "+3"
+            }
         },
         "4": {
             "text": "Some other choice",
-            "consequence": "do somthing"
+            "consequence": {
+                "text": "something happens"
+            }
         }
     }
 },
@@ -25,22 +37,33 @@
   "id": "1",
   "text": "Some guys want to kill, you what to do ?",
   "choices": {
-      "1": {
-          "text": "I run away !",
-          "consequence": "energy -10"
-      },
-      "2": {
-          "text": "Fight !",
-          "consequence": "shield -10"
-      }
-      ,
-      "3": {
-          "text": "Be nice and invite them for tea.",
-          "consequence": "passenger +3"
-      },
-      "4": {
-          "text": "Some other choice",
-          "consequence": "do somthing"
-      }
+    "1": {
+        "text": "I run away !",
+        "consequence": {
+            "text": "You ran away using some energy",
+            "energy": "-10"
+        }
+    },
+    "2": {
+        "text": "Fight !",
+        "consequence": {
+            "text": "You fought well",
+            "shield": "-5"
+        }
+    }
+    ,
+    "3": {
+        "text": "Be nice and invite them for tea.",
+        "consequence": {
+            "text": "These guys are nice actually",
+            "passenger": "+3"
+        }
+    },
+    "4": {
+        "text": "Some other choice",
+        "consequence": {
+            "text": "something happens"
+        }
+    }
   }
   }]
