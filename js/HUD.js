@@ -14,6 +14,7 @@ function HUD(game) {
 	this.game.score = 0;
 	this.scoreText = '';
 	this.events = null;
+	this.currentEvent = null;
 };
 var style = { font: "bold 16px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 HUD.prototype.create = function create() {
@@ -49,18 +50,22 @@ HUD.prototype.create = function create() {
 HUD.prototype.update = function update() {
 
 	if (this.beginEvent) {
-		let eventId = getRandomInt(0, this.events.length);
+		this.currentEvent = {};
+		let event = this.events[getRandomInt(0, this.events.length)];
 
+		this.currentEvent.posX = 10;
+		this.currentEvent.posY = 40;
 
-		game.add.text(0, 0, this.events[eventId].id, style);
-		game.add.text(0, 17, this.events[eventId].text, style);
+		this.currentEvent.textDescription = game.add.text(this.currentEvent.posX, this.currentEvent.posY + 17, event.text, style);
+		this.currentEvent.choiceButtons = [];
 
-		this.events[eventId].choices.forEach((choice, index) => {
-			let button = game.add.button(5, 35 * (1 + index), 'button', actionOnClick, this, 2, 1, 0);
+		event.choices.forEach((choice, index) => {
+			let button = game.add.button(this.currentEvent.posX + 5, this.currentEvent.posY + (35 * (1 + index)), 'button', actionOnClick, this, 2, 1, 0);
 			button.width = 500;
 			button.height = 30;
 			button.consequence = choice.consequence;
-			game.add.text(50, 35 * (1 + index) + 7, choice.text, style);
+			let textButton = game.add.text(this.currentEvent.posX + 50,this.currentEvent.posY + (35 * (1 + index) + 7), choice.text, style);
+			this.currentEvent.choiceButtons.push({ "button": button, "text": textButton });
 		});
 		this.beginEvent = false;
 	}
@@ -96,5 +101,6 @@ function getRandomInt(min, max) {
 
 function actionOnClick(button) {
 	console.log(button.consequence);
-	game.add.text(50, 400, button.consequence.text, style);
+	this.currentEvent.consequenceText = game.add.text(50, 400, button.consequence.text, style);
+	this.beginEvent = true;
 }
