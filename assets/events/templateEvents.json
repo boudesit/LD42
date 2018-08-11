@@ -16,7 +16,8 @@ dataEvents = [
                 "text": "Fight !",
                 "consequence": {
                     "text": "You fought well",
-                    "shield": "-5"
+                    "shield": "-5",
+                    "soldier": "-2"
                 }
             },
             {
@@ -52,7 +53,8 @@ dataEvents = [
                 "text": "Fight !",
                 "consequence": {
                     "text": "You fought well",
-                    "shield": "-5"
+                    "shield": "-5",
+                    "soldier": "-2"
                 }
             },
             {
