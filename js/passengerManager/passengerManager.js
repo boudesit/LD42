@@ -33,8 +33,27 @@ passengerManager.prototype.addCivilian = function addCivilian(number){
   this.totalPassenger += number;
 };
 
+passengerManager.prototype.removeEngineer = function removeEngineer(number){
+  this.totalEngineer -= number;
+  this.totalPassenger -= number;
+};
+
+passengerManager.prototype.removeSoldier = function removeSoldier(number){
+  this.totalSoldier -= number;
+  this.totalPassenger -= number;
+};
+
+passengerManager.prototype.removeCivilian = function removeCivilian(number){
+  this.totalCivilian -= number;
+  this.totalPassenger -= number;
+};
+
 passengerManager.prototype.addMaxPassenger = function addMaxPassenger(number){
   this.maxPassenger += number;
+};
+
+passengerManager.prototype.removeMaxPassenger = function removeMaxPassenger(number){
+  this.maxPassenger -= number;
 };
 
 passengerManager.prototype.getEngineer = function getEngineer(){

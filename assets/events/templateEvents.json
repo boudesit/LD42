@@ -16,14 +16,15 @@ dataEvents = [
                 "text": "Fight !",
                 "consequence": {
                     "text": "You fought well",
-                    "shield": "-5"
+                    "shield": "-5",
+                    "soldier": "-2"
                 }
             },
             {
                 "text": "Be nice and invite them for tea.",
                 "consequence": {
                     "text": "These guys are nice actually",
-                    "passenger": "+3"
+                    "civilian": "+3"
                 }
             },
             {
@@ -52,7 +53,8 @@ dataEvents = [
                 "text": "Fight !",
                 "consequence": {
                     "text": "You fought well",
-                    "shield": "-5"
+                    "shield": "-5",
+                    "soldier": "-2"
                 }
             },
             {
@@ -93,7 +95,7 @@ dataEvents = [
                 "text": "The civilian.",
                 "consequence": {
                     "text": "You save a civilian, they join your crew.",
-                    "passenger": "+1",
+                    "civilian": "+1",
                     "nextEvent": "4"
                 }
             },

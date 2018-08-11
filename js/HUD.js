@@ -16,13 +16,11 @@ HUD.prototype.create = function create() {
 
 	this.passengerManager = new passengerManager();
 
-	this.eventManager = new eventManager(this.game, this.passengerManager);
-	this.eventManager.create();
-
 	this.barManager = new barManager(this.game, this.passengerManager);
 	this.barManager.create();
 
-
+	this.eventManager = new eventManager(this.game, this.passengerManager, this.barManager);
+	this.eventManager.create();
 
 };
 
