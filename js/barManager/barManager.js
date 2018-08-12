@@ -64,23 +64,24 @@ barManager.prototype.create = function create() {
   //////////////////PROGRESS BAR PASSENGER//////////////////
   /////////////////////////////////////////////////////////
   this.passengerBar = this.game.add.sprite(450, 0, 'progressBarPassenger');
-  this.passengerBar.animations.add('progressBar0', [9], 10, true);
-  this.passengerBar.animations.add('progressBar10', [8], 10, true);
-  this.passengerBar.animations.add('progressBar20', [8], 10, true);
-  this.passengerBar.animations.add('progressBar30', [7], 10, true);
-  this.passengerBar.animations.add('progressBar40', [6], 10, true);
-  this.passengerBar.animations.add('progressBar50', [5], 10, true);
-  this.passengerBar.animations.add('progressBar60', [4], 10, true);
-  this.passengerBar.animations.add('progressBar70', [3], 10, true);
-  this.passengerBar.animations.add('progressBar80', [2], 10, true);
-  this.passengerBar.animations.add('progressBar90', [1], 10, true);
-  this.passengerBar.animations.add('progressBar100', [0], 10, true);
+  this.passengerBar.animations.add('progressBar0', [10,21,32], 10, true);
+  this.passengerBar.animations.add('progressBar10', [9,20,31], 10, true);
+  this.passengerBar.animations.add('progressBar20', [8,19,30], 10, true);
+  this.passengerBar.animations.add('progressBar30', [7,18,29], 10, true);
+  this.passengerBar.animations.add('progressBar40', [6,17,28], 10, true);
+  this.passengerBar.animations.add('progressBar50', [5,16,27], 10, true);
+  this.passengerBar.animations.add('progressBar60', [4,15,26], 10, true);
+  this.passengerBar.animations.add('progressBar70', [3,14,25], 10, true);
+  this.passengerBar.animations.add('progressBar80', [2,13,24], 10, true);
+  this.passengerBar.animations.add('progressBar90', [1,12,23], 10, true);
+  this.passengerBar.animations.add('progressBar100', [0,11,22], 10, true);
+//  this.passengerBar.animations.add('progressBar100', [0], 10, true);
 
   this.passengerBar.animations.play('progressBar0', 2, true);
 
 
   //////////////////////////////////////////////////////////
-  //////////////////PROGRESS BAR search//////////////////
+  //////////////////PROGRESS BAR search////////////////////²²
   /////////////////////////////////////////////////////////
   this.searchBar = this.game.add.sprite(230, 0, 'progressBarSearch');
   this.searchBar.animations.add('progressBar0', [9], 10, true);
@@ -95,7 +96,7 @@ barManager.prototype.create = function create() {
   this.searchBar.animations.add('progressBar90', [1], 10, true);
   this.searchBar.animations.add('progressBar100', [0], 10, true);
 
-  this.searchBar.animations.play('progressBar50', 2, true);
+  this.searchBar.animations.play('progressBar0', 2, true);
 
 };
 
