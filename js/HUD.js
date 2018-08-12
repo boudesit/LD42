@@ -8,6 +8,8 @@ function HUD(game) {
 
 	this.colorTween = null;
 	this.tweenStart = true;
+	this.tintValue = null;
+	this.colorTween = null;
 };
 var buttonPlus;
 
@@ -27,8 +29,7 @@ HUD.prototype.create = function create() {
 	this.spriteBG.animations.play('background', 3, true);
 	this.timeDelay = 0;
 
-	this.startTween();
-
+	this.tintValue = this.spriteBG.tint;
 	this.passengerManager = new passengerManager(this.game);
 	this.resourceManager = new resourceManager(this.game);
 
@@ -40,10 +41,22 @@ HUD.prototype.create = function create() {
 	this.eventManager = new eventManager(this.game, this.passengerManager, this.resourceManager, this.barManager, this.travelManager);
 	this.eventManager.create();
 
+
+	this.startTween();
+
 };
 
 HUD.prototype.update = function update() {
 	this.eventManager.update();
+
+
+		if(this.resourceManager.getShield() < 10 || this.resourceManager.getEnergy() < 10) {
+			this.colorTween.start();
+		} else {
+			this.spriteBG.tint = this.tintValue;
+			this.colorTween.stop();
+			}
+
 
 };
 
@@ -55,18 +68,18 @@ HUD.prototype.tweenTint = function tweenTint(obj, startColor, endColor, time = 2
 	if (obj) {
 		let colorBlend = { step: 0 };
 
-		let colorTween = this.game.add.tween(colorBlend).to({ step: 100 }, time, Phaser.Easing.Linear.None, delay);
+		this.colorTween = this.game.add.tween(colorBlend).to({ step: 100 }, time, Phaser.Easing.Linear.None, delay);
 		if (this.tweenStart) {
-			colorTween.onUpdateCallback(() => {
+			this.colorTween.onUpdateCallback(() => {
 				obj.tint = Phaser.Color.interpolateColor(startColor, endColor, 100, colorBlend.step);
 			});
 		} else {
-			colorTween.onUpdateCallback(() => {
+			this.colorTween.onUpdateCallback(() => {
 				obj.tint = Phaser.Color.interpolateColor(endColor, startColor, 100, colorBlend.step);
 			});
 		}
 		this.tweenStart = !this.tweenStart;
-		colorTween.onComplete.add(this.startTween, this);
-		colorTween.start();
-	}
+		this.colorTween.onComplete.add(this.startTween, this);
+
+		}
 }
