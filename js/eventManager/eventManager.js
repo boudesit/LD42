@@ -42,10 +42,10 @@ eventManager.prototype.update = function update() {
 		event.choices.forEach((choice, index) => {
 			if (this.canChoose(choice)) {
 				let button = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.nexElementPosY, 'button', actionOnClickChoice, this, 2, 1, 0);
+				let textButton = this.game.add.text(this.currentEvent.posX + 50, this.currentEvent.nexElementPosY + 10, choice.text, style);
 				button.width = 500;
-				button.height = 30;
+				button.height = textButton.height + 10;
 				button.consequence = choice.consequence;
-				let textButton = this.game.add.text(this.currentEvent.posX + 50, this.currentEvent.nexElementPosY + 7, choice.text, style);
 				this.currentEvent.nexElementPosY = this.currentEvent.nexElementPosY + button.height + 5;
 				this.currentEvent.choiceButtons.push({ "button": button, "text": textButton });
 			}
