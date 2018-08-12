@@ -63,7 +63,7 @@ barManager.prototype.create = function create() {
   //////////////////////////////////////////////////////////
   //////////////////PROGRESS BAR PASSENGER//////////////////
   /////////////////////////////////////////////////////////
-  this.passengerBar = this.game.add.sprite(450, 0, 'progressBarPassenger');
+  this.passengerBar = this.game.add.sprite(410, 0, 'progressBarPassenger');
   this.passengerBar.animations.add('progressBar0', [10,21,32], 10, true);
   this.passengerBar.animations.add('progressBar10', [9,20,31], 10, true);
   this.passengerBar.animations.add('progressBar20', [8,19,30], 10, true);
