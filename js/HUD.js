@@ -53,7 +53,7 @@ HUD.prototype.update = function update() {
 		if(this.resourceManager.getShield() < 10 || this.resourceManager.getEnergy() < 10) {
 			this.colorTween.start();
 		} else {
-			this.spriteBG.tint = this.tintValue;
+			this.spriteBG.tint = 0xfffff9;
 			this.colorTween.stop();
 			}
 
@@ -61,7 +61,7 @@ HUD.prototype.update = function update() {
 };
 
 HUD.prototype.startTween = function startTween() {
-	this.tweenTint(this.spriteBG, 0xff0000, 0x000000, 1000, 0);
+	this.tweenTint(this.spriteBG, 0xff0000, 0x770000, 1000, 0);
 }
 
 HUD.prototype.tweenTint = function tweenTint(obj, startColor, endColor, time = 250, delay = 0) {
