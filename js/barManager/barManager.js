@@ -61,7 +61,7 @@ barManager.prototype.create = function create() {
   /////////////////////////////////////////////////////////
   this.passengerBar = this.game.add.sprite(390, 0, 'progressBarPassenger');
   this.passengerBar.animations.add('progressBar0', [9], 10, true);
-  this.passengerBar.animations.add('progressBar10', [9], 10, true);
+  this.passengerBar.animations.add('progressBar10', [8], 10, true);
   this.passengerBar.animations.add('progressBar20', [8], 10, true);
   this.passengerBar.animations.add('progressBar30', [7], 10, true);
   this.passengerBar.animations.add('progressBar40', [6], 10, true);
@@ -80,7 +80,7 @@ barManager.prototype.create = function create() {
   /////////////////////////////////////////////////////////
   this.searchBar = this.game.add.sprite(270, 0, 'progressBarSearch');
   this.searchBar.animations.add('progressBar0', [9], 10, true);
-  this.searchBar.animations.add('progressBar10', [9], 10, true);
+  this.searchBar.animations.add('progressBar10', [8], 10, true);
   this.searchBar.animations.add('progressBar20', [8], 10, true);
   this.searchBar.animations.add('progressBar30', [7], 10, true);
   this.searchBar.animations.add('progressBar40', [6], 10, true);
@@ -104,31 +104,31 @@ barManager.prototype.progressEnergy = function progressEnergy(pourcentEnergy) {
     case (pourcentEnergy <= 0):
       this.energyBar.animations.play('progressBar0', 2, true);
       break;
-    case (pourcentEnergy < 10):
+    case (pourcentEnergy <= 10):
       this.energyBar.animations.play('progressBar10', 2, true);
       break;
-    case (pourcentEnergy < 20):
+    case (pourcentEnergy <= 20):
       this.energyBar.animations.play('progressBar20', 2, true);
       break;
-    case (pourcentEnergy < 30):
+    case (pourcentEnergy <= 30):
       this.energyBar.animations.play('progressBar30', 2, true);
       break;
-    case (pourcentEnergy < 40):
+    case (pourcentEnergy <= 40):
       this.energyBar.animations.play('progressBar40', 2, true);
       break;
-    case (pourcentEnergy < 50):
+    case (pourcentEnergy <= 50):
       this.energyBar.animations.play('progressBar50', 2, true);
       break;
-    case (pourcentEnergy < 60):
+    case (pourcentEnergy <= 60):
       this.energyBar.animations.play('progressBar60', 2, true);
       break;
-    case (pourcentEnergy < 70):
+    case (pourcentEnergy <= 70):
       this.energyBar.animations.play('progressBar70', 2, true);
       break;
-    case (pourcentEnergy < 80):
+    case (pourcentEnergy <= 80):
       this.energyBar.animations.play('progressBar80', 2, true);
       break;
-    case (pourcentEnergy < 90):
+    case (pourcentEnergy <= 90):
       this.energyBar.animations.play('progressBar90', 2, true);
       break;
     case (pourcentEnergy <= 100):
@@ -144,31 +144,31 @@ barManager.prototype.progressShield = function progressShield(pourcentShield) {
     case (pourcentShield <= 0):
       this.shieldBar.animations.play('progressBar0', 2, true);
       break;
-    case (pourcentShield < 10):
+    case (pourcentShield <= 10):
       this.shieldBar.animations.play('progressBar10', 2, true);
       break;
-    case (pourcentShield < 20):
+    case (pourcentShield <= 20):
       this.shieldBar.animations.play('progressBar20', 2, true);
       break;
-    case (pourcentShield < 30):
+    case (pourcentShield <= 30):
       this.shieldBar.animations.play('progressBar30', 2, true);
       break;
-    case (pourcentShield < 40):
+    case (pourcentShield <= 40):
       this.shieldBar.animations.play('progressBar40', 2, true);
       break;
-    case (pourcentShield < 50):
+    case (pourcentShield <= 50):
       this.shieldBar.animations.play('progressBar50', 2, true);
       break;
-    case (pourcentShield < 60):
+    case (pourcentShield <= 60):
       this.shieldBar.animations.play('progressBar60', 2, true);
       break;
-    case (pourcentShield < 70):
+    case (pourcentShield <= 70):
       this.shieldBar.animations.play('progressBar70', 2, true);
       break;
-    case (pourcentShield < 80):
+    case (pourcentShield <= 80):
       this.shieldBar.animations.play('progressBar80', 2, true);
       break;
-    case (pourcentShield < 90):
+    case (pourcentShield <= 90):
       this.shieldBar.animations.play('progressBar90', 2, true);
       break;
     case (pourcentShield <= 100):
@@ -183,31 +183,31 @@ barManager.prototype.progressPassenger = function progressPassenger(pourcentPass
     case (pourcentPassenger <= 0):
       this.passengerBar.animations.play('progressBar0', 2, true);
       break;
-    case (pourcentPassenger < this.passengerManager.getMaxPassenger() / 10):
+    case (pourcentPassenger <= this.passengerManager.getMaxPassenger() / 10):
       this.passengerBar.animations.play('progressBar10', 2, true);
       break;
-    case (pourcentPassenger < (this.passengerManager.getMaxPassenger() / 10) * 2):
+    case (pourcentPassenger <= (this.passengerManager.getMaxPassenger() / 10) * 2):
       this.passengerBar.animations.play('progressBar20', 2, true);
       break;
-    case (pourcentPassenger < (this.passengerManager.getMaxPassenger() / 10) * 3):
+    case (pourcentPassenger <= (this.passengerManager.getMaxPassenger() / 10) * 3):
       this.passengerBar.animations.play('progressBar30', 2, true);
       break;
-    case (pourcentPassenger < (this.passengerManager.getMaxPassenger() / 10) * 4):
+    case (pourcentPassenger <= (this.passengerManager.getMaxPassenger() / 10) * 4):
       this.passengerBar.animations.play('progressBar40', 2, true);
       break;
-    case (pourcentPassenger < (this.passengerManager.getMaxPassenger() / 10) * 5):
+    case (pourcentPassenger <= (this.passengerManager.getMaxPassenger() / 10) * 5):
       this.passengerBar.animations.play('progressBar50', 2, true);
       break;
-    case (pourcentPassenger < (this.passengerManager.getMaxPassenger() / 10) * 6):
+    case (pourcentPassenger <= (this.passengerManager.getMaxPassenger() / 10) * 6):
       this.passengerBar.animations.play('progressBar60', 2, true);
       break;
-    case (pourcentPassenger < (this.passengerManager.getMaxPassenger() / 10) * 7):
+    case (pourcentPassenger <= (this.passengerManager.getMaxPassenger() / 10) * 7):
       this.passengerBar.animations.play('progressBar70', 2, true);
       break;
-    case (pourcentPassenger < (this.passengerManager.getMaxPassenger() / 10) * 8):
+    case (pourcentPassenger <= (this.passengerManager.getMaxPassenger() / 10) * 8):
       this.passengerBar.animations.play('progressBar80', 2, true);
       break;
-    case (pourcentPassenger < (this.passengerManager.getMaxPassenger() / 10) * 9):
+    case (pourcentPassenger <= (this.passengerManager.getMaxPassenger() / 10) * 9):
       this.passengerBar.animations.play('progressBar90', 2, true);
       break;
     case (pourcentPassenger <= this.passengerManager.getMaxPassenger()):
@@ -222,31 +222,31 @@ barManager.prototype.progressSearch = function progressSearch(pourcentSearch) {
     case (pourcentSearch <= 0):
       this.searchBar.animations.play('progressBar0', 2, true);
       break;
-    case (pourcentSearch < 10):
+    case (pourcentSearch <= 10):
       this.searchBar.animations.play('progressBar10', 2, true);
       break;
-    case (pourcentSearch < 20):
+    case (pourcentSearch <= 20):
       this.searchBar.animations.play('progressBar20', 2, true);
       break;
-    case (pourcentSearch < 30):
+    case (pourcentSearch <= 30):
       this.searchBar.animations.play('progressBar30', 2, true);
       break;
-    case (pourcentSearch < 40):
+    case (pourcentSearch <= 40):
       this.searchBar.animations.play('progressBar40', 2, true);
       break;
-    case (pourcentSearch < 50):
+    case (pourcentSearch <= 50):
       this.searchBar.animations.play('progressBar50', 2, true);
       break;
-    case (pourcentSearch < 60):
+    case (pourcentSearch <= 60):
       this.searchBar.animations.play('progressBar60', 2, true);
       break;
-    case (pourcentSearch < 70):
+    case (pourcentSearch <= 70):
       this.searchBar.animations.play('progressBar70', 2, true);
       break;
-    case (pourcentSearch < 80):
+    case (pourcentSearch <= 80):
       this.searchBar.animations.play('progressBar80', 2, true);
       break;
-    case (pourcentSearch < 90):
+    case (pourcentSearch <= 90):
       this.searchBar.animations.play('progressBar90', 2, true);
       break;
     case (pourcentSearch <= 100):

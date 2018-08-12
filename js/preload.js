@@ -9,9 +9,9 @@ preload.prototype = {
 		this.game.load.image('gametitle', 'assets/images/Backgrounds/Background-intro.png');
 		this.game.load.image('gamescore', 'assets/images/Backgrounds/Background.png');
 		this.game.load.image('background', 'assets/images/Backgrounds/Background.png');
-		this.game.load.image('gametuto', 'assets/images/Backgrounds/Background-tuto.png', 525, 900);
-		this.game.load.image('gameover', 'assets/images/Background-gameover.png', 525, 900);
-		this.game.load.image('gamewin', 'assets/images/Background-gamewin.png',525, 900);
+		this.game.load.image('gametuto', 'assets/images/Backgrounds/Background-tuto.png');
+		this.game.load.image('gameover', 'assets/images/Backgrounds/Background-gameover.png');
+		this.game.load.image('gamewin', 'assets/images/Backgrounds/Background-gamewin.png');
 
 		this.game.load.spritesheet('progressBarEnergy', 'assets/images/ProgressBar/ProgressBarEnergy.png',80,20,10);
 		this.game.load.spritesheet('progressBarPassenger', 'assets/images/ProgressBar/ProgressBarPassenger.png',80,20,10);
