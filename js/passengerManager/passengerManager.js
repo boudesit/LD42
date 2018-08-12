@@ -29,7 +29,7 @@ passengerManager.prototype.addEngineer = function addEngineer(number) {
   this.totalPassenger += number;
 
   if (this.totalPassenger < 0) {
-    this.totalPassenge = 0;
+    this.totalPassenger = 0;
   }
 };
 
@@ -46,7 +46,7 @@ passengerManager.prototype.addSoldier = function addSoldier(number) {
   this.totalPassenger += number;
 
   if (this.totalPassenger < 0) {
-    this.totalPassenge = 0;
+    this.totalPassenger = 0;
   }
 };
 
@@ -63,7 +63,7 @@ passengerManager.prototype.addCivilian = function addCivilian(number) {
   this.totalPassenger += number;
 
   if (this.totalPassenger < 0) {
-    this.totalPassenge = 0;
+    this.totalPassenger = 0;
   }
 };
 

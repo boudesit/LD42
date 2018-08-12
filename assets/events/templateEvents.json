@@ -179,7 +179,7 @@ dataEvents = [
                 "text": "Ask him to come with you",
                 "consequence": {
                     "text": "It seems that man has a family, four more passengers for you !",
-                    "passengers": "+3",
+                    "civilian": "+3",
                     "engineer":"+1"
                 }
             }
@@ -275,7 +275,7 @@ dataEvents = [
                 "text": "Two youths, a boy and a girl, holding each other's hand",
                 "consequence": {
                     "text": "The two youths tail you",
-                    "passenger": "+2",
+                    "civilian": "+2",
                     "nextEvent":"11"
 
                 }
@@ -302,7 +302,7 @@ dataEvents = [
                 "consequence": {
                     "text": "You already saved them from a sinking ship, you are not Mother Teresa. As you are taking this decision, you feel a burning pain going through your arm",
                     "shield": "-10",
-                    "passenger": "-2"
+                    "civilian": "-2"
                 }
             }
         ]
@@ -326,7 +326,7 @@ dataEvents = [
                 "consequence": {
                     "text": "You take off, you have wasted enough time and energy already. Hopefully, in the meantime you refueled at the hospital depot without anyone noticing",
                     "energy": "+10",
-                    "passenger": "-2"
+                    "civilian": "-2"
                 }
             }
         ]
@@ -351,7 +351,7 @@ dataEvents = [
                 "consequence": {
                     "text": "You drop them off as soon as you can, too affraid to be associated with royal in any ways",
                     "energy": "-3",
-                    "passenger": "-2"
+                    "civilian": "-2"
                 }
             }
         ]
