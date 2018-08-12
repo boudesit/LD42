@@ -5,6 +5,7 @@ function eventManager(game, passengerManager, resourceManager, barManager, trave
 	this.currentEvent = null;
 	this.nextEventId = null;
 	this.canClickButton = true;
+	this.goToNextEvent = false;
 	this.passengerManager = passengerManager;
 	this.resourceManager = resourceManager;
 	this.barManager = barManager;
@@ -13,6 +14,7 @@ function eventManager(game, passengerManager, resourceManager, barManager, trave
 
 eventManager.prototype.create = function create() {
 	this.events = dataEvents;
+	this.game.input.onDown.add(actionOnClickNextEvent, this);
 };
 
 
@@ -51,6 +53,22 @@ eventManager.prototype.update = function update() {
 			}
 		});
 		this.beginEvent = false;
+		this.goToNextEvent = false;
+		this.canClickNextEvent = false;
+	}
+	if(this.goToNextEvent) {
+		this.travelManager.travel();
+
+		console.log(this.passengerManager.toString());
+		console.log(this.resourceManager.toString());
+		console.log(this.game.gameState);
+
+		if (this.game.gameState === 'continue') {
+			this.beginEvent = true;
+			this.canClickButton = true;
+		} else {
+			this.cleanEvent(this.currentEvent);
+		}
 	}
 };
 
@@ -86,21 +104,13 @@ async function actionOnClickChoice(button) {
 		}
 
 		this.barManager.updateProgressBars();
+		this.canClickNextEvent = true;
+	}
+}
 
-		await this.sleep(2000);
-
-		this.travelManager.travel();
-
-		console.log(this.passengerManager.toString());
-		console.log(this.resourceManager.toString());
-		console.log(this.game.gameState);
-
-		if (this.game.gameState === 'continue') {
-			this.beginEvent = true;
-			this.canClickButton = true;
-		} else {
-			this.cleanEvent(this.currentEvent);
-		}
+function actionOnClickNextEvent(button) {
+	if(this.canClickNextEvent) {
+		this.goToNextEvent = true;
 	}
 }
 
