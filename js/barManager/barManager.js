@@ -21,7 +21,6 @@ barManager.prototype.create = function create() {
     var animSearch = logoSearch.animations.add('animSearch',[0,1,2,3,4,5,6]);
     logoSearch.animations.play('animSearch', 5, true);
 
-²
 		var logoShield = game.add.sprite(112, 0, 'logoShield');
 		 var animShield = logoShield.animations.add('animShield');
 		 logoShield.animations.play('animShield', 5, true);
@@ -96,7 +95,7 @@ barManager.prototype.create = function create() {
   this.searchBar.animations.add('progressBar90', [1], 10, true);
   this.searchBar.animations.add('progressBar100', [0], 10, true);
 
-  this.searchBar.animations.play('progressBar0', 2, true);
+  this.searchBar.animations.play('progressBar50', 2, true);
 
 };
 
