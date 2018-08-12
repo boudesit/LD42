@@ -72,7 +72,6 @@ passengerManager.prototype.addMaxPassenger = function addMaxPassenger(number) {
 };
 
 passengerManager.prototype.getEngineer = function getEngineer() {
-
   return this.totalEngineer;
 };
 

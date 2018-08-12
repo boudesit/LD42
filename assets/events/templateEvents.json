@@ -14,6 +14,11 @@ dataEvents = [
             },
             {
                 "text": "Fight !",
+                "condition": {
+                    "soldier": {
+                        "min": "2"
+                    }
+                },
                 "consequence": {
                     "text": "You fought well",
                     "shield": "-5",
@@ -24,7 +29,7 @@ dataEvents = [
                 "text": "Be nice and invite them for tea.",
                 "consequence": {
                     "text": "These guys are nice actually",
-                    "civilian": "+3"
+                    "soldier": "+3"
                 }
             },
             {
@@ -54,6 +59,11 @@ dataEvents = [
             },
             {
                 "text": "Fight !",
+                "condition": {
+                    "soldier": {
+                        "min": "2"
+                    }
+                },
                 "consequence": {
                     "text": "You fought well",
                     "shield": "-5",
