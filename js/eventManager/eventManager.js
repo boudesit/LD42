@@ -5,6 +5,7 @@ function eventManager(game, passengerManager, resourceManager, barManager, trave
 	this.currentEvent = null;
 	this.nextEventId = null;
 	this.canClickButton = true;
+	this.goToNextEvent = false;
 	this.passengerManager = passengerManager;
 	this.resourceManager = resourceManager;
 	this.barManager = barManager;
@@ -13,6 +14,7 @@ function eventManager(game, passengerManager, resourceManager, barManager, trave
 
 eventManager.prototype.create = function create() {
 	this.events = dataEvents;
+	this.game.input.onDown.add(actionOnClickNextEvent, this);
 };
 
 
@@ -32,25 +34,41 @@ eventManager.prototype.update = function update() {
 		}
 
 		this.currentEvent.posX = 10;
-		this.currentEvent.posY = 40;
+		this.currentEvent.posY = 150;
 		this.currentEvent.nexElementPosY = this.currentEvent.posY;
 
 		this.currentEvent.textDescription = this.game.add.text(this.currentEvent.posX, this.currentEvent.nexElementPosY, event.text, style);
-		this.currentEvent.nexElementPosY = this.currentEvent.nexElementPosY + this.currentEvent.textDescription.height + 5;
+		this.currentEvent.nexElementPosY = 800 - 5;
 		this.currentEvent.choiceButtons = [];
 
 		event.choices.forEach((choice, index) => {
 			if (this.canChoose(choice)) {
-				let button = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.nexElementPosY, 'button', actionOnClickChoice, this, 2, 1, 0);
-				let textButton = this.game.add.text(this.currentEvent.posX + 50, this.currentEvent.nexElementPosY + 10, choice.text, style);
+				let button = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.nexElementPosY - 100, 'button', actionOnClickChoice, this, 2, 1, 0);
+				let textButton = this.game.add.text(this.currentEvent.posX + 50, this.currentEvent.nexElementPosY - 90, choice.text, style);
 				button.width = 500;
 				button.height = textButton.height + 10;
 				button.consequence = choice.consequence;
-				this.currentEvent.nexElementPosY = this.currentEvent.nexElementPosY + button.height + 5;
+				this.currentEvent.nexElementPosY = this.currentEvent.nexElementPosY - button.height - 5;
 				this.currentEvent.choiceButtons.push({ "button": button, "text": textButton });
 			}
 		});
 		this.beginEvent = false;
+		this.goToNextEvent = false;
+		this.canClickNextEvent = false;
+	}
+	if(this.goToNextEvent) {
+		this.travelManager.travel();
+
+		console.log(this.passengerManager.toString());
+		console.log(this.resourceManager.toString());
+		console.log(this.game.gameState);
+
+		if (this.game.gameState === 'continue') {
+			this.beginEvent = true;
+			this.canClickButton = true;
+		} else {
+			this.cleanEvent(this.currentEvent);
+		}
 	}
 };
 
@@ -84,23 +102,18 @@ async function actionOnClickChoice(button) {
 		if (button.consequence.civilian) {
 			this.passengerManager.addCivilian(this.getConsequenceValue(button.consequence.civilian));
 		}
+		if (button.consequence.maxPassenger) {
+			this.passengerManager.addMaxPassenger(this.getConsequenceValue(button.consequence.maxPassenger));
+		}
 
 		this.barManager.updateProgressBars();
+		this.canClickNextEvent = true;
+	}
+}
 
-		await this.sleep(2000);
-
-		this.travelManager.travel();
-
-		console.log(this.passengerManager.toString());
-		console.log(this.resourceManager.toString());
-		console.log(this.game.gameState);
-
-		if (this.game.gameState === 'continue') {
-			this.beginEvent = true;
-			this.canClickButton = true;
-		} else {
-			this.cleanEvent(this.currentEvent);
-		}
+function actionOnClickNextEvent(button) {
+	if(this.canClickNextEvent) {
+		this.goToNextEvent = true;
 	}
 }
 

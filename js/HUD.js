@@ -48,6 +48,8 @@ HUD.prototype.create = function create() {
 
 HUD.prototype.update = function update() {
 	this.eventManager.update();
+	this.barManager.update();
+
 
 
 		if(this.resourceManager.getShield() < 10 || this.resourceManager.getEnergy() < 10) {

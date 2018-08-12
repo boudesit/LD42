@@ -7,6 +7,11 @@ function barManager(game, passengerManager, ressourceManager) {
   this.energyBar = null;
   this.passengerManager = passengerManager;
   this.ressourceManager = ressourceManager;
+
+	this.tip1 = null;
+	this.tip2 = null;
+	this.tip3 = null;
+	this.tip4 = null;
 }
 
 barManager.prototype.create = function create() {
@@ -42,6 +47,18 @@ barManager.prototype.create = function create() {
   this.energyBar.animations.frame = 9;
   this.energyBar.animations.play('progressBar100', 2, true);
 
+	this.tip1 = new Phasetips(this.game,{
+
+    targetObject: this.energyBar, //can be any phaser object (sprite, group, text, image, etc...)
+
+    context: "Your Energy Be Careful",
+
+    strokeColor: 0xff00FF, // red stroke
+
+    position: "right" // where we want the tooltip to appear
+
+  });
+
   //////////////////////////////////////////////////////////
   //////////////////PROGRESS BAR SHIELD////////////////////
   /////////////////////////////////////////////////////////
@@ -59,6 +76,19 @@ barManager.prototype.create = function create() {
   this.shieldBar.animations.add('progressBar100', [0], 10, true);
 
   this.shieldBar.animations.play('progressBar100', 2, true);
+
+
+	this.tip2 = new Phasetips(this.game,{
+
+    targetObject: this.shieldBar, //can be any phaser object (sprite, group, text, image, etc...)
+
+    context: "Your Shield Be Careful",
+
+    strokeColor: 0xff00FF, // red stroke
+
+    position: "bottom" // where we want the tooltip to appear
+
+  });
 
   //////////////////////////////////////////////////////////
   //////////////////PROGRESS BAR PASSENGER//////////////////
@@ -79,6 +109,17 @@ barManager.prototype.create = function create() {
 
   this.passengerBar.animations.play('progressBar0', 2, true);
 
+	this.tip3 = new Phasetips(this.game,{
+
+    targetObject: this.passengerBar, //can be any phaser object (sprite, group, text, image, etc...)
+
+    context: "You have" + this.passengerManager.getTotalPassenger() + " / " + this.passengerManager.getMaxPassenger(),
+
+    strokeColor: 0xff00FF, // red stroke
+
+    position: "bottom" // where we want the tooltip to appear
+
+  });
 
   //////////////////////////////////////////////////////////
   //////////////////PROGRESS BAR search////////////////////²²
@@ -98,10 +139,35 @@ barManager.prototype.create = function create() {
 
   this.searchBar.animations.play('progressBar0', 2, true);
 
+	this.tip3 = new Phasetips(this.game,{
+
+		targetObject: this.searchBar, //can be any phaser object (sprite, group, text, image, etc...)
+
+		context: "This is your research bar, it can be useful during your journey !",
+
+		strokeColor: 0xff00FF, // red stroke
+
+		position: "bottom" // where we want the tooltip to appear
+
+	});
+
 };
 
 
-barManager.prototype.update = function update() { };
+barManager.prototype.update = function update() {
+
+	this.tip3 = new Phasetips(this.game,{
+
+    targetObject: this.passengerBar, //can be any phaser object (sprite, group, text, image, etc...)
+
+    context: "You have" + this.passengerManager.getTotalPassenger() + " / " + this.passengerManager.getMaxPassenger(),
+
+    strokeColor: 0xff00FF, // red stroke
+
+    position: "bottom" // where we want the tooltip to appear
+
+  });
+};
 
 barManager.prototype.progressEnergy = function progressEnergy(pourcentEnergy) {
 
@@ -183,7 +249,6 @@ barManager.prototype.progressShield = function progressShield(pourcentShield) {
 };
 
 barManager.prototype.progressPassenger = function progressPassenger(pourcentPassenger) {
-
   switch (true) {
     case (pourcentPassenger <= 0):
       this.passengerBar.animations.play('progressBar0', 2, true);
@@ -222,8 +287,7 @@ barManager.prototype.progressPassenger = function progressPassenger(pourcentPass
 };
 
 barManager.prototype.progressSearch = function progressSearch(pourcentSearch) {
-  true
-  switch (pourcentSearch) {
+  switch (true) {
     case (pourcentSearch <= 0):
       this.searchBar.animations.play('progressBar0', 2, true);
       break;
