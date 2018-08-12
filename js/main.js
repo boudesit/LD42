@@ -11,7 +11,8 @@ function create() {
 	game.state.add("GameTitle",gameTitle);
 	game.state.add("TheGame",theGame);
 	game.state.add("GameTuto",gameTuto);
-	game.state.add("GameScore",gameScore);
+	game.state.add("GameOver",gameOver);
+	game.state.add("GameWin",gameWin);
 	game.state.start("Boot");
 }
 
