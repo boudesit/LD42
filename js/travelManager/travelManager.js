@@ -23,11 +23,11 @@ travelManager.prototype.travel = function travel() {
     this.barManager.updateProgressBars();
 
     if(this.resourceManager.getShield() <= 0) {
-        gameState = "shieldEmpty";
+        this.game.state.start("GameOver");
     } else if (this.resourceManager.getEnergy() <= 0) {
-        gameState = "energyEmpty";
+      	this.game.state.start("GameOver");
     } else if (this.passengerManager.getTotalPassenger() >= this.passengerManager.getMaxPassenger()) {
-        gameState = "passengerFull";
+      	this.game.state.start("GameWin");
     }
 
     this.game.gameState = gameState;
