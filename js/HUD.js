@@ -26,7 +26,9 @@ HUD.prototype.create = function create() {
 	this.barManager = new barManager(this.game, this.passengerManager, this.resourceManager);
 	this.barManager.create();
 
-	this.eventManager = new eventManager(this.game, this.passengerManager, this.resourceManager, this.barManager);
+	this.travelManager = new travelManager(this.game, this.passengerManager, this.resourceManager, this.barManager);
+
+	this.eventManager = new eventManager(this.game, this.passengerManager, this.resourceManager, this.barManager, this.travelManager);
 	this.eventManager.create();
 
 };

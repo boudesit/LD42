@@ -247,7 +247,7 @@ barManager.prototype.progressSearch = function progressSearch(pourcentSearch) {
   }
 };
 
-barManager.prototype.updateProgessBars = function updateProgessBars() {
+barManager.prototype.updateProgressBars = function updateProgressBars() {
   this.progressPassenger(this.passengerManager.getTotalPassenger());
   this.progressEnergy(this.ressourceManager.getEnergy());
   this.progressShield(this.ressourceManager.getShield());

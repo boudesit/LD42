@@ -1,4 +1,4 @@
-function eventManager(game, passengerManager, resourceManager, barManager) {
+function eventManager(game, passengerManager, resourceManager, barManager, travelManager) {
 	this.game = game;
 	this.beginEvent = true;
 	this.events = null;
@@ -8,7 +8,7 @@ function eventManager(game, passengerManager, resourceManager, barManager) {
 	this.passengerManager = passengerManager;
 	this.resourceManager = resourceManager;
 	this.barManager = barManager;
-
+	this.travelManager = travelManager;
 };
 
 eventManager.prototype.create = function create() {
@@ -85,11 +85,16 @@ async function actionOnClickChoice(button) {
 			this.passengerManager.addCivilian(getConsequenceValue(button.consequence.civilian));
 		}
 
-		this.barManager.updateProgessBars();
+		this.barManager.updateProgressBars();
 
 		await sleep(2000);
-		this.beginEvent = true;
-		this.canClickButton = true;
+
+		this.travelManager.travel();
+
+		if (this.game.gameState === 'continue') {
+			this.beginEvent = true;
+			this.canClickButton = true;
+		}
 	}
 }
 
@@ -115,9 +120,9 @@ function getRandomInt(min, max) {
 }
 
 function getConsequenceValue(value) {
-	if(typeof value === 'string') {
+	if (typeof value === 'string') {
 		return Number(value);
-	} else if(typeof value == 'undefined') {
+	} else if (typeof value == 'undefined') {
 		return 0;
 	} else {
 		return getRandomInt(value.min, value.max);
