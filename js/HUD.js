@@ -28,8 +28,8 @@ HUD.prototype.create = function create() {
 
 	this.tweenTint(this.spriteBG, 0xff0000,0xfffff0,1);
 
-	this.passengerManager = new passengerManager();
-	this.resourceManager = new resourceManager();
+	this.passengerManager = new passengerManager(this.game);
+	this.resourceManager = new resourceManager(this.game);
 
 	this.barManager = new barManager(this.game, this.passengerManager, this.resourceManager);
 	this.barManager.create();

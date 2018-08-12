@@ -2,7 +2,7 @@ function passengerManager(game) {
   this.game = game;
 
   this.maxPassenger = 10;
-  this.totalPassenger = 0;
+  this.game.totalPassenger = 0;
 
   this.totalEngineer = 0;
   this.totalSoldier = 0;
@@ -17,8 +17,8 @@ passengerManager.prototype.update = function update() { };
 
 //number can be positive or negative; there is no need for a remove function
 passengerManager.prototype.addEngineer = function addEngineer(number) {
-  if (this.totalPassenger + number > this.maxPassenger) {
-    number = this.maxPassenger - this.totalPassenger;
+  if (this.game.totalPassenger + number > this.maxPassenger) {
+    number = this.maxPassenger - this.game.totalPassenger;
   }
 
   if (this.totalEngineer + number < 0) {
@@ -26,16 +26,16 @@ passengerManager.prototype.addEngineer = function addEngineer(number) {
   }
 
   this.totalEngineer += number;
-  this.totalPassenger += number;
+  this.game.totalPassenger += number;
 
-  if (this.totalPassenger < 0) {
-    this.totalPassenger = 0;
+  if (this.game.totalPassenger < 0) {
+    this.game.totalPassenger = 0;
   }
 };
 
 passengerManager.prototype.addSoldier = function addSoldier(number) {
-  if (this.totalPassenger + number > this.maxPassenger) {
-    number = this.maxPassenger - this.totalPassenger;
+  if (this.game.totalPassenger + number > this.maxPassenger) {
+    number = this.maxPassenger - this.game.totalPassenger;
   }
 
   if (this.totalSoldier + number < 0) {
@@ -43,16 +43,16 @@ passengerManager.prototype.addSoldier = function addSoldier(number) {
   }
 
   this.totalSoldier += number;
-  this.totalPassenger += number;
+  this.game.totalPassenger += number;
 
-  if (this.totalPassenger < 0) {
-    this.totalPassenger = 0;
+  if (this.game.totalPassenger < 0) {
+    this.game.totalPassenger = 0;
   }
 };
 
 passengerManager.prototype.addCivilian = function addCivilian(number) {
-  if (this.totalPassenger + number > this.maxPassenger) {
-    number = this.maxPassenger - this.totalPassenger;
+  if (this.game.totalPassenger + number > this.maxPassenger) {
+    number = this.maxPassenger - this.game.totalPassenger;
   }
 
   if (this.totalCivilian + number < 0) {
@@ -60,10 +60,10 @@ passengerManager.prototype.addCivilian = function addCivilian(number) {
   }
 
   this.totalCivilian += number;
-  this.totalPassenger += number;
+  this.game.totalPassenger += number;
 
-  if (this.totalPassenger < 0) {
-    this.totalPassenger = 0;
+  if (this.game.totalPassenger < 0) {
+    this.game.totalPassenger = 0;
   }
 };
 
@@ -84,7 +84,7 @@ passengerManager.prototype.getCivilian = function getCivilian() {
 };
 
 passengerManager.prototype.getTotalPassenger = function getTotalPassenger() {
-  return this.totalPassenger;
+  return this.game.totalPassenger;
 };
 
 passengerManager.prototype.getMaxPassenger = function getMaxPassenger() {
@@ -95,5 +95,5 @@ passengerManager.prototype.toString = function toString() {
   return "Civilian : " + this.totalCivilian + "\n"
     + "Engineer : " + this.totalEngineer + "\n"
     + "Soldier : " + this.totalSoldier + "\n"
-    + "Total : " + this.totalPassenger + "/" + this.maxPassenger;
+    + "Total : " + this.game.totalPassenger + "/" + this.maxPassenger;
 };
