@@ -4,7 +4,7 @@ var gameScore = function(game){
 gameScore.prototype = {
   create: function(){
       scoreSound = game.add.audio('scoreSound', 1 , true);
-      this.spriteBG = this.game.add.tileSprite(0, 0, 800, 600, 'gamescore');
+      this.spriteBG = this.game.add.tileSprite(0, 0, 525, 900, 'gamescore');
       this.spriteBG.animations.add('gamescore');
       this.spriteBG.animations.play('gamescore', 2, true);
       if (scoreSound.isPlaying == false)
