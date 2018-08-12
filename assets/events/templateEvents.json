@@ -14,6 +14,11 @@ dataEvents = [
             },
             {
                 "text": "Fight !",
+                "condition": {
+                    "soldier": {
+                        "min": "2"
+                    }
+                },
                 "consequence": {
                     "text": "You fought well",
                     "shield": "-5",
@@ -24,14 +29,17 @@ dataEvents = [
                 "text": "Be nice and invite them for tea.",
                 "consequence": {
                     "text": "These guys are nice actually",
-                    "civilian": "+3"
+                    "soldier": "+3"
                 }
             },
             {
                 "text": "Comply and give them some fuel",
                 "consequence": {
                     "text": "They take the fuel and go away",
-                    "energy": "-20"
+                    "energy": {
+                        "min": "-20",
+                        "max": "-10"
+                    }
                 }
             }
         ]
@@ -51,6 +59,11 @@ dataEvents = [
             },
             {
                 "text": "Fight !",
+                "condition": {
+                    "soldier": {
+                        "min": "2"
+                    }
+                },
                 "consequence": {
                     "text": "You fought well",
                     "shield": "-5",
@@ -141,5 +154,275 @@ dataEvents = [
                 }
             }
         ]
+    },
+    {
+        "id": "6",
+        "canBeRandomEvent": "true",
+        "text": "A random guy is asking you for energy. What do you do ?",
+        "choices": [
+            {
+                "text": "Give him some energy",
+                "consequence": {
+                    "text": "Thanks to your generosity, he reveals himself as an engineer,and gives you an advice",
+                    "energy": "-10",
+                    "search":"+5"
+                }
+            },
+            {
+                "text": "Ignore him",
+                "consequence": {
+                    "text": "You walk away from him, while he’s throwing at you some garbage",
+                    "shield": "-5"
+                }
+            },
+            {
+                "text": "Ask him to come with you",
+                "consequence": {
+                    "text": "It seems that man has a family, four more passengers for you !",
+                    "civilian": "+3",
+                    "engineer":"+1"
+                }
+            }
+        ]
+    },
+
+    {
+        "id": "7",
+        "canBeRandomEvent": "true",
+        "text": "The place seems abandoned, do you want to leave ?",
+        "choices": [
+            {
+                "text": "Yes, you turn around and leave.",
+                "consequence": {
+                    "text": "You leave the planet empty-handed",
+                    "energy": "-5",
+                }
+            },
+            {
+                "text": "Nope, you'd rather look for something useful",
+                "consequence": {
+                    "text": "You find plans that improve your search",
+                    "search": "+3"
+                }
+            }
+        ]
+    },
+    {
+        "id": "8",
+        "canBeRandomEvent": "true",
+        "text": "The place seems abandoned, do you want to leave ?",
+        "choices": [
+            {
+                "text": "Yes, you turn around and leave.",
+                "consequence": {
+                    "text": "You leave the planet empty-handed",
+                    "energy": "-5",
+                }
+            },
+            {
+                "text": "Nope, you'd rather look for something useful",
+                "consequence": {
+                    "text": "You find plans that improve your search",
+                    "search": "+3"
+                }
+            }
+        ]
+    },
+
+    {
+        "id": "9",
+        "canBeRandomEvent": "true",
+        "text": "You come across a damaged ship orbiting a gas giant, the ship is slowy sinking into the atmosphere of the planet. Your scanners detect some activity from a one of its compartment, what do you do ? ",
+        "choices": [
+            {
+                "text": "You take a small detour and decide to check it",
+                "consequence": {
+                    "text": "Taking a detour and docking to that ship used some energy",
+                    "energy": "-10",
+                    "nextEvent":"10"
+                }
+            },
+            {
+                "text": "Ain't nobody got time for that",
+                "consequence": {
+                    "text": "You have places to go to",
+                    "search": "+3"
+                }
+            }
+        ]
+    },
+
+    {
+        "id": "10",
+        "canBeRandomEvent": "false",
+        "text": "You exit the airlock and enter the compartment, four peoples in bad shape are sitting there, probably waiting to die. You don't know if taking them all aboard is a good idea since you don't know what happened here. You don't have the luxury to talk with them, the ship's hull is being torn apart. Who do you take in ?",
+        "choices": [
+            {
+                "text": "The well built man with a half burnt red military beret ",
+                "consequence": {
+                    "text": "He turns out to be a high raking officer of the Space Marine Corp",
+                    "shield": "+15",
+                }
+            },
+            {
+                "text": "The woman wearing what is left of a lab coat",
+                "consequence": {
+                    "text": "The frail woman turns out to be quick-witted",
+                    "search": "+15"
+                }
+            },
+            {
+                "text": "Two youths, a boy and a girl, holding each other's hand",
+                "consequence": {
+                    "text": "The two youths tail you",
+                    "civilian": "+2",
+                    "nextEvent":"11"
+
+                }
+            }
+        ]
+    },
+
+    {
+        "id": "11",
+        "canBeRandomEvent": "false",
+        "text": "After some time, one of the youth seems to be sick or something. He is spitting black blood all over your seats. You are left with a choice :",
+        "choices": [
+
+            {
+                "text": "A detour to the closest hospital in the system",
+                "consequence": {
+                    "text": "Another detour, if you had known earlier...",
+                    "energy": "-6",
+                    "nextEvent":"12"
+                }
+            },
+            {
+                "text": "Stay on your course and hope for the best",
+                "consequence": {
+                    "text": "You already saved them from a sinking ship, you are not Mother Teresa. As you are taking this decision, you feel a burning pain going through your arm",
+                    "shield": "-10",
+                    "civilian": "-2"
+                }
+            }
+        ]
+    },
+    {
+        "id": "12",
+        "canBeRandomEvent": "false",
+        "text": "Once at the hospital and the boy in good hand, you can either wait to see what's what or you can hit the road again, after all you can't do anything more.",
+        "choices": [
+
+            {
+                "text": "You stay and wait for some news",
+                "consequence": {
+                    "text": "After quite some time, the girl who cleaned herself up, comes out and tells you the boy is going to be fine. You wait a little longer for him to be able to travel again.",
+                    "energy": "-4",
+                    "nextEvent":"13"
+                }
+            },
+            {
+                "text": "You get back to your ship and leave",
+                "consequence": {
+                    "text": "You take off, you have wasted enough time and energy already. Hopefully, in the meantime you refueled at the hospital depot without anyone noticing",
+                    "energy": "+10",
+                    "civilian": "-2"
+                }
+            }
+        ]
+    },
+    {
+        "id": "13",
+        "canBeRandomEvent": "false",
+        "text": "The boy gets close to you as you are driving through a nebula. He thanks you and tells you he is no ordinary boy, he is royal blood. He asks you to drop them off on a specific planet. \"Royal blood, that means reward but it can also bring troubles\" you think inwardly.",
+        "choices": [
+
+            {
+                "text": "You grant him what he asks, and drop them off at the specific location.",
+                "consequence": {
+                    "text": "You land on what appears to be a desolated planet. A few second after the two youths step out of the ship, the ground starts to tremble, and a huge metal door slowly opens. Soldiers run out and line up followed by people wearing very peculiar clothes. They wave you to come closer, after some talks you they grant you",
+                    "search": "+20",
+                    "energy":"+5",
+                    "nextEvent":"14"
+                }
+            },
+            {
+                "text": "You decide to drop on the next planet, you don't want to take part in the fight between royals.",
+                "consequence": {
+                    "text": "You drop them off as soon as you can, too affraid to be associated with royal in any ways",
+                    "energy": "-3",
+                    "civilian": "-2"
+                }
+            }
+        ]
+    },
+
+    {
+        "id": "14",
+        "canBeRandomEvent": "false",
+        "text": "You are suddenly caught in a tractor beam and pulled towards a big ship, a Destroyer bearing the coat of arm of a royal family. You and passengers are dazed by the sight of this gigantic ship. You have no idea what they want but since they are using this method without even anouncing themselves, you know it doesn't sound good.",
+        "choices": [
+
+            {
+                "text": "You fight your way out of this situation.",
+                "consequence": {
+                    "text": "You manage to get out of there, you don't really know how you pulled that off but you did, the passengers are relieved and thank you",
+                    "shield": "-20",
+                    "energy":"-10",
+                }
+            }
+        ]
+    },
+
+    {
+        "id": "15",
+        "canBeRandomEvent": "true",
+        "text": "As you land, you can hear a phone ringing near you. It seems someone is calling you.",
+        "choices": [
+
+            {
+                "text": "Answer the phone",
+                "consequence": {
+                    "text": "The phone overheats when in contact with your ear, and you barely have time to throw it away as it explodes.",
+                    "energy": "-3",
+                }
+            },
+            {
+                "text": "Throw it away",
+                "consequence": {
+                    "text": "The phone inflates, then releases a wave of energy absorbed by your shield ",
+                    "shield": "-3",
+                }
+            }
+        ]
+    },
+    {
+        "id": "16",
+        "canBeRandomEvent": "true",
+        "text": "The sky looks like a giant fire, then several meteorites fall on you. You have to choose a direction to escape !",
+        "choices": [
+
+            {
+                "text": "The left path seems dangerous, but you feel confident about your driving skills",
+                "consequence": {
+                    "text": "Your passengers start to fear for their lives, but you you control the trajectory, dodging the few pebbles in front of you. The passengers cheer you, boosting everyone's morale.",
+                    "search " : "+10",
+                }
+            },
+            {
+                "text": "You choose to go right, as it appears to be a way out for you.",
+                "consequence": {
+                    "text": "Unfortunately, you didn't see that giant rock coming above you...You shield was hurt.",
+                    "shield" : "-50",
+                }
+            },
+            {
+                "text": "You don't pay attention to the falling rocks and continue to drive as nothing is happening",
+                "consequence": {
+                    "text": "Well, you feel lucky, nothing happens."
+                }
+            }
+        ]
     }
+
 ]

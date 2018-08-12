@@ -1,8 +1,8 @@
 function passengerManager(game) {
-	this.game = game;
+  this.game = game;
 
   this.maxPassenger = 10;
-  this.totalPassenger = 0;
+  this.game.totalPassenger = 0;
 
   this.totalEngineer = 0;
   this.totalSoldier = 0;
@@ -10,73 +10,90 @@ function passengerManager(game) {
 }
 
 
-passengerManager.prototype.create = function create() {
-
-	
-};
+passengerManager.prototype.create = function create() { };
 
 
-passengerManager.prototype.update = function update() {};
+passengerManager.prototype.update = function update() { };
 
-passengerManager.prototype.addEngineer = function addEngineer(number){
+//number can be positive or negative; there is no need for a remove function
+passengerManager.prototype.addEngineer = function addEngineer(number) {
+  if (this.game.totalPassenger + number > this.maxPassenger) {
+    number = this.maxPassenger - this.game.totalPassenger;
+  }
+
+  if (this.totalEngineer + number < 0) {
+    number = -this.totalEngineer;
+  }
+
   this.totalEngineer += number;
-  this.totalPassenger += number;
+  this.game.totalPassenger += number;
+
+  if (this.game.totalPassenger < 0) {
+    this.game.totalPassenger = 0;
+  }
 };
 
-passengerManager.prototype.addSoldier = function addSoldier(number){
+passengerManager.prototype.addSoldier = function addSoldier(number) {
+  if (this.game.totalPassenger + number > this.maxPassenger) {
+    number = this.maxPassenger - this.game.totalPassenger;
+  }
+
+  if (this.totalSoldier + number < 0) {
+    number = -this.totalSoldier;
+  }
+
   this.totalSoldier += number;
-  this.totalPassenger += number;
+  this.game.totalPassenger += number;
+
+  if (this.game.totalPassenger < 0) {
+    this.game.totalPassenger = 0;
+  }
 };
 
-passengerManager.prototype.addCivilian = function addCivilian(number){
+passengerManager.prototype.addCivilian = function addCivilian(number) {
+  if (this.game.totalPassenger + number > this.maxPassenger) {
+    number = this.maxPassenger - this.game.totalPassenger;
+  }
+
+  if (this.totalCivilian + number < 0) {
+    number = -this.totalCivilian;
+  }
+
   this.totalCivilian += number;
-  this.totalPassenger += number;
+  this.game.totalPassenger += number;
+
+  if (this.game.totalPassenger < 0) {
+    this.game.totalPassenger = 0;
+  }
 };
 
-passengerManager.prototype.removeEngineer = function removeEngineer(number){
-  this.totalEngineer -= number;
-  this.totalPassenger -= number;
-};
-
-passengerManager.prototype.removeSoldier = function removeSoldier(number){
-  this.totalSoldier -= number;
-  this.totalPassenger -= number;
-};
-
-passengerManager.prototype.removeCivilian = function removeCivilian(number){
-  this.totalCivilian -= number;
-  this.totalPassenger -= number;
-};
-
-passengerManager.prototype.addMaxPassenger = function addMaxPassenger(number){
+passengerManager.prototype.addMaxPassenger = function addMaxPassenger(number) {
   this.maxPassenger += number;
 };
 
-passengerManager.prototype.removeMaxPassenger = function removeMaxPassenger(number){
-  this.maxPassenger -= number;
-};
-
-passengerManager.prototype.getEngineer = function getEngineer(){
-
+passengerManager.prototype.getEngineer = function getEngineer() {
   return this.totalEngineer;
 };
 
-passengerManager.prototype.getSoldier = function getSoldier(){
-
+passengerManager.prototype.getSoldier = function getSoldier() {
   return this.totalSoldier;
 };
 
-passengerManager.prototype.getCivilian = function getCivilian(){
-
+passengerManager.prototype.getCivilian = function getCivilian() {
   return this.totalCivilian;
 };
 
-passengerManager.prototype.getTotalPassenger = function getTotalPassenger(){
-
-  return this.totalPassenger;
+passengerManager.prototype.getTotalPassenger = function getTotalPassenger() {
+  return this.game.totalPassenger;
 };
 
-passengerManager.prototype.getMaxPassenger = function getMaxPassenger(){
-
+passengerManager.prototype.getMaxPassenger = function getMaxPassenger() {
   return this.maxPassenger;
+};
+
+passengerManager.prototype.toString = function toString() {
+  return "Civilian : " + this.totalCivilian + "\n"
+    + "Engineer : " + this.totalEngineer + "\n"
+    + "Soldier : " + this.totalSoldier + "\n"
+    + "Total : " + this.game.totalPassenger + "/" + this.maxPassenger;
 };
