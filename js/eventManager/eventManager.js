@@ -67,22 +67,22 @@ async function actionOnClickChoice(button) {
 		this.canClickButton = false;
 
 		if (button.consequence.energy) {
-			this.resourceManager.addEnergy(Number(button.consequence.energy));
+			this.resourceManager.addEnergy(getConsequenceValue(button.consequence.energy));
 		}
 		if (button.consequence.search) {
-			this.resourceManager.addSearch(Number(button.consequence.search));
+			this.resourceManager.addSearch(getConsequenceValue(button.consequence.search));
 		}
 		if (button.consequence.shield) {
-			this.resourceManager.addShield(Number(button.consequence.shield));
+			this.resourceManager.addShield(getConsequenceValue(button.consequence.shield));
 		}
 		if (button.consequence.engineer) {
-			this.passengerManager.addEngineer(Number(button.consequence.engineer));
+			this.passengerManager.addEngineer(getConsequenceValue(button.consequence.engineer));
 		}
 		if (button.consequence.soldier) {
-			this.passengerManager.addSoldier(Number(button.consequence.soldier));
+			this.passengerManager.addSoldier(getConsequenceValue(button.consequence.soldier));
 		}
 		if (button.consequence.civilian) {
-			this.passengerManager.addCivilian(Number(button.consequence.civilian));
+			this.passengerManager.addCivilian(getConsequenceValue(button.consequence.civilian));
 		}
 
 		this.barManager.updateProgessBars();
@@ -112,4 +112,14 @@ function getRandomInt(min, max) {
 	min = Math.ceil(min);
 	max = Math.floor(max);
 	return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function getConsequenceValue(value) {
+	if(typeof value === 'string') {
+		return Number(value);
+	} else if(typeof value == 'undefined') {
+		return 0;
+	} else {
+		return getRandomInt(value.min, value.max);
+	}
 }

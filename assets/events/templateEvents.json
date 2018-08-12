@@ -31,7 +31,10 @@ dataEvents = [
                 "text": "Comply and give them some fuel",
                 "consequence": {
                     "text": "They take the fuel and go away",
-                    "energy": "-20"
+                    "energy": {
+                        "min": "-20",
+                        "max": "-10"
+                    }
                 }
             }
         ]
