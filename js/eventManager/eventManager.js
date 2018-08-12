@@ -19,8 +19,6 @@ eventManager.prototype.create = function create() {
 
 eventManager.prototype.update = function update() {
 	if (this.beginEvent) {
-		console.log(this.passengerManager.toString());
-		console.log(this.resourceManager.toString());
 
 		cleanEvent(this.currentEvent);
 		this.currentEvent = {};
@@ -91,9 +89,15 @@ async function actionOnClickChoice(button) {
 
 		this.travelManager.travel();
 
+		console.log(this.passengerManager.toString());
+		console.log(this.resourceManager.toString());
+		console.log(this.game.gameState);
+
 		if (this.game.gameState === 'continue') {
 			this.beginEvent = true;
 			this.canClickButton = true;
+		} else {
+			cleanEvent(this.currentEvent);
 		}
 	}
 }

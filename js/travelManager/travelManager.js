@@ -25,7 +25,7 @@ travelManager.prototype.travel = function travel() {
     if(this.resourceManager.getShield() <= 0) {
         gameState = "shieldEmpty";
     } else if (this.resourceManager.getEnergy() <= 0) {
-        gameState = "energydEmpty";
+        gameState = "energyEmpty";
     } else if (this.passengerManager.getTotalPassenger() >= this.passengerManager.getMaxPassenger()) {
         gameState = "passengerFull";
     }
