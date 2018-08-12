@@ -18,9 +18,9 @@ gameOver.prototype = {
     	}
 
       var style = { font: "32px Comic Sans MS", fill: "#ffffff", align: "center" };
-    	text = game.add.text(0, 100,"Total Energy : " +this.game.totalEnergy, style);
-      text = game.add.text(0, 200,"Total Search : " this.game.totalSearch, style);
-      text = game.add.text(0, 300,"Total Shield : "  this.game.totalShield, style);
+      text = game.add.text(0, 100,"Total Energy : " + this.game.totalEnergy, style);
+      text = game.add.text(0, 150,"Total Shield : " + this.game.totalShield, style);
+      text = game.add.text(0, 200,"Total Passenger : " + this.game.totalPassenger, style);
 
 		this.restartButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 		this.restartButton.onDown.add(this.playTheGame, this);
