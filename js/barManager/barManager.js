@@ -27,7 +27,7 @@ barManager.prototype.create = function create() {
   this.energyBar.animations.add('progressBar90', [1], 10, true);
   this.energyBar.animations.add('progressBar100', [0], 10, true);
 	this.energyBar.animations.frame = 9;
-	this.energyBar.animations.play('progressBar0', 2, true);
+	this.energyBar.animations.play('progressBar100', 2, true);
 
   //////////////////////////////////////////////////////////
   //////////////////PROGRESS BAR SHIELD////////////////////
@@ -45,7 +45,7 @@ barManager.prototype.create = function create() {
   this.shieldBar.animations.add('progressBar90', [1], 10, true);
   this.shieldBar.animations.add('progressBar100', [0], 10, true);
 
-	this.shieldBar.animations.play('progressBar0', 2, true);
+	this.shieldBar.animations.play('progressBar100', 2, true);
 
   //////////////////////////////////////////////////////////
   //////////////////PROGRESS BAR PASSENGER//////////////////
