@@ -20,6 +20,10 @@ barManager.prototype.create = function create() {
    var logoSearch = game.add.sprite(252, 0, 'logoSearch');
     var animSearch = logoSearch.animations.add('animSearch');
     logoSearch.animations.play('animSearch', 5, true);
+
+    var logoShield = game.add.sprite(132, 0, 'logoShield');
+     var animShield = logoShield.animations.add('animShield');
+     logoShield.animations.play('animShield', 5, true);
   //////////////////////////////////////////////////////////
   //////////////////PROGRESS BAR ENERGYBAR/////////////////
   /////////////////////////////////////////////////////////
