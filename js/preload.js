@@ -14,9 +14,12 @@ preload.prototype = {
 		this.game.load.image('gamewin', 'assets/images/Backgrounds/Background-gamewin.png');
 
 		this.game.load.spritesheet('progressBarEnergy', 'assets/images/ProgressBar/ProgressBarEnergy.png',80,20,10);
-		this.game.load.spritesheet('progressBarPassenger', 'assets/images/ProgressBar/ProgressBarPassenger.png',80,20,10);
+		this.game.load.spritesheet('progressBarPassenger', 'assets/images/ProgressBar/ProgressBarPassenger.png',100,20,32);
 		this.game.load.spritesheet('progressBarSearch', 'assets/images/ProgressBar/progressBarSearch.png',80,20,10);
 		this.game.load.spritesheet('progressBarShield', 'assets/images/ProgressBar/progressBarShield.png',80,20,10);
+		this.game.load.spritesheet('logoEnergy', 'assets/images/ProgressBar/logoEnergy.png',20,20,9);
+		this.game.load.spritesheet('logoSearch', 'assets/images/ProgressBar/logoSearch.png',20,20,8);
+		this.game.load.spritesheet('logoShield', 'assets/images/ProgressBar/logoShield.png',20,20,11);
 		//Image
 
 		this.game.load.image('button', 'assets/images/button.png');
