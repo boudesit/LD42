@@ -102,6 +102,9 @@ async function actionOnClickChoice(button) {
 		if (button.consequence.civilian) {
 			this.passengerManager.addCivilian(this.getConsequenceValue(button.consequence.civilian));
 		}
+		if (button.consequence.maxPassenger) {
+			this.passengerManager.addMaxPassenger(this.getConsequenceValue(button.consequence.maxPassenger));
+		}
 
 		this.barManager.updateProgressBars();
 		this.canClickNextEvent = true;
