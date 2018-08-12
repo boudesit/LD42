@@ -14,6 +14,11 @@ dataEvents = [
             },
             {
                 "text": "Fight !",
+                "condition": {
+                    "soldier": {
+                        "min": "2"
+                    }
+                },
                 "consequence": {
                     "text": "You fought well",
                     "shield": "-5",
@@ -24,14 +29,17 @@ dataEvents = [
                 "text": "Be nice and invite them for tea.",
                 "consequence": {
                     "text": "These guys are nice actually",
-                    "civilian": "+3"
+                    "soldier": "+3"
                 }
             },
             {
                 "text": "Comply and give them some fuel",
                 "consequence": {
                     "text": "They take the fuel and go away",
-                    "energy": "-20"
+                    "energy": {
+                        "min": "-20",
+                        "max": "-10"
+                    }
                 }
             }
         ]
@@ -51,6 +59,11 @@ dataEvents = [
             },
             {
                 "text": "Fight !",
+                "condition": {
+                    "soldier": {
+                        "min": "2"
+                    }
+                },
                 "consequence": {
                     "text": "You fought well",
                     "shield": "-5",

@@ -5,7 +5,7 @@ gameTitle.prototype = {
 
   		this.game.introSound = game.add.audio('introSound', 1, true);
 
-      this.spriteBG = this.game.add.tileSprite(0, 0, 800, 600, 'gametitle');
+      this.spriteBG = this.game.add.tileSprite(0, 0, 525, 900, 'gametitle');
       this.spriteBG.animations.add('gametitle');
       this.spriteBG.animations.play('gametitle', 3, true);
 

@@ -3,7 +3,7 @@ var gameTuto = function(game){}
 gameTuto.prototype = {
   	create: function(){
 
-      this.spriteBG = this.game.add.tileSprite(0, 0, 800, 600, 'gametuto');
+      this.spriteBG = this.game.add.tileSprite(0, 0, 525, 900, 'gametuto');
 
 
   		this.startButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);

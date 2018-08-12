@@ -18,6 +18,11 @@ var style = {
 };
 
 HUD.prototype.create = function create() {
+
+	this.spriteBG = this.game.add.tileSprite(0, 0, 525, 900, 'background');
+	this.spriteBG.animations.add('background');
+	this.spriteBG.animations.play('background', 3, true);
+
 	this.timeDelay = 0;
 
 	this.passengerManager = new passengerManager();
@@ -26,7 +31,9 @@ HUD.prototype.create = function create() {
 	this.barManager = new barManager(this.game, this.passengerManager, this.resourceManager);
 	this.barManager.create();
 
-	this.eventManager = new eventManager(this.game, this.passengerManager, this.resourceManager, this.barManager);
+	this.travelManager = new travelManager(this.game, this.passengerManager, this.resourceManager, this.barManager);
+
+	this.eventManager = new eventManager(this.game, this.passengerManager, this.resourceManager, this.barManager, this.travelManager);
 	this.eventManager.create();
 
 };
