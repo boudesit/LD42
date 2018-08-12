@@ -423,6 +423,122 @@ dataEvents = [
                 }
             }
         ]
+    },
+
+    {
+        "id": "17",
+        "canBeRandomEvent": "true",
+        "text": "As you get closer to this planet, you can see strange device. It seems you should be able to improve your bus in this place. \"You have to give to receive\" says the device's screen. Suddenly, you remember that your search resources can be useful...",
+        "choices": [
+
+            {
+                "text": "We need space.",
+                "consequence": {
+                    "text": "The device is shaking, growling, and a link appears between it and your bus. If you don't have enough energy, it could be risky...",
+                    "search " : "+10",
+                }
+            },
+            {
+                "text": "We need shield",
+                "consequence": {
+                    "text": "The device is shaking, growling, and a link appears between it and your bus. If you don't have enough energy, it could be risky...",
+                    "shield" : "-50",
+                }
+            },
+            {
+                "text": "We need energy",
+                "consequence": {
+                    "text": "The device is shaking, growling, and a link appears between it and your bus. If you don't have enough energy, it could be risky..."
+                }
+            }
+        ]
+    }
+
+    {
+        "id": "18",
+        "canBeRandomEvent": "false",
+        "text": "Be carreful, the price could be higher than you think...",
+        "choices": [
+
+            {
+                "text": "Ok, we really need space.",
+                "consequence": {
+                    "text": "You spend your search",
+                    "condition": {
+                        "search": {
+                            "min": "10"
+                        },
+                    "search " : "-10",
+                    "maxPassenger":"3"
+                }
+              }
+            },
+            {
+                "text": " It seems dangerous, please stop",
+                "consequence": {
+                    "text": "Coward, i know you were weak !",
+                    "energy" : "-10",
+                }
+            }
+        ]
+    },
+
+    {
+        "id": "19",
+        "canBeRandomEvent": "false",
+        "text": "Be carreful, the price could be higher than you think...",
+        "choices": [
+
+            {
+                "text": "This zone is highly bad, we have to find some defenses.",
+                "consequence": {
+                    "text": "You are carreful, maybe too much...",
+                    "condition": {
+                        "search": {
+                            "min": "10"
+                        },
+                    "search " : "-10",
+                    "shield":"50"
+                }
+              }
+            },
+            {
+                "text": "Well, i'm sure we can move on without shield.",
+                "consequence": {
+                    "text": "That's what i call a brave person. Take this ",
+                    "energy" : "+10",
+                }
+            }
+        ]
+    },
+    {
+        "id": "19",
+        "canBeRandomEvent": "false",
+        "text": "Be carreful, the price could be higher than you think...",
+        "choices": [
+
+            {
+                "text": "Energy is power, energy is good, give me energy.",
+                "consequence": {
+                    "text": "I think you forgot the magic word.",
+                    "condition": {
+                        "search": {
+                            "min": "10"
+                        },
+                    "search " : "-10",
+                    "energy":"25"
+                }
+              }
+            },
+            {
+                "text": "The deal could be too expensive, it's not worth it.",
+                "consequence": {
+                    "text": "Too late, too late...",
+                    "energy" : "-25",
+                    "search": "-10"
+                }
+            }
+        ]
     }
 
 ]
