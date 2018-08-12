@@ -85,10 +85,7 @@ async function actionOnClickChoice(button) {
 			this.passengerManager.addCivilian(Number(button.consequence.civilian));
 		}
 
-		this.barManager.updateProgessBars(this.passengerManager.getTotalPassenger(),
-																								this.resourceManager.getEnergy(),
-																								this.resourceManager.getShield(),
-																								this.resourceManager.getSearch());
+		this.barManager.updateProgessBars();
 
 		await sleep(2000);
 		this.beginEvent = true;

@@ -21,7 +21,6 @@ resourceManager.prototype.addEnergy = function addEnergy(number) {
     if (this.totalEnergy > this.maxEnergy) {
         this.totalEnergy = this.maxEnergy;
     } else if (this.totalEnergy < 0) {
-      //TODO: call game over title screen
         this.totalEnergy = 0;
     }
 };
@@ -40,7 +39,6 @@ resourceManager.prototype.addShield = function addShield(number) {
     if (this.totalShield > this.maxShield) {
         this.totalShield = this.maxShield;
     } else if (this.totalShield < 0) {
-      //TODO: call game over title screen
         this.totalShield = 0;
     }
 };
