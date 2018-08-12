@@ -522,7 +522,7 @@ dataEvents = [
         "choices": [
 
             {
-                "text": "Energy is power, energy is good, give me energy.",
+                "text": "Energy is power, power is good, give me energy.",
                 "consequence": {
                     "text": "I think you forgot the magic word.",
                     "condition": {
