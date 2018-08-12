@@ -7,6 +7,7 @@ function HUD(game) {
 	this.timeDelay = null;
 
 	this.colorTween = null;
+	this.tweenStart = true;
 };
 var buttonPlus;
 
@@ -26,7 +27,7 @@ HUD.prototype.create = function create() {
 	this.spriteBG.animations.play('background', 3, true);
 	this.timeDelay = 0;
 
-	this.tweenTint(this.spriteBG, 0xff0000, 0x000000, 50, 0);
+	this.startTween();
 
 	this.passengerManager = new passengerManager(this.game);
 	this.resourceManager = new resourceManager(this.game);
@@ -43,21 +44,29 @@ HUD.prototype.create = function create() {
 
 HUD.prototype.update = function update() {
 	this.eventManager.update();
-	
+
 };
 
+HUD.prototype.startTween = function startTween() {
+	this.tweenTint(this.spriteBG, 0xff0000, 0x000000, 1000, 0);
+}
 
-HUD.prototype.tweenTint = function tweenTint(obj, startColor, endColor, time = 250, delay = 0, callback = null) {
+HUD.prototype.tweenTint = function tweenTint(obj, startColor, endColor, time = 250, delay = 0) {
 	if (obj) {
-			let colorBlend = { step: 0 };
-			let colorTween = this.game.add.tween(colorBlend).to({ step: 100 }, time, Phaser.Easing.Linear.None, delay).loop(true);
+		let colorBlend = { step: 0 };
+
+		let colorTween = this.game.add.tween(colorBlend).to({ step: 100 }, time, Phaser.Easing.Linear.None, delay);
+		if (this.tweenStart) {
 			colorTween.onUpdateCallback(() => {
-					obj.tint = Phaser.Color.interpolateColor(startColor, endColor, 100, colorBlend.step);
+				obj.tint = Phaser.Color.interpolateColor(startColor, endColor, 100, colorBlend.step);
 			});
-			obj.tint = startColor;
-			if (callback) {
-					colorTween.onComplete.add(callback, this);
-			}
-			colorTween.start();
+		} else {
+			colorTween.onUpdateCallback(() => {
+				obj.tint = Phaser.Color.interpolateColor(endColor, startColor, 100, colorBlend.step);
+			});
+		}
+		this.tweenStart = !this.tweenStart;
+		colorTween.onComplete.add(this.startTween, this);
+		colorTween.start();
 	}
 }
