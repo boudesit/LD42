@@ -435,20 +435,24 @@ dataEvents = [
                 "text": "We need space.",
                 "consequence": {
                     "text": "The device is shaking, growling, and a link appears between it and your bus. If you don't have enough energy, it could be risky...",
-                    "search " : "+10",
+                    "nextEvent":"18"
+
                 }
             },
             {
                 "text": "We need shield",
                 "consequence": {
                     "text": "The device is shaking, growling, and a link appears between it and your bus. If you don't have enough energy, it could be risky...",
-                    "shield" : "-50",
+                    "nextEvent":"19"
+
                 }
             },
             {
                 "text": "We need energy",
                 "consequence": {
-                    "text": "The device is shaking, growling, and a link appears between it and your bus. If you don't have enough energy, it could be risky..."
+                    "text": "The device is shaking, growling, and a link appears between it and your bus. If you don't have enough energy, it could be risky...",
+                    "nextEvent":"20"
+
                 }
             }
         ]
@@ -512,7 +516,7 @@ dataEvents = [
         ]
     },
     {
-        "id": "19",
+        "id": "20",
         "canBeRandomEvent": "false",
         "text": "Be carreful, the price could be higher than you think...",
         "choices": [
