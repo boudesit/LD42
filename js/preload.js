@@ -16,6 +16,9 @@ preload.prototype = {
 		this.game.load.spritesheet('background_cockpit', 'assets/images/Backgrounds/BackgroundCockpit.png',525,900, 7);
 
 
+		this.game.load.spritesheet('animDialogueOpen', 'assets/images/Anim/AnimDialogue-0.png',500,500, 50);
+
+
 		this.game.load.spritesheet('progressBarEnergy', 'assets/images/ProgressBar/ProgressBarEnergy.png',80,20,10);
 		this.game.load.spritesheet('progressBarPassenger', 'assets/images/ProgressBar/ProgressBarPassenger.png',100,20,32);
 		this.game.load.spritesheet('progressBarSearch', 'assets/images/ProgressBar/progressBarSearch.png',80,20,10);

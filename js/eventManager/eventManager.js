@@ -1,6 +1,6 @@
 function eventManager(game, passengerManager, resourceManager, barManager, travelManager) {
 	this.game = game;
-	this.beginEvent = true;
+	this.beginEvent = false;
 	this.events = null;
 	this.currentEvent = null;
 	this.nextEventId = null;
@@ -11,18 +11,38 @@ function eventManager(game, passengerManager, resourceManager, barManager, trave
 	this.barManager = barManager;
 	this.travelManager = travelManager;
 	this.continue = null;
+	this.openWindowsSprite = null;
+	this.alreadyLaunch = false;
+	this.animDial = null;
+	this.animDialFix = null;
 	this.oneTimeEventIds = [];
 };
 
 eventManager.prototype.create = function create() {
 	this.events = dataEvents;
+
+	this.openWindowsSprite = this.game.add.sprite(12, 110, 'animDialogueOpen');
+
+	this.animDial = this.openWindowsSprite.animations.add('OpenDialog');
+	this.animDialFix = this.openWindowsSprite.animations.add('OpenDialogFix', [47], 10, true);
+
+
+	this.animDial.onComplete.add(function(){
+
+			this.openWindowsSprite.animations.stop([48], true);
+
+			this.openWindowsSprite.animations.play('OpenDialogFix',15, false);
+			this.beginEvent = true;
+	}, this);
 };
 
 
 
 eventManager.prototype.update = function update() {
-	if (this.beginEvent) {
-
+	if(!this.beginEvent && !this.alreadyLaunch) {
+		this.openWindowsSprite.animations.play('OpenDialog',15, false);
+		this.alreadyLaunch = true;
+	} else if (this.beginEvent) {
 		this.cleanEvent(this.currentEvent);
 		this.currentEvent = {};
 		if (this.nextEventId) {
@@ -37,9 +57,8 @@ eventManager.prototype.update = function update() {
 		if(event.oneTime === 'true') {
 			this.oneTimeEventIds.push(event.id);
 		}
-
-		this.currentEvent.posX = 10;
-		this.currentEvent.posY = 150;
+		this.currentEvent.posX = 50;
+		this.currentEvent.posY = 175;
 		this.currentEvent.nexElementPosY = this.currentEvent.posY;
 
 		this.currentEvent.textDescription = this.game.add.text(this.currentEvent.posX, this.currentEvent.nexElementPosY, '', style);
@@ -51,8 +70,8 @@ eventManager.prototype.update = function update() {
 
 		event.choices.forEach((choice, index) => {
 			if (this.canChoose(choice)) {
-				let button = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.nexElementPosY - 50, 'button', actionOnClickChoice, this, 2, 1, 0);
-				let textButton = this.game.add.text(this.currentEvent.posX + 50, this.currentEvent.nexElementPosY - 40, choice.text, style);
+				let button = this.game.add.button(this.currentEvent.posX - 45, this.currentEvent.nexElementPosY - 50, 'button', actionOnClickChoice, this, 2, 1, 0);
+				let textButton = this.game.add.text(this.currentEvent.posX , this.currentEvent.nexElementPosY - 40, choice.text, style);
 				button.width = 500;
 				button.height = textButton.height + 10;
 				button.consequence = choice.consequence;
@@ -73,7 +92,7 @@ eventManager.prototype.update = function update() {
 		console.log(this.game.gameState);
 
 		if (this.game.gameState === 'continue') {
-			this.beginEvent = true;
+			this.beginEvent = false;
 			this.canClickButton = true;
 		} else {
 			this.cleanConsequence(this.currentEvent);
@@ -135,6 +154,7 @@ async function actionOnClickChoice(button) {
 function actionOnClickNextEvent(button) {
 	if (this.canClickNextEvent) {
 		this.goToNextEvent = true;
+		this.alreadyLaunch = false;
 		this.cleanConsequence(this.currentEvent);
 	}
 }
