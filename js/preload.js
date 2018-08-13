@@ -6,15 +6,8 @@ preload.prototype = {
         this.load.setPreloadSprite(loadingBar);
 
     //Spritesheet
-		this.game.load.image('gametitle', 'assets/images/Backgrounds/Background-intro.png');
-		this.game.load.image('gamescore', 'assets/images/Backgrounds/Background.png');
-		this.game.load.image('background', 'assets/images/Backgrounds/Background.png');
-		this.game.load.image('gametuto', 'assets/images/Backgrounds/Background-tuto.png');
-		this.game.load.image('gameover', 'assets/images/Backgrounds/Background-gameover.png');
-		this.game.load.image('gamewin', 'assets/images/Backgrounds/Background-gamewin.png');
-
+		this.game.load.spritesheet('background', 'assets/images/Backgrounds/Background.png',525,900, 41);
 		this.game.load.spritesheet('background_cockpit', 'assets/images/Backgrounds/BackgroundCockpit.png',525,900, 7);
-
 
 		this.game.load.spritesheet('animDialogueOpen', 'assets/images/Anim/AnimDialogue-0.png',500,500, 51);
 
@@ -31,10 +24,9 @@ preload.prototype = {
 
 		this.game.load.image('button', 'assets/images/button.png');
 		//Sound
-    this.game.load.audio('gameSound', 'assets/sound/game.mp3');
-    this.game.load.audio('introSound', 'assets/sound/intro.mp3');
-    this.game.load.audio('scoreSound', 'assets/sound/score.mp3');
-		this.game.load.audio('winSound', 'assets/sound/winSound.mp3');
+    this.game.load.audio('gameSound', 'assets/sound/game.wav');
+    this.game.load.audio('introSound', 'assets/sound/intro.wav');
+		this.game.load.audio('gameover', 'assets/sound/gameover.wav');
 
 	},
   	create: function(){
