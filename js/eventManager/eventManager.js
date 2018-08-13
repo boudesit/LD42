@@ -40,6 +40,8 @@ eventManager.prototype.create = function create() {
 
 eventManager.prototype.update = function update() {
 	if (!this.beginEvent && !this.alreadyLaunch) {
+		event = game.add.audio('event');
+		event.play();
 		this.openWindowsSprite.animations.play('OpenDialog', 11, false);
 		this.alreadyLaunch = true;
 	} else if (this.beginEvent) {
