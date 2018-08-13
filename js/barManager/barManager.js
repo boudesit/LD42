@@ -16,7 +16,9 @@ function barManager(game, passengerManager, ressourceManager) {
 
 barManager.prototype.create = function create() {
 
-
+  var Continue = game.add.sprite(100, 800, 'Continue');
+   var animContinue = Continue.animations.add('animContinue');
+   Continue.animations.play('animContinue', 2, true);
 
   var logoEnergy = game.add.sprite(12, 0, 'logoEnergy');
    var animEnergy = logoEnergy.animations.add('animEnergy');

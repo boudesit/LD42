@@ -20,6 +20,7 @@ preload.prototype = {
 		this.game.load.spritesheet('logoEnergy', 'assets/images/ProgressBar/logoEnergy.png',20,20,9);
 		this.game.load.spritesheet('logoSearch', 'assets/images/ProgressBar/logoSearch.png',20,20,8);
 		this.game.load.spritesheet('logoShield', 'assets/images/ProgressBar/logoShield.png',20,20,11);
+		this.game.load.spritesheet('Continue', 'assets/images/Continue.png',300,35,2);
 		//Image
 
 		this.game.load.image('button', 'assets/images/button.png');
