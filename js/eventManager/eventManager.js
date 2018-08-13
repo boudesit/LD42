@@ -34,7 +34,7 @@ eventManager.prototype.update = function update() {
 			}
 		}
 
-		if(event.oneTime) {
+		if(event.oneTime === 'true') {
 			this.oneTimeEventIds.push(event.id);
 		}
 
