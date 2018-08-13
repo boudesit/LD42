@@ -32,7 +32,7 @@ preload.prototype = {
     this.game.load.audio('gameSound', 'assets/sound/game.wav');
     this.game.load.audio('introSound', 'assets/sound/intro.wav');
 		this.game.load.audio('gameover', 'assets/sound/gameover.wav');
-
+		this.game.load.audio('gamewin', 'assets/sound/gameover.wav');
 	},
   	create: function(){
   		this.game.time.events.add(Phaser.Timer.SECOND * 2, this._startGame, this);
