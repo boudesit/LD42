@@ -5,9 +5,9 @@ gameTitle.prototype = {
 
   		this.game.introSound = game.add.audio('introSound', 1, true);
 
-      this.spriteBG = this.game.add.tileSprite(0, 0, 525, 900, 'gametitle');
+      this.spriteBG = this.game.add.tileSprite(0, 0, 525, 900, 'background');
       this.spriteBG.animations.add('gametitle');
-      this.spriteBG.animations.play('gametitle', 3, true);
+      this.spriteBG.animations.play('gametitle', 5, true);
 
   		this.startButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 		  this.startButton.onDown.add(this.playTheGame, this);
