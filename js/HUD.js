@@ -26,6 +26,15 @@ var style = {
 
 HUD.prototype.create = function create() {
 
+  this.game.gameSound = game.add.audio('gameSound', 1, true);
+	if (this.game.gameSound.isPlaying == false)
+	{
+		this.game.gameSound.loop = true;
+		this.game.gameSound.play();
+	}else{
+		this.game.gameSound.resume();
+	}
+
 	this.spriteBG = this.game.add.tileSprite(0, 0, 525, 900, 'background');
 
 	this.timeDelay = 0;

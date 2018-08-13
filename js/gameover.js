@@ -5,9 +5,9 @@ gameOver.prototype = {
 
   	create: function(){
 
-  		  loseSound = game.add.audio('loseSound', 1 , true);
+  		  loseSound = game.add.audio('gameover', 1 , true);
 
-        this.spriteBG = this.game.add.tileSprite(0, 0, 525, 900, 'background');
+        this.spriteBG = this.game.add.tileSprite(0, 0, 525, 900, 'BackgroundGameOver');
         this.spriteBG.animations.add('gameover');
         this.spriteBG.animations.play('gameover', 5, true);
 
