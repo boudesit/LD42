@@ -96,7 +96,7 @@ async function actionOnClickChoice(button) {
 		/////////////////////////////////////////////////////////////////////////
 		/////////////////////////CLICK TO CONTINUE//////////////////////////////
 		///////////////////////////////////////////////////////////////////////
-		this.continue = game.add.sprite(160, 860, 'continue');
+		this.continue = game.add.sprite(160, 873, 'continue');
 		var animContinue = this.continue.animations.add('animContinue');
 		this.continue.animations.play('animContinue', 0.5, true);
 
