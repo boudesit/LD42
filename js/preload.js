@@ -7,6 +7,9 @@ preload.prototype = {
 
     //Spritesheet
 		this.game.load.spritesheet('background', 'assets/images/Backgrounds/Background.png',525,900, 41);
+		this.game.load.spritesheet('backgroundWin', 'assets/images/Backgrounds/BackgroundWin.png',525,900, 2);
+		this.game.load.spritesheet('BackgroundGameOver', 'assets/images/Backgrounds/BackgroundGameOver.png',525,900, 2);
+
 		this.game.load.spritesheet('background_cockpit', 'assets/images/Backgrounds/BackgroundCockpit.png',525,900, 7);
 
 		this.game.load.spritesheet('animDialogueOpen', 'assets/images/Anim/AnimDialogue-0.png',500,500, 51);
