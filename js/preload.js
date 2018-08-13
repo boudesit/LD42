@@ -17,6 +17,7 @@ preload.prototype = {
 
 
 		this.game.load.spritesheet('animDialogueOpen', 'assets/images/Anim/AnimDialogue-0.png',500,500, 51);
+		this.game.load.spritesheet('animDialogueClose', 'assets/images/Anim/AnimDialogue2-0.png',500,500, 22);
 
 
 		this.game.load.spritesheet('progressBarEnergy', 'assets/images/ProgressBar/ProgressBarEnergy.png',80,20,10);

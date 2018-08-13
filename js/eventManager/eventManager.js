@@ -15,33 +15,56 @@ function eventManager(game, passengerManager, resourceManager, barManager, trave
 	this.alreadyLaunch = false;
 	this.animDial = null;
 	this.animDialFix = null;
+	this.animDialClose = null;
+	this.animationCloseFinished = false;
+	this.closeAlreadyLaunch = true;
 	this.oneTimeEventIds = [];
+
+	this.desogrotutarete = false;
 };
 
 eventManager.prototype.create = function create() {
 	this.events = dataEvents;
 
 	this.openWindowsSprite = this.game.add.sprite(12, 110, 'animDialogueOpen');
+	this.closeWindowsSprite = this.game.add.sprite(12, 110, 'animDialogueClose');
+	this.closeWindowsSprite.visible = false;
 
 	this.animDial = this.openWindowsSprite.animations.add('OpenDialog');
 	this.animDialFix = this.openWindowsSprite.animations.add('OpenDialogFix', [50], 10, true);
 
+	this.animDialClose = this.closeWindowsSprite.animations.add('CloseDialog');
 
 	this.animDial.onComplete.add(function(){
 
-			this.openWindowsSprite.animations.stop([50], true);
-
+			this.openWindowsSprite.animations.stop(null, true);
 			this.openWindowsSprite.animations.play('OpenDialogFix',15, false);
 			this.beginEvent = true;
+	}, this);
+
+	this.animDialClose.onComplete.add(function(){
+
+			this.closeWindowsSprite.animations.stop(null, true);
+			this.closeWindowsSprite.visible = false;
+
+			this.desogrotutarete = true;
+			this.animationCloseFinished = true;
+			this.closeAlreadyLaunch = false;
+			this.goToNextEvent = false;
+
 	}, this);
 };
 
 
 
 eventManager.prototype.update = function update() {
+
 	if(!this.beginEvent && !this.alreadyLaunch) {
-		this.openWindowsSprite.animations.play('OpenDialog',11, false);
+		this.openWindowsSprite.visible = true;
+
+		this.openWindowsSprite.animations.play('OpenDialog',13, false);
 		this.alreadyLaunch = true;
+
 	} else if (this.beginEvent) {
 		this.cleanEvent(this.currentEvent);
 		this.currentEvent = {};
@@ -83,7 +106,14 @@ eventManager.prototype.update = function update() {
 		this.goToNextEvent = false;
 		this.canClickNextEvent = false;
 	}
-	if (this.goToNextEvent) {
+	if (this.goToNextEvent && !this.closeAlreadyLaunch && !this.desogrotutarete) {
+		this.closeWindowsSprite.visible = true;
+		this.openWindowsSprite.visible = false;
+
+		this.closeWindowsSprite.animations.play('CloseDialog', 13 , false);
+
+		this.closeAlreadyLaunch = true;
+	} else if(!this.goToNextEvent && this.closeAlreadyLaunch) {
 		this.travelManager.travel();
 		this.stopContinue();
 
@@ -98,7 +128,6 @@ eventManager.prototype.update = function update() {
 			this.cleanConsequence(this.currentEvent);
 		}
 
-		this.goToNextEvent = false;
 	}
 };
 
@@ -150,6 +179,7 @@ async function actionOnClickChoice(button) {
 
 		this.barManager.updateProgressBars();
 		this.canClickNextEvent = true;
+		this.closeAlreadyLaunch = false;
 	}
 }
 
@@ -157,6 +187,8 @@ function actionOnClickNextEvent(button) {
 	if (this.canClickNextEvent) {
 		this.goToNextEvent = true;
 		this.alreadyLaunch = false;
+		this.desogrotutarete = false;
+
 		this.cleanConsequence(this.currentEvent);
 	}
 }
@@ -290,7 +322,9 @@ eventManager.prototype.canChoose = function canChoose(choice) {
 };
 
 eventManager.prototype.stopContinue = function stopContinue() {
-	this.continue.destroy();
+	if(this.continue != null) {
+		this.continue.destroy();
+	}
 };
 
 async function writeTextCharByChar(textZone, text, delay) {
