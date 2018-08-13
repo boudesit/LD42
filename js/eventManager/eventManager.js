@@ -10,6 +10,7 @@ function eventManager(game, passengerManager, resourceManager, barManager, trave
 	this.resourceManager = resourceManager;
 	this.barManager = barManager;
 	this.travelManager = travelManager;
+	this.continue=null;
 };
 
 eventManager.prototype.create = function create() {
@@ -58,6 +59,7 @@ eventManager.prototype.update = function update() {
 	}
 	if(this.goToNextEvent) {
 		this.travelManager.travel();
+		this.stopContinue();
 
 		console.log(this.passengerManager.toString());
 		console.log(this.resourceManager.toString());
@@ -83,6 +85,12 @@ async function actionOnClickChoice(button) {
 		this.currentEvent.consequenceText = this.game.add.text(this.currentEvent.posX, this.currentEvent.nexElementPosY, button.consequence.text, style);
 		this.nextEventId = button.consequence.nextEvent;
 		this.canClickButton = false;
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////CLICK TO CONTINUE//////////////////////////////
+///////////////////////////////////////////////////////////////////////
+		this.continue = game.add.sprite(160, 860, 'continue');
+	   var animContinue = this.continue.animations.add('animContinue');
+	   this.continue.animations.play('animContinue', 0.5, true);
 
 		if (button.consequence.energy) {
 			this.resourceManager.addEnergy(this.getConsequenceValue(button.consequence.energy));
@@ -114,6 +122,7 @@ async function actionOnClickChoice(button) {
 function actionOnClickNextEvent(button) {
 	if(this.canClickNextEvent) {
 		this.goToNextEvent = true;
+
 	}
 }
 
@@ -237,4 +246,8 @@ eventManager.prototype.canChoose = function canChoose(choice) {
 		}
 	}
 	return canChoose;
-}
+};
+
+eventManager.prototype.stopContinue = function stopContinue() {
+			this.continue.destroy();
+};

@@ -15,6 +15,7 @@ travelManager.prototype.create = function create() { };
 travelManager.prototype.update = function update() { };
 
 travelManager.prototype.travel = function travel() {
+
     let gameState = "continue";
 
     this.resourceManager.addEnergy(-this.passengerManager.getTotalPassenger());
@@ -31,4 +32,4 @@ travelManager.prototype.travel = function travel() {
     }
 
     this.game.gameState = gameState;
-}
+};
