@@ -51,11 +51,11 @@ barManager.prototype.create = function create() {
 
     targetObject: this.energyBar, //can be any phaser object (sprite, group, text, image, etc...)
 
-    context: "Your Energy Be Careful",
+    context: "Your Energy, Be Careful",
 
     strokeColor: 0x00bfcd, // red stroke
 
-    position: "bottom" // where we want the tooltip to appear
+    position: "perso1" // where we want the tooltip to appear
 
   });
 
@@ -82,7 +82,7 @@ barManager.prototype.create = function create() {
 
     targetObject: this.shieldBar, //can be any phaser object (sprite, group, text, image, etc...)
 
-    context: "Your Shield Be Careful",
+    context: "Your Shield, Be Careful",
 
     strokeColor: 0x00bfcd, // red stroke
 
@@ -113,11 +113,11 @@ barManager.prototype.create = function create() {
 
     targetObject: this.passengerBar, //can be any phaser object (sprite, group, text, image, etc...)
 
-    context: "You have" + this.passengerManager.getTotalPassenger() + " / " + this.passengerManager.getMaxPassenger(),
+    context: "Total passengers : " + this.passengerManager.getTotalPassenger() + " / " + this.passengerManager.getMaxPassenger()+ "\n"+ this.passengerManager.getSoldier()+" Soldier(s)" +"\n" +this.passengerManager.getCivilian()+" Civilian(s)"+"\n"+this.passengerManager.getEngineer()+" Engineer(s)",
 
     strokeColor: 0x00bfcd, // red stroke
 
-    position: "bottom" // where we want the tooltip to appear
+    position: "perso2" // where we want the tooltip to appear
 
   });
 
@@ -160,11 +160,11 @@ barManager.prototype.update = function update() {
 
     targetObject: this.passengerBar, //can be any phaser object (sprite, group, text, image, etc...)
 
-    context: "You have" + this.passengerManager.getTotalPassenger() + " / " + this.passengerManager.getMaxPassenger(),
+    context: "Total passengers : " + this.passengerManager.getTotalPassenger() + " / " + this.passengerManager.getMaxPassenger()+ "\n"+ this.passengerManager.getSoldier()+" Soldier(s)" +"\n" +this.passengerManager.getCivilian()+" Civilian(s)"+"\n"+this.passengerManager.getEngineer()+" Engineer(s)",
 
     strokeColor: 0x00bfcd, // red stroke
 
-    position: "bottom" // where we want the tooltip to appear
+    position: "perso2" // where we want the tooltip to appear
 
   });
 };
