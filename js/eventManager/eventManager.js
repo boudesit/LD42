@@ -97,6 +97,8 @@ eventManager.prototype.update = function update() {
 		} else {
 			this.cleanConsequence(this.currentEvent);
 		}
+
+		this.goToNextEvent = false;
 	}
 };
 
