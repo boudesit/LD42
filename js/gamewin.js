@@ -15,10 +15,20 @@ gameWin.prototype = {
           winSound.resume();
       }
 
-      var style = { font: "32px Comic Sans MS", fill: "#ffffff", align: "center" };
-    	text = game.add.text(0, 100,"Total Energy : " + this.game.totalEnergy, style);
-      text = game.add.text(0, 150,"Total Shield : " + this.game.totalShield, style);
-      text = game.add.text(0, 200,"Total Passenger : " + this.game.totalPassenger, style);
+      this.openWindowsSprite = this.game.add.sprite(12, 110, 'animDialogueOpen');
+      this.openWindowsSprite.animations.add('OpenDialog', [50]);
+      this.openWindowsSprite.animations.play('OpenDialog', 5, true);
+
+      var style = {
+      	font: "bold 16px Arial",
+      	fill: "#fff",
+      	boundsAlignH: "center",
+      	boundsAlignV: "middle",
+      	wordWrap: true,
+      	wordWrapWidth: 450
+      };
+
+      text = game.add.text(50, 200,"Congratulation ! You have gathered "+ this.game.totalPassenger +" people, that is enough to put your plan in motion, but that was the easiest part. Now the real deal begins !" , style);
 
     this.restartButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
     this.restartButton.onDown.add(this.playTheGame, this);
