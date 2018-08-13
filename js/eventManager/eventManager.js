@@ -24,12 +24,12 @@ eventManager.prototype.create = function create() {
 	this.openWindowsSprite = this.game.add.sprite(12, 110, 'animDialogueOpen');
 
 	this.animDial = this.openWindowsSprite.animations.add('OpenDialog');
-	this.animDialFix = this.openWindowsSprite.animations.add('OpenDialogFix', [48], 10, true);
+	this.animDialFix = this.openWindowsSprite.animations.add('OpenDialogFix', [50], 10, true);
 
 
 	this.animDial.onComplete.add(function(){
 
-			this.openWindowsSprite.animations.stop([48], true);
+			this.openWindowsSprite.animations.stop([50], true);
 
 			this.openWindowsSprite.animations.play('OpenDialogFix',15, false);
 			this.beginEvent = true;
