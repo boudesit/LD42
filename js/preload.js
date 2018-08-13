@@ -24,10 +24,9 @@ preload.prototype = {
 
 		this.game.load.image('button', 'assets/images/button.png');
 		//Sound
-    this.game.load.audio('gameSound', 'assets/sound/game.mp3');
-    this.game.load.audio('introSound', 'assets/sound/intro.mp3');
-    this.game.load.audio('scoreSound', 'assets/sound/score.mp3');
-		this.game.load.audio('winSound', 'assets/sound/winSound.mp3');
+    this.game.load.audio('gameSound', 'assets/sound/game.wav');
+    this.game.load.audio('introSound', 'assets/sound/intro.wav');
+		this.game.load.audio('gameover', 'assets/sound/gameover.wav');
 
 	},
   	create: function(){
