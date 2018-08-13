@@ -29,6 +29,10 @@ barManager.prototype.create = function create() {
 		var logoShield = game.add.sprite(117, 10, 'logoShield');
 		 var animShield = logoShield.animations.add('animShield');
 		 logoShield.animations.play('animShield', 5, true);
+
+     var logoPassenger = game.add.sprite(385, 10, 'logoPassenger');
+      var animPassenger = logoPassenger.animations.add('animPassenger');
+      logoPassenger.animations.play('animPassenger', 4, true);
   //////////////////////////////////////////////////////////
   //////////////////PROGRESS BAR ENERGYBAR/////////////////
   /////////////////////////////////////////////////////////
