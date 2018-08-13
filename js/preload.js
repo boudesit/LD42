@@ -9,6 +9,7 @@ preload.prototype = {
 		this.game.load.spritesheet('background', 'assets/images/Backgrounds/Background.png',525,900, 41);
 		this.game.load.spritesheet('backgroundWin', 'assets/images/Backgrounds/BackgroundWin.png',525,900, 2);
 		this.game.load.spritesheet('BackgroundGameOver', 'assets/images/Backgrounds/BackgroundGameOver.png',525,900, 2);
+		this.game.load.spritesheet('BackgroundIntro', 'assets/images/Backgrounds/Background-intro.png',525,900, 10);
 
 		this.game.load.spritesheet('background_cockpit', 'assets/images/Backgrounds/BackgroundCockpit.png',525,900, 7);
 
@@ -24,6 +25,8 @@ preload.prototype = {
 		this.game.load.spritesheet('logoShield', 'assets/images/ProgressBar/logoShield.png',20,20,11);
 		this.game.load.spritesheet('continue', 'assets/images/Continue.png',175,20,2);
 		this.game.load.spritesheet('logoPassenger', 'assets/images/ProgressBar/logoPassenger.png',20,20,4);
+
+		this.game.load.spritesheet('animResponseOpen', 'assets/images/Anim/Anim_1reponses.png', 525,204,10);
 
 		//Image
 
