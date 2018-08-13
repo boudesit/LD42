@@ -208,10 +208,10 @@ var Phasetips = function(localGame, options) {
                 }
                 if (_position === "perso1") {
                     mainGroup.x = 10;
-                    mainGroup.y = 30;
+                    mainGroup.y = 40;
                 } else if (_position === "perso2") {
                     mainGroup.x = 300;
-                    mainGroup.y = 30;
+                    mainGroup.y = 40;
                 } else if (_position === "top") {
                     mainGroup.x = Math.round(objectX + ((_object.width / 2) - (mainGroup._width / 2)));
                     mainGroup.y = Math.round(objectY - (_positionOffset + mainGroup._height));
