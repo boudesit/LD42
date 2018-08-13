@@ -113,6 +113,7 @@ async function actionOnClickChoice(button) {
 
 		//let consequenceButton = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.nexElementPosY - 50, 'button', actionOnClickNextEvent, this, 2, 1, 0);
 		 let consequenceText = this.game.add.text(50,300, button.consequence.text, style);
+		 this.currentEvent.consequenceText = consequenceText;
 		//consequenceButton.width = 500;
 		//consequenceButton.height = consequenceText.height + 10;
 	//	this.currentEvent.consequenceButton = { "button": consequenceButton, "text": consequenceText };
