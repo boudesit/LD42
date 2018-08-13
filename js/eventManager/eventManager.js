@@ -29,7 +29,7 @@ eventManager.prototype.update = function update() {
 			var event = this.events[this.nextEventId];
 		} else {
 			var event = this.events[this.getRandomInt(0, this.events.length)];
-			while (event.canBeRandomEvent === 'false' || this.oneTimeEventIds.contains(event.id)) {
+			while (event.canBeRandomEvent === 'false' || this.oneTimeEventIds.indexOf(event.id) !== -1) {
 				event = this.events[this.getRandomInt(0, this.events.length)];
 			}
 		}
