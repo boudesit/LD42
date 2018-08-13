@@ -3,11 +3,11 @@ var gameWin = function(game){
 
 gameWin.prototype = {
   create: function(){
-      winSound = game.add.audio('winSound', 1 , true);
+      winSound = game.add.audio('gameover', 1 , true);
       this.spriteBG = this.game.add.tileSprite(0, 0, 525, 900, 'background');
       this.spriteBG.animations.add('gamewin');
       this.spriteBG.animations.play('gamewin', 5, true);
-      
+
       if (winSound.isPlaying == false)
       {
           winSound.play();
