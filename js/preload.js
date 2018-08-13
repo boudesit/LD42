@@ -6,15 +6,8 @@ preload.prototype = {
         this.load.setPreloadSprite(loadingBar);
 
     //Spritesheet
-		this.game.load.image('gametitle', 'assets/images/Backgrounds/Background-intro.png');
-		this.game.load.image('gamescore', 'assets/images/Backgrounds/Background.png');
-		this.game.load.image('background', 'assets/images/Backgrounds/Background.png');
-		this.game.load.image('gametuto', 'assets/images/Backgrounds/Background-tuto.png');
-		this.game.load.image('gameover', 'assets/images/Backgrounds/Background-gameover.png');
-		this.game.load.image('gamewin', 'assets/images/Backgrounds/Background-gamewin.png');
-
+		this.game.load.spritesheet('background', 'assets/images/Backgrounds/Background.png',525,900, 41);
 		this.game.load.spritesheet('background_cockpit', 'assets/images/Backgrounds/BackgroundCockpit.png',525,900, 7);
-
 
 		this.game.load.spritesheet('animDialogueOpen', 'assets/images/Anim/AnimDialogue-0.png',500,500, 51);
 
