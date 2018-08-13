@@ -8,6 +8,8 @@ function travelManager(game, passengerManager, resourceManager, barManager) {
 	this.passengerManager = passengerManager;
 	this.resourceManager = resourceManager;
 	this.barManager = barManager;
+	this.baseConsumption = 0;
+	this.passengerConsumption = 0.2;
 };
 
 travelManager.prototype.create = function create() { };
@@ -18,7 +20,7 @@ travelManager.prototype.travel = function travel() {
 
     let gameState = "continue";
 
-    this.resourceManager.addEnergy(-this.passengerManager.getTotalPassenger());
+    this.resourceManager.addEnergy(-(this.baseConsumption + (this.passengerManager.getTotalPassenger() * this.passengerConsumption)));
     this.resourceManager.addSearch(this.passengerManager.getEngineer());
 
     this.barManager.updateProgressBars();
