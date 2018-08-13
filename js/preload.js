@@ -18,13 +18,13 @@ preload.prototype = {
 
 		this.game.load.spritesheet('progressBarEnergy', 'assets/images/ProgressBar/ProgressBarEnergy.png',80,20,11);
 		this.game.load.spritesheet('progressBarPassenger', 'assets/images/ProgressBar/ProgressBarPassenger.png',80,20,11);
-		this.game.load.spritesheet('progressBarSearch', 'assets/images/ProgressBar/progressBarSearch.png',80,20,11);
-		this.game.load.spritesheet('progressBarShield', 'assets/images/ProgressBar/progressBarShield.png',80,20,11);
-		this.game.load.spritesheet('logoEnergy', 'assets/images/ProgressBar/logoEnergy.png',20,20,9);
-		this.game.load.spritesheet('logoSearch', 'assets/images/ProgressBar/logoSearch.png',20,20,8);
-		this.game.load.spritesheet('logoShield', 'assets/images/ProgressBar/logoShield.png',20,20,11);
+		this.game.load.spritesheet('progressBarSearch', 'assets/images/ProgressBar/ProgressBarSearch.png',80,20,11);
+		this.game.load.spritesheet('progressBarShield', 'assets/images/ProgressBar/ProgressBarShield.png',80,20,11);
+		this.game.load.spritesheet('logoEnergy', 'assets/images/ProgressBar/LogoEnergy.png',20,20,9);
+		this.game.load.spritesheet('logoSearch', 'assets/images/ProgressBar/LogoSearch.png',20,20,8);
+		this.game.load.spritesheet('logoShield', 'assets/images/ProgressBar/LogoShield.png',20,20,11);
 		this.game.load.spritesheet('continue', 'assets/images/Continue.png',175,20,2);
-		this.game.load.spritesheet('logoPassenger', 'assets/images/ProgressBar/logoPassenger.png',20,20,4);
+		this.game.load.spritesheet('logoPassenger', 'assets/images/ProgressBar/LogoPassenger.png',20,20,4);
 
 		this.game.load.spritesheet('animResponseOpen', 'assets/images/Anim/Anim_1reponses.png', 525,204,10);
 
