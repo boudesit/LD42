@@ -10,11 +10,11 @@ function eventManager(game, passengerManager, resourceManager, barManager, trave
 	this.resourceManager = resourceManager;
 	this.barManager = barManager;
 	this.travelManager = travelManager;
+	this.continue = null;
 };
 
 eventManager.prototype.create = function create() {
 	this.events = dataEvents;
-	this.game.input.onDown.add(actionOnClickNextEvent, this);
 };
 
 
@@ -56,8 +56,9 @@ eventManager.prototype.update = function update() {
 		this.goToNextEvent = false;
 		this.canClickNextEvent = false;
 	}
-	if(this.goToNextEvent) {
+	if (this.goToNextEvent) {
 		this.travelManager.travel();
+		this.stopContinue();
 
 		console.log(this.passengerManager.toString());
 		console.log(this.resourceManager.toString());
@@ -67,7 +68,7 @@ eventManager.prototype.update = function update() {
 			this.beginEvent = true;
 			this.canClickButton = true;
 		} else {
-			this.cleanEvent(this.currentEvent);
+			this.cleanConsequence(this.currentEvent);
 		}
 	}
 };
@@ -80,9 +81,22 @@ eventManager.prototype.scoreScreen = function scoreScreen() {
 
 async function actionOnClickChoice(button) {
 	if (this.canClickButton) {
-		this.currentEvent.consequenceText = this.game.add.text(this.currentEvent.posX, this.currentEvent.nexElementPosY, button.consequence.text, style);
+		this.cleanEvent(this.currentEvent);
+
+		let consequenceButton = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.nexElementPosY - 100, 'button', actionOnClickNextEvent, this, 2, 1, 0);
+		let consequenceText = this.game.add.text(this.currentEvent.posX + 50, this.currentEvent.nexElementPosY - 90, button.consequence.text, style);
+		consequenceButton.width = 500;
+		consequenceButton.height = consequenceText.height + 10;
+		this.currentEvent.consequenceButton = { "button": consequenceButton, "text": consequenceText };
+
 		this.nextEventId = button.consequence.nextEvent;
 		this.canClickButton = false;
+		/////////////////////////////////////////////////////////////////////////
+		/////////////////////////CLICK TO CONTINUE//////////////////////////////
+		///////////////////////////////////////////////////////////////////////
+		this.continue = game.add.sprite(160, 860, 'continue');
+		var animContinue = this.continue.animations.add('animContinue');
+		this.continue.animations.play('animContinue', 0.5, true);
 
 		if (button.consequence.energy) {
 			this.resourceManager.addEnergy(this.getConsequenceValue(button.consequence.energy));
@@ -112,8 +126,9 @@ async function actionOnClickChoice(button) {
 }
 
 function actionOnClickNextEvent(button) {
-	if(this.canClickNextEvent) {
+	if (this.canClickNextEvent) {
 		this.goToNextEvent = true;
+		this.cleanConsequence(this.currentEvent);
 	}
 }
 
@@ -124,7 +139,13 @@ eventManager.prototype.cleanEvent = function cleanEvent(event) {
 			button.button.destroy();
 			button.text.destroy();
 		}
-		event.consequenceText.destroy();
+	}
+}
+
+eventManager.prototype.cleanConsequence = function cleanConsequence(event) {
+	if (event && event.consequenceButton) {
+		event.consequenceButton.button.destroy();
+		event.consequenceButton.text.destroy();
 	}
 }
 
@@ -237,4 +258,8 @@ eventManager.prototype.canChoose = function canChoose(choice) {
 		}
 	}
 	return canChoose;
-}
+};
+
+eventManager.prototype.stopContinue = function stopContinue() {
+	this.continue.destroy();
+};

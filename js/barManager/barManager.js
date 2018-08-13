@@ -16,9 +16,7 @@ function barManager(game, passengerManager, ressourceManager) {
 
 barManager.prototype.create = function create() {
 
-  var Continue = game.add.sprite(160, 860, 'Continue');
-   var animContinue = Continue.animations.add('animContinue');
-   Continue.animations.play('animContinue', 0.5, true);
+
 
   var logoEnergy = game.add.sprite(12, 0, 'logoEnergy');
    var animEnergy = logoEnergy.animations.add('animEnergy');
@@ -55,9 +53,9 @@ barManager.prototype.create = function create() {
 
     context: "Your Energy Be Careful",
 
-    strokeColor: 0xff00FF, // red stroke
+    strokeColor: 0x00bfcd, // red stroke
 
-    position: "right" // where we want the tooltip to appear
+    position: "bottom" // where we want the tooltip to appear
 
   });
 
@@ -86,7 +84,7 @@ barManager.prototype.create = function create() {
 
     context: "Your Shield Be Careful",
 
-    strokeColor: 0xff00FF, // red stroke
+    strokeColor: 0x00bfcd, // red stroke
 
     position: "bottom" // where we want the tooltip to appear
 
@@ -117,7 +115,7 @@ barManager.prototype.create = function create() {
 
     context: "You have" + this.passengerManager.getTotalPassenger() + " / " + this.passengerManager.getMaxPassenger(),
 
-    strokeColor: 0xff00FF, // red stroke
+    strokeColor: 0x00bfcd, // red stroke
 
     position: "bottom" // where we want the tooltip to appear
 
@@ -147,7 +145,7 @@ barManager.prototype.create = function create() {
 
 		context: "This is your research bar, it can be useful during your journey !",
 
-		strokeColor: 0xff00FF, // red stroke
+		strokeColor: 0x00bfcd, // red stroke
 
 		position: "bottom" // where we want the tooltip to appear
 
@@ -164,7 +162,7 @@ barManager.prototype.update = function update() {
 
     context: "You have" + this.passengerManager.getTotalPassenger() + " / " + this.passengerManager.getMaxPassenger(),
 
-    strokeColor: 0xff00FF, // red stroke
+    strokeColor: 0x00bfcd, // red stroke
 
     position: "bottom" // where we want the tooltip to appear
 
