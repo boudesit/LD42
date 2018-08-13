@@ -11,10 +11,14 @@ function eventManager(game, passengerManager, resourceManager, barManager, trave
 	this.barManager = barManager;
 	this.travelManager = travelManager;
 	this.continue = null;
+<<<<<<< HEAD
 	this.openWindowsSprite = null;
 	this.alreadyLaunch = false;
 	this.animDial = null;
 	this.animDialFix = null;
+=======
+	this.oneTimeEventIds = [];
+>>>>>>> development
 };
 
 eventManager.prototype.create = function create() {
@@ -48,13 +52,22 @@ eventManager.prototype.update = function update() {
 			var event = this.events[this.nextEventId];
 		} else {
 			var event = this.events[this.getRandomInt(0, this.events.length)];
-			while (event.canBeRandomEvent === 'false') {
+			while (event.canBeRandomEvent === 'false' || this.oneTimeEventIds.indexOf(event.id) !== -1) {
 				event = this.events[this.getRandomInt(0, this.events.length)];
 			}
 		}
 
+<<<<<<< HEAD
 		this.currentEvent.posX = 50;
 		this.currentEvent.posY = 175;
+=======
+		if(event.oneTime === 'true') {
+			this.oneTimeEventIds.push(event.id);
+		}
+
+		this.currentEvent.posX = 10;
+		this.currentEvent.posY = 150;
+>>>>>>> development
 		this.currentEvent.nexElementPosY = this.currentEvent.posY;
 
 		this.currentEvent.textDescription = this.game.add.text(this.currentEvent.posX, this.currentEvent.nexElementPosY, '', style);
@@ -116,7 +129,7 @@ async function actionOnClickChoice(button) {
 		/////////////////////////////////////////////////////////////////////////
 		/////////////////////////CLICK TO CONTINUE//////////////////////////////
 		///////////////////////////////////////////////////////////////////////
-		this.continue = game.add.sprite(160, 860, 'continue');
+		this.continue = game.add.sprite(160, 873, 'continue');
 		var animContinue = this.continue.animations.add('animContinue');
 		this.continue.animations.play('animContinue', 0.5, true);
 
