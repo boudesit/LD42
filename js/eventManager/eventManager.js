@@ -11,14 +11,11 @@ function eventManager(game, passengerManager, resourceManager, barManager, trave
 	this.barManager = barManager;
 	this.travelManager = travelManager;
 	this.continue = null;
-<<<<<<< HEAD
 	this.openWindowsSprite = null;
 	this.alreadyLaunch = false;
 	this.animDial = null;
 	this.animDialFix = null;
-=======
 	this.oneTimeEventIds = [];
->>>>>>> development
 };
 
 eventManager.prototype.create = function create() {
@@ -57,17 +54,11 @@ eventManager.prototype.update = function update() {
 			}
 		}
 
-<<<<<<< HEAD
-		this.currentEvent.posX = 50;
-		this.currentEvent.posY = 175;
-=======
 		if(event.oneTime === 'true') {
 			this.oneTimeEventIds.push(event.id);
 		}
-
-		this.currentEvent.posX = 10;
-		this.currentEvent.posY = 150;
->>>>>>> development
+		this.currentEvent.posX = 50;
+		this.currentEvent.posY = 175;
 		this.currentEvent.nexElementPosY = this.currentEvent.posY;
 
 		this.currentEvent.textDescription = this.game.add.text(this.currentEvent.posX, this.currentEvent.nexElementPosY, '', style);
