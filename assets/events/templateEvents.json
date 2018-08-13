@@ -460,28 +460,29 @@ dataEvents = [
 
     {
         "id": "18",
-        "canBeRandomEvent": "false",
+        "canBeRandomEvent": "true",
         "text": "Be carreful, the price could be higher than you think...",
         "choices": [
 
             {
                 "text": "Ok, we really need space.",
+                "condition": {
+                    "search": {
+                        "min": "10"
+                    }
+                  },
                 "consequence": {
                     "text": "You spend your search",
-                    "condition": {
-                        "search": {
-                            "min": "10"
-                        },
                     "search " : "-10",
-                    "maxPassenger":"3"
+                    "maxPassenger":"+3"
                 }
-              }
+
             },
             {
                 "text": " It seems dangerous, please stop",
                 "consequence": {
                     "text": "Coward, i know you were weak !",
-                    "energy" : "-10",
+                    "energy" : "-10"
                 }
             }
         ]
@@ -500,11 +501,12 @@ dataEvents = [
                     "condition": {
                         "search": {
                             "min": "10"
-                        },
+                        }
+                      },
                     "search " : "-10",
                     "shield":"50"
                 }
-              }
+
             },
             {
                 "text": "Well, i'm sure we can move on without shield.",
@@ -528,11 +530,11 @@ dataEvents = [
                     "condition": {
                         "search": {
                             "min": "10"
-                        },
+                        }
+                      },
                     "search " : "-10",
                     "energy":"25"
                 }
-              }
             },
             {
                 "text": "The deal could be too expensive, it's not worth it.",
