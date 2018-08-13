@@ -707,7 +707,7 @@ dataEvents = [
     },
 
     {
-        "id": "23",
+        "id": "24",
         "canBeRandomEvent": "true",
         "text": "Welcome to my place. I'm Xnihps but you can call me X since you won't be able to pronouce it correctly... If you can answer my questions correctly, I'll reward you. Oh by the way...the longer you stay on this planet, the more energy it will use. Choose quickly or you'll die ! And this is the fiiiiirst question ! If you have some ectoplasmic problem, who will you call ?",
         "choices": [
@@ -718,7 +718,7 @@ dataEvents = [
                     "text": "Aaah, someone told me about a mansion...Hmm, nervermind, take this",
                     "search " : "+15",
                     "energy":"+8",
-                    "nextEvent": "24"
+                    "nextEvent": "25"
                 }
             },
             {
@@ -727,7 +727,7 @@ dataEvents = [
                     "text": "Shhhh, we can't use licenced products here. But eh, nice choice.",
                     "shield" : "+30",
                     "energy": "+8",
-                    "nextEvent": "24"
+                    "nextEvent": "25"
                 }
             },
             {
@@ -748,7 +748,7 @@ dataEvents = [
         ]
     },
     {
-        "id": "24",
+        "id": "25",
         "canBeRandomEvent": "false",
         "text": "Here comes the next one, What is the result of 456 divided by 24 ? ",
         "choices": [
@@ -766,7 +766,7 @@ dataEvents = [
                     "text": "I hate something even more than Mathematics, it's the people who can't do Mathematics",
                     "shield" : "+30",
                     "energy": "+8",
-                    "nextEvent": "25"
+                    "nextEvent": "26"
                 }
             },
             {
@@ -776,7 +776,7 @@ dataEvents = [
                     "shield" : "+18",
                     "energy": "+25",
                     "maxPassenger": "+1",
-                    "nextEvent": "25"
+                    "nextEvent": "26"
                 }
             },
 
@@ -790,7 +790,7 @@ dataEvents = [
         ]
     },
     {
-        "id": "25",
+        "id": "26",
         "canBeRandomEvent": "false",
         "text": "I bet you didn't expect the previous one. Here goes another random one for you ! Was this game made for the Ludum Dare 42 ?",
         "choices": [
@@ -802,7 +802,7 @@ dataEvents = [
                     "maxPassenger " : "+5",
                     "shield" : "+30",
                     "energy" : "+30",
-                    "nextEvent": "26"
+                    "nextEvent": "7"
 
                 }
             },
@@ -812,7 +812,7 @@ dataEvents = [
                     "text": "Well, in fact, you're not that wrong",
                     "search" : "+15",
                     "energy": "+10",
-                    "nextEvent": "26"
+                    "nextEvent": "27"
 
                 }
             },
@@ -823,7 +823,7 @@ dataEvents = [
                     "shield" : "+10",
                     "energy": "+25",
                     "search": "+10",
-                    "nextEvent": "26"
+                    "nextEvent": "27"
 
                 }
             },
@@ -839,7 +839,7 @@ dataEvents = [
     },
 
     {
-        "id": "26",
+        "id": "27",
         "canBeRandomEvent": "false",
         "text": "What a surprise, I found a question for you ! What's this game's purpose ?",
         "choices": [
@@ -849,7 +849,8 @@ dataEvents = [
                 "consequence": {
                     "text": "How I see... You care about people uh ? Then take this.",
                     "maxPassenger " : "+10",
-                    "civilian" : "+5"
+                    "civilian" : "+5",
+                    "nextEvent":"28"
                 }
             },
             {
@@ -878,50 +879,8 @@ dataEvents = [
             }
           ]
         },
-
-            {
-                "id": "26",
-                "canBeRandomEvent": "false",
-                "text": "What a surprise, I found a question for you ! What's this game's purpose ?",
-                "choices": [
-
-                    {
-                        "text": "Saving Humanity",
-                        "consequence": {
-                            "text": "How I see... You care about people uh ? Then take this.",
-                            "maxPassenger " : "+10",
-                            "civilian" : "+5"
-                        }
-                    },
-                    {
-                        "text": "Collecting people as ressources",
-                        "consequence": {
-                            "text": "You just see numbers, not people... That's strange but whatever...",
-                            "shield" : "+15",
-                            "search": "+10"
-                        }
-                    },
-                    {
-                        "text": "Showing your skills",
-                        "consequence": {
-                            "text": "Ah, at least someone with a decent sense of observation ! I like you. Well, if skills are so important for you... Then let's spice things up a little ! ",
-                            "shield" : "-10",
-                            "search": "-25",
-                            "civilian": "-10"
-                        }
-                    },
-
-                    {
-                        "text": " I want to leave..",
-                        "consequence": {
-                            "text": "Leave this place"
-                        }
-                    }
-        ]
-    },
-
     {
-        "id": "27",
+        "id": "28",
         "canBeRandomEvent": "false",
         "text": "Oh wow, you reach the last one ! Here we are ! What was the answer to the first question ?",
         "choices": [
@@ -965,7 +924,7 @@ dataEvents = [
       },
 
       {
-          "id": "28",
+          "id": "29",
           "canBeRandomEvent": "true",
           "text": "You may be a top driver and all, but some people really can't handle it... As you glance in the rear-view mirror, you see a middle-aged woman's face turning green. As you are about to tell her to take the bag in the seat in front of her, it's already too late... ",
           "choices": [
@@ -981,7 +940,7 @@ dataEvents = [
           ]
         },
         {
-            "id": "29",
+            "id": "30",
             "canBeRandomEvent": "true",
             "text": "You arrive in the system of your next stop, but something is wrong... You are welcomed by a field of asteroids instead of a blueish planet. ",
             "choices": [
@@ -997,7 +956,7 @@ dataEvents = [
           },
 
           {
-              "id": "30",
+              "id": "31",
               "canBeRandomEvent": "true",
               "text": "You enter a binary star system, two bright stars shine upon several planets. Two of them have rings, the lights and colors are such a magnificent sight, serenity takes over your ship. A smile quickly grows on everyone's face, eyes widened and gazes lose themselves into the endless beauty of space.",
               "choices": [
@@ -1013,7 +972,7 @@ dataEvents = [
               ]
             },
             {
-                "id": "31",
+                "id": "32",
                 "canBeRandomEvent": "true",
                 "text": "As you travel through space, you often encounter other space ships and space related phenomenons. But today you and your passenger are witnessing something unique, that only a very few people have been able to see... Dancing around a giant gas planet is a small pod of Selahw Ecaps, a sort of cetacean living in space. It has been said that they went extinct a long time ago. Obviously, they did not, and they have found a way to live away from the routes used by any species.You recall some ancient texts you once read when waiting for your wife to come back from going window shopping. They said that they were a very gentle specie that helped the first deep space travelers to avoid dangerous area. They were also able to travel at the speed of light and that's why many started to hunt them down... The pod seems to have noticed you, it is moving towards your ship. ",
                 "choices": [
