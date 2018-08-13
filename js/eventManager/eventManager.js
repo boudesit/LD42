@@ -20,27 +20,27 @@ function eventManager(game, passengerManager, resourceManager, barManager, trave
 
 eventManager.prototype.create = function create() {
 	this.events = dataEvents;
-	this.game.input.onDown.add(actionOnClickNextEvent, this);
+
 	this.openWindowsSprite = this.game.add.sprite(12, 110, 'animDialogueOpen');
 
 	this.animDial = this.openWindowsSprite.animations.add('OpenDialog');
 	this.animDialFix = this.openWindowsSprite.animations.add('OpenDialogFix', [50], 10, true);
 
 
-	this.animDial.onComplete.add(function () {
+	this.animDial.onComplete.add(function(){
 
-		this.openWindowsSprite.animations.stop([50], true);
+			this.openWindowsSprite.animations.stop([50], true);
 
-		this.openWindowsSprite.animations.play('OpenDialogFix', 15, false);
-		this.beginEvent = true;
+			this.openWindowsSprite.animations.play('OpenDialogFix',15, false);
+			this.beginEvent = true;
 	}, this);
 };
 
 
 
 eventManager.prototype.update = function update() {
-	if (!this.beginEvent && !this.alreadyLaunch) {
-		this.openWindowsSprite.animations.play('OpenDialog', 11, false);
+	if(!this.beginEvent && !this.alreadyLaunch) {
+		this.openWindowsSprite.animations.play('OpenDialog',11, false);
 		this.alreadyLaunch = true;
 	} else if (this.beginEvent) {
 		this.cleanEvent(this.currentEvent);
@@ -54,7 +54,7 @@ eventManager.prototype.update = function update() {
 			}
 		}
 
-		if (event.oneTime === 'true') {
+		if(event.oneTime === 'true') {
 			this.oneTimeEventIds.push(event.id);
 		}
 		this.currentEvent.posX = 50;
@@ -70,18 +70,8 @@ eventManager.prototype.update = function update() {
 
 		event.choices.forEach((choice, index) => {
 			if (this.canChoose(choice)) {
-				let button = this.game.add.sprite(this.currentEvent.posX - 45, this.currentEvent.nexElementPosY - 50, 'animResponseOpen');
-				let animButton = button.animations.add('animResponseOpen', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-				button.animations.play('animResponseOpen', 5, false);
-				button.inputEnabled = true;
-				button.events.onInputDown.add(actionOnClickChoice, this);
-				// let button = this.game.add.button(this.currentEvent.posX - 45, this.currentEvent.nexElementPosY - 50, 'OpenButtonFix', actionOnClickChoice, this, 2, 1, 0);
-
-				let textButton = this.game.add.text(this.currentEvent.posX, this.currentEvent.nexElementPosY - 40, choice.text, style);
-				textButton.visible = false;
-				animButton.onComplete.add(function () {
-					textButton.visible = true;
-				});
+				let button = this.game.add.button(this.currentEvent.posX - 45, this.currentEvent.nexElementPosY - 50, 'button', actionOnClickChoice, this, 2, 1, 0);
+				let textButton = this.game.add.text(this.currentEvent.posX , this.currentEvent.nexElementPosY - 40, choice.text, style);
 				button.width = 500;
 				button.height = textButton.height + 10;
 				button.consequence = choice.consequence;
@@ -118,15 +108,18 @@ eventManager.prototype.scoreScreen = function scoreScreen() {
 };
 
 async function actionOnClickChoice(button) {
+
+	clickSound = game.add.audio('soundClick');
+	clickSound.play();
+
 	if (this.canClickButton) {
 		this.cleanEvent(this.currentEvent);
 
-		//let consequenceButton = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.nexElementPosY - 50, 'button', actionOnClickNextEvent, this, 2, 1, 0);
-		let consequenceText = this.game.add.text(50, 300, button.consequence.text, style);
-		this.currentEvent.consequenceText = consequenceText;
-		//consequenceButton.width = 500;
-		//consequenceButton.height = consequenceText.height + 10;
-		//	this.currentEvent.consequenceButton = { "button": consequenceButton, "text": consequenceText };
+		let consequenceButton = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.nexElementPosY - 50, 'button', actionOnClickNextEvent, this, 2, 1, 0);
+		let consequenceText = this.game.add.text(this.currentEvent.posX + 50, this.currentEvent.nexElementPosY - 40, button.consequence.text, style);
+		consequenceButton.width = 500;
+		consequenceButton.height = consequenceText.height + 10;
+		this.currentEvent.consequenceButton = { "button": consequenceButton, "text": consequenceText };
 
 		this.nextEventId = button.consequence.nextEvent;
 		this.canClickButton = false;
@@ -183,9 +176,9 @@ eventManager.prototype.cleanEvent = function cleanEvent(event) {
 }
 
 eventManager.prototype.cleanConsequence = function cleanConsequence(event) {
-	if (event && event.consequenceText) {
-		//event.consequenceButton.button.destroy();
-		event.consequenceText.destroy();
+	if (event && event.consequenceButton) {
+		event.consequenceButton.button.destroy();
+		event.consequenceButton.text.destroy();
 	}
 }
 
