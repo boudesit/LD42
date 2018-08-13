@@ -7,27 +7,32 @@ function barManager(game, passengerManager, ressourceManager) {
   this.energyBar = null;
   this.passengerManager = passengerManager;
   this.ressourceManager = ressourceManager;
+
+	this.tip1 = null;
+	this.tip2 = null;
+	this.tip3 = null;
+	this.tip4 = null;
 }
 
 barManager.prototype.create = function create() {
 
 
 
-  var logoEnergy = game.add.sprite(12, 0, 'logoEnergy');
+  var logoEnergy = game.add.sprite(12, 10, 'logoEnergy');
    var animEnergy = logoEnergy.animations.add('animEnergy');
    logoEnergy.animations.play('animEnergy', 5, true);
 
-   var logoSearch = game.add.sprite(212, 0, 'logoSearch');
+   var logoSearch = game.add.sprite(212, 10, 'logoSearch');
     var animSearch = logoSearch.animations.add('animSearch',[0,1,2,3,4,5,6]);
     logoSearch.animations.play('animSearch', 5, true);
 
-		var logoShield = game.add.sprite(112, 0, 'logoShield');
+		var logoShield = game.add.sprite(112, 10, 'logoShield');
 		 var animShield = logoShield.animations.add('animShield');
 		 logoShield.animations.play('animShield', 5, true);
   //////////////////////////////////////////////////////////
   //////////////////PROGRESS BAR ENERGYBAR/////////////////
   /////////////////////////////////////////////////////////
-  this.energyBar = this.game.add.sprite(30, 0, 'progressBarEnergy');
+  this.energyBar = this.game.add.sprite(30, 10, 'progressBarEnergy');
   this.energyBar.animations.add('progressBar0', [9], 10, true);
   this.energyBar.animations.add('progressBar10', [9], 10, true);
   this.energyBar.animations.add('progressBar20', [8], 10, true);
@@ -42,10 +47,22 @@ barManager.prototype.create = function create() {
   this.energyBar.animations.frame = 9;
   this.energyBar.animations.play('progressBar100', 2, true);
 
+	this.tip1 = new Phasetips(this.game,{
+
+    targetObject: this.energyBar, //can be any phaser object (sprite, group, text, image, etc...)
+
+    context: "Your Energy, Be Careful",
+
+    strokeColor: 0x00bfcd, // red stroke
+
+    position: "perso1" // where we want the tooltip to appear
+
+  });
+
   //////////////////////////////////////////////////////////
   //////////////////PROGRESS BAR SHIELD////////////////////
   /////////////////////////////////////////////////////////
-  this.shieldBar = this.game.add.sprite(130, 0, 'progressBarShield');
+  this.shieldBar = this.game.add.sprite(130, 10, 'progressBarShield');
   this.shieldBar.animations.add('progressBar0', [9], 10, true);
   this.shieldBar.animations.add('progressBar10', [9], 10, true);
   this.shieldBar.animations.add('progressBar20', [8], 10, true);
@@ -60,10 +77,23 @@ barManager.prototype.create = function create() {
 
   this.shieldBar.animations.play('progressBar100', 2, true);
 
+
+	this.tip2 = new Phasetips(this.game,{
+
+    targetObject: this.shieldBar, //can be any phaser object (sprite, group, text, image, etc...)
+
+    context: "Your Shield, Be Careful",
+
+    strokeColor: 0x00bfcd, // red stroke
+
+    position: "bottom" // where we want the tooltip to appear
+
+  });
+
   //////////////////////////////////////////////////////////
   //////////////////PROGRESS BAR PASSENGER//////////////////
   /////////////////////////////////////////////////////////
-  this.passengerBar = this.game.add.sprite(410, 0, 'progressBarPassenger');
+  this.passengerBar = this.game.add.sprite(410, 10, 'progressBarPassenger');
   this.passengerBar.animations.add('progressBar0', [10,21,32], 10, true);
   this.passengerBar.animations.add('progressBar10', [9,20,31], 10, true);
   this.passengerBar.animations.add('progressBar20', [8,19,30], 10, true);
@@ -79,11 +109,22 @@ barManager.prototype.create = function create() {
 
   this.passengerBar.animations.play('progressBar0', 2, true);
 
+	this.tip3 = new Phasetips(this.game,{
+
+    targetObject: this.passengerBar, //can be any phaser object (sprite, group, text, image, etc...)
+
+    context: "Total passengers : " + this.passengerManager.getTotalPassenger() + " / " + this.passengerManager.getMaxPassenger()+ "\n"+ this.passengerManager.getSoldier()+" Soldier(s)" +"\n" +this.passengerManager.getCivilian()+" Civilian(s)"+"\n"+this.passengerManager.getEngineer()+" Engineer(s)",
+
+    strokeColor: 0x00bfcd, // red stroke
+
+    position: "perso2" // where we want the tooltip to appear
+
+  });
 
   //////////////////////////////////////////////////////////
   //////////////////PROGRESS BAR search////////////////////²²
   /////////////////////////////////////////////////////////
-  this.searchBar = this.game.add.sprite(230, 0, 'progressBarSearch');
+  this.searchBar = this.game.add.sprite(230, 10, 'progressBarSearch');
   this.searchBar.animations.add('progressBar0', [9], 10, true);
   this.searchBar.animations.add('progressBar10', [8], 10, true);
   this.searchBar.animations.add('progressBar20', [8], 10, true);
@@ -98,10 +139,35 @@ barManager.prototype.create = function create() {
 
   this.searchBar.animations.play('progressBar0', 2, true);
 
+	this.tip3 = new Phasetips(this.game,{
+
+		targetObject: this.searchBar, //can be any phaser object (sprite, group, text, image, etc...)
+
+		context: "This is your research bar, it can be useful during your journey !",
+
+		strokeColor: 0x00bfcd, // red stroke
+
+		position: "bottom" // where we want the tooltip to appear
+
+	});
+
 };
 
 
-barManager.prototype.update = function update() { };
+barManager.prototype.update = function update() {
+
+	this.tip3 = new Phasetips(this.game,{
+
+    targetObject: this.passengerBar, //can be any phaser object (sprite, group, text, image, etc...)
+
+    context: "Total passengers : " + this.passengerManager.getTotalPassenger() + " / " + this.passengerManager.getMaxPassenger()+ "\n"+ this.passengerManager.getSoldier()+" Soldier(s)" +"\n" +this.passengerManager.getCivilian()+" Civilian(s)"+"\n"+this.passengerManager.getEngineer()+" Engineer(s)",
+
+    strokeColor: 0x00bfcd, // red stroke
+
+    position: "perso2" // where we want the tooltip to appear
+
+  });
+};
 
 barManager.prototype.progressEnergy = function progressEnergy(pourcentEnergy) {
 
@@ -183,7 +249,6 @@ barManager.prototype.progressShield = function progressShield(pourcentShield) {
 };
 
 barManager.prototype.progressPassenger = function progressPassenger(pourcentPassenger) {
-
   switch (true) {
     case (pourcentPassenger <= 0):
       this.passengerBar.animations.play('progressBar0', 2, true);
@@ -222,8 +287,7 @@ barManager.prototype.progressPassenger = function progressPassenger(pourcentPass
 };
 
 barManager.prototype.progressSearch = function progressSearch(pourcentSearch) {
-  true
-  switch (pourcentSearch) {
+  switch (true) {
     case (pourcentSearch <= 0):
       this.searchBar.animations.play('progressBar0', 2, true);
       break;

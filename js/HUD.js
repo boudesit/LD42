@@ -10,6 +10,8 @@ function HUD(game) {
 	this.tweenStart = true;
 	this.tintValue = null;
 	this.colorTween = null;
+
+	this.spriteCockpit = null;
 };
 var buttonPlus;
 
@@ -29,6 +31,12 @@ HUD.prototype.create = function create() {
 	this.spriteBG.animations.play('background', 3, true);
 	this.timeDelay = 0;
 
+	this.spriteCockpit = game.add.sprite(0, 0, 'background_cockpit');
+
+	this.spriteCockpit.animations.add('anim');
+	this.spriteCockpit.animations.play('anim', 5, true);
+
+
 	this.tintValue = this.spriteBG.tint;
 	this.passengerManager = new passengerManager(this.game);
 	this.resourceManager = new resourceManager(this.game);
@@ -36,10 +44,11 @@ HUD.prototype.create = function create() {
 	this.barManager = new barManager(this.game, this.passengerManager, this.resourceManager);
 	this.barManager.create();
 
-	this.travelManager = new travelManager(this.game, this.passengerManager, this.resourceManager, this.barManager);
+this.travelManager = new travelManager(this.game, this.passengerManager, this.resourceManager, this.barManager);
+  this.eventManager = new eventManager(this.game, this.passengerManager, this.resourceManager, this.barManager, this.travelManager);
 
-	this.eventManager = new eventManager(this.game, this.passengerManager, this.resourceManager, this.barManager, this.travelManager);
 	this.eventManager.create();
+
 
 
 	this.startTween();
@@ -48,6 +57,8 @@ HUD.prototype.create = function create() {
 
 HUD.prototype.update = function update() {
 	this.eventManager.update();
+	this.barManager.update();
+
 
 
 		if(this.resourceManager.getShield() < 10 || this.resourceManager.getEnergy() < 10) {
