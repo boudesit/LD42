@@ -11,6 +11,7 @@ function eventManager(game, passengerManager, resourceManager, barManager, trave
 	this.barManager = barManager;
 	this.travelManager = travelManager;
 	this.continue = null;
+	this.oneTimeEventIds = [];
 };
 
 eventManager.prototype.create = function create() {
@@ -28,9 +29,13 @@ eventManager.prototype.update = function update() {
 			var event = this.events[this.nextEventId];
 		} else {
 			var event = this.events[this.getRandomInt(0, this.events.length)];
-			while (event.canBeRandomEvent === 'false') {
+			while (event.canBeRandomEvent === 'false' || this.oneTimeEventIds.contains(event.id)) {
 				event = this.events[this.getRandomInt(0, this.events.length)];
 			}
+		}
+
+		if(event.oneTime) {
+			this.oneTimeEventIds.push(event.id);
 		}
 
 		this.currentEvent.posX = 10;
