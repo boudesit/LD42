@@ -141,7 +141,7 @@ barManager.prototype.create = function create() {
   this.searchBar.animations.add('progressBar90', [1], 10, true);
   this.searchBar.animations.add('progressBar100', [0], 10, true);
 
-  this.searchBar.animations.play('progressBar50', 2, true);
+  this.searchBar.animations.play('progressBar0', 2, true);
 
 	this.tip3 = new Phasetips(this.game,{
 
