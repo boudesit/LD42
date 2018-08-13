@@ -46,8 +46,8 @@ eventManager.prototype.update = function update() {
 
 		event.choices.forEach((choice, index) => {
 			if (this.canChoose(choice)) {
-				let button = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.nexElementPosY - 100, 'button', actionOnClickChoice, this, 2, 1, 0);
-				let textButton = this.game.add.text(this.currentEvent.posX + 50, this.currentEvent.nexElementPosY - 90, choice.text, style);
+				let button = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.nexElementPosY - 50, 'button', actionOnClickChoice, this, 2, 1, 0);
+				let textButton = this.game.add.text(this.currentEvent.posX + 50, this.currentEvent.nexElementPosY - 40, choice.text, style);
 				button.width = 500;
 				button.height = textButton.height + 10;
 				button.consequence = choice.consequence;
@@ -85,8 +85,8 @@ async function actionOnClickChoice(button) {
 	if (this.canClickButton) {
 		this.cleanEvent(this.currentEvent);
 
-		let consequenceButton = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.nexElementPosY - 100, 'button', actionOnClickNextEvent, this, 2, 1, 0);
-		let consequenceText = this.game.add.text(this.currentEvent.posX + 50, this.currentEvent.nexElementPosY - 90, button.consequence.text, style);
+		let consequenceButton = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.nexElementPosY - 50, 'button', actionOnClickNextEvent, this, 2, 1, 0);
+		let consequenceText = this.game.add.text(this.currentEvent.posX + 50, this.currentEvent.nexElementPosY - 40, button.consequence.text, style);
 		consequenceButton.width = 500;
 		consequenceButton.height = consequenceText.height + 10;
 		this.currentEvent.consequenceButton = { "button": consequenceButton, "text": consequenceText };
