@@ -23,6 +23,8 @@ resourceManager.prototype.addEnergy = function addEnergy(number) {
     } else if (this.game.totalEnergy < 0) {
         this.game.totalEnergy = 0;
     }
+
+    this.game.totalEnergy = Number(Number( this.game.totalEnergy).toFixed(2));
 };
 
 resourceManager.prototype.addSearch = function addSearch(number) {
@@ -32,6 +34,8 @@ resourceManager.prototype.addSearch = function addSearch(number) {
     } else if (this.game.totalSearch < 0) {
         this.game.totalSearch = 0;
     }
+
+    this.game.totalSearch = Number(Number( this.game.totalSearch).toFixed(2));
 };
 
 resourceManager.prototype.addShield = function addShield(number) {
@@ -41,6 +45,8 @@ resourceManager.prototype.addShield = function addShield(number) {
     } else if (this.game.totalShield < 0) {
         this.game.totalShield = 0;
     }
+
+    this.game.totalShield = Number(Number( this.game.totalShield).toFixed(2));
 };
 
 resourceManager.prototype.getEnergy = function getEnergy() {

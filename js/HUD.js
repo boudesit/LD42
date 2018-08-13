@@ -10,6 +10,8 @@ function HUD(game) {
 	this.tweenStart = true;
 	this.tintValue = null;
 	this.colorTween = null;
+
+	this.spriteCockpit = null;
 };
 var buttonPlus;
 
@@ -28,6 +30,12 @@ HUD.prototype.create = function create() {
 	this.spriteBG.animations.add('background');
 	this.spriteBG.animations.play('background', 3, true);
 	this.timeDelay = 0;
+
+	this.spriteCockpit = game.add.sprite(0, 0, 'background_cockpit');
+
+	this.spriteCockpit.animations.add('anim');
+	this.spriteCockpit.animations.play('anim', 5, true);
+
 
 	this.tintValue = this.spriteBG.tint;
 	this.passengerManager = new passengerManager(this.game);
