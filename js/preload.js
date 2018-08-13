@@ -9,6 +9,7 @@ preload.prototype = {
 		this.game.load.spritesheet('background', 'assets/images/Backgrounds/Background.png',525,900, 41);
 		this.game.load.spritesheet('backgroundWin', 'assets/images/Backgrounds/BackgroundWin.png',525,900, 2);
 		this.game.load.spritesheet('BackgroundGameOver', 'assets/images/Backgrounds/BackgroundGameOver.png',525,900, 2);
+		this.game.load.spritesheet('BackgroundIntro', 'assets/images/Backgrounds/Background-intro.png',525,900, 10);
 
 		this.game.load.spritesheet('background_cockpit', 'assets/images/Backgrounds/BackgroundCockpit.png',525,900, 7);
 
