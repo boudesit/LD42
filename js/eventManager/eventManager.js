@@ -37,7 +37,10 @@ eventManager.prototype.update = function update() {
 		this.currentEvent.posY = 150;
 		this.currentEvent.nexElementPosY = this.currentEvent.posY;
 
-		this.currentEvent.textDescription = this.game.add.text(this.currentEvent.posX, this.currentEvent.nexElementPosY, event.text, style);
+		this.currentEvent.textDescription = this.game.add.text(this.currentEvent.posX, this.currentEvent.nexElementPosY, '', style);
+
+		writeTextCharByChar(this.currentEvent.textDescription, event.text, 5);
+
 		this.currentEvent.nexElementPosY = 800 - 5;
 		this.currentEvent.choiceButtons = [];
 
@@ -72,7 +75,6 @@ eventManager.prototype.update = function update() {
 		}
 	}
 };
-
 
 eventManager.prototype.scoreScreen = function scoreScreen() {
 	this.music.pause();
@@ -149,7 +151,7 @@ eventManager.prototype.cleanConsequence = function cleanConsequence(event) {
 	}
 }
 
-eventManager.prototype.sleep = function sleep(ms) {
+function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
 
@@ -262,4 +264,11 @@ eventManager.prototype.canChoose = function canChoose(choice) {
 
 eventManager.prototype.stopContinue = function stopContinue() {
 	this.continue.destroy();
+};
+
+async function writeTextCharByChar(textZone, text, delay) {
+	for (let c of text) {
+		textZone.text = textZone.text.concat(c);
+		await sleep(delay);
+	}
 };
