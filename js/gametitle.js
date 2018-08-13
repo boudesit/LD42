@@ -9,6 +9,10 @@ gameTitle.prototype = {
       this.spriteBG.animations.add('gametitle');
       this.spriteBG.animations.play('gametitle', 5, true);
 
+      this.spriteBGIntro = this.game.add.tileSprite(0, 0, 525, 900, 'BackgroundIntro');
+      this.spriteBGIntro.animations.add('BackgroundIntro');
+      this.spriteBGIntro.animations.play('BackgroundIntro', 5, false);
+
   		this.startButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 		  this.startButton.onDown.add(this.playTheGame, this);
 

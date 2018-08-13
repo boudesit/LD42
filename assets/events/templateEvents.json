@@ -82,7 +82,7 @@ dataEvents = [
     {
         "id": "2",
         "canBeRandomEvent": "true",
-        "text": "You receive a detress message. What do you do ?",
+        "text": "You receive a distress message. What do you do ?",
         "choices": [
             {
                 "text": "Follow it.",
@@ -460,7 +460,7 @@ dataEvents = [
 
     {
         "id": "18",
-        "canBeRandomEvent": "true",
+        "canBeRandomEvent": "false",
         "text": "Be carreful, the price could be higher than you think...",
         "choices": [
 
@@ -545,6 +545,448 @@ dataEvents = [
                 }
             }
         ]
-    }
+    },
+
+
+    {
+        "id": "21",
+        "canBeRandomEvent": "true",
+        "text": "Each point of research you choose to use allows you to gain the same amount of energy, How many points do you want to spend ?",
+        "choices": [
+
+            {
+                "text": "10",
+                "consequence": {
+                    "text": "I think you forgot the magic word.",
+                    "condition": {
+                        "search": {
+                            "min": "10"
+                        }
+                      },
+                    "search " : "-10",
+                    "energy":"10"
+                }
+            },
+            {
+                "text": "25",
+                "condition": {
+                    "search": {
+                        "min": "25"
+                    }
+                  },
+                "consequence": {
+                    "text": "Too late, too late...",
+                    "energy" : "+25",
+                    "search": "-25"
+                }
+            },
+            {
+                "text": "50",
+                "condition": {
+                    "search": {
+                        "min": "50"
+                    }
+                  },
+                "consequence": {
+                    "text": "Too late, too late...",
+                    "energy" : "+50",
+                    "search": "-50"
+                }
+            }
+        ]
+    },
+
+    {
+        "id": "22",
+        "canBeRandomEvent": "true",
+        "text": "Each point of research you choose to use allows you to gain the same amount of Shield, How many points do you want to spend ?",
+        "choices": [
+
+            {
+                "text": "10",
+                "consequence": {
+                    "text": "Good.",
+                    "condition": {
+                        "search": {
+                            "min": "10"
+                        }
+                      },
+                    "search " : "-10",
+                    "shield":"+10"
+                }
+            },
+            {
+                "text": "25",
+                "condition": {
+                    "search": {
+                        "min": "25"
+                    }
+                  },
+                "consequence": {
+                    "text": "Good.",
+                    "shield" : "+25",
+                    "search": "-25"
+                }
+            },
+            {
+                "text": "50",
+                "condition": {
+                    "search": {
+                        "min": "50"
+                    }
+                  },
+                "consequence": {
+                    "text": "Good.",
+                    "shield" : "+50",
+                    "search": "-50"
+                }
+            },
+            {
+                "text": "No I don't need this",
+                "consequence": {
+                    "text": "Good."
+                }
+            }
+
+
+        ]
+    },
+    {
+        "id": "23",
+        "canBeRandomEvent": "true",
+        "text": "Every four points of research you choose to use allows you to gain one seat in your ship",
+        "choices": [
+
+            {
+                "text": "12",
+                "consequence": {
+                    "text": "Good.",
+                    "condition": {
+                        "search": {
+                            "min": "12"
+                        }
+                      },
+                    "search " : "-12",
+                    "maxPassenger":"+4"
+                }
+            },
+            {
+                "text": "24",
+                "condition": {
+                    "search": {
+                        "min": "24"
+                    }
+                  },
+                "consequence": {
+                    "text": "Good.",
+                    "maxPassenger" : "+8",
+                    "search": "-24"
+                }
+            },
+            {
+                "text": "36",
+                "condition": {
+                    "search": {
+                        "min": "36"
+                    }
+                  },
+                "consequence": {
+                    "text": "Good.",
+                    "maxPassenger" : "+12",
+                    "search": "-36"
+                }
+            },
+            {
+                "text": "No I don't need this",
+                "consequence": {
+                    "text": "Good."
+                }
+            }
+
+        ]
+    },
+
+    {
+        "id": "24",
+        "canBeRandomEvent": "true",
+        "text": "Welcome to my place. I'm Xnihps but you can call me X since you won't be able to pronouce it correctly... If you can answer my questions correctly, I'll reward you. Oh by the way...the longer you stay on this planet, the more energy it will use. Choose quickly or you'll die ! And this is the fiiiiirst question ! If you have some ectoplasmic problem, who will you call ?",
+        "choices": [
+
+            {
+                "text": "Luigi",
+                "consequence": {
+                    "text": "Aaah, someone told me about a mansion...Hmm, nervermind, take this",
+                    "search " : "+15",
+                    "energy":"+8",
+                    "nextEvent": "25"
+                }
+            },
+            {
+                "text": "Those guys, you know, with the ghost logo...",
+                "consequence": {
+                    "text": "Shhhh, we can't use licenced products here. But eh, nice choice.",
+                    "shield" : "+30",
+                    "energy": "+8",
+                    "nextEvent": "25"
+                }
+            },
+            {
+                "text": "Your mom",
+                "consequence": {
+                    "text": "A grown ass man like you...",
+                    "maxPassenger" : "-10",
+                    "shield": "-50"
+                }
+            },
+            {
+                "text": " I want to leave..",
+                "consequence": {
+                    "text": "Leave this place"
+                }
+            }
+
+        ]
+    },
+    {
+        "id": "25",
+        "canBeRandomEvent": "false",
+        "text": "Here comes the next one, What is the result of 456 divided by 24 ? ",
+        "choices": [
+
+            {
+                "text": "19",
+                "consequence": {
+                    "text": "That's the good answer. But I hate Methematics, sorry !",
+                    "shield " : "-15"
+                }
+            },
+            {
+                "text": "24",
+                "consequence": {
+                    "text": "I hate something even more than Mathematics, it's the people who can't do Mathematics",
+                    "shield" : "+30",
+                    "energy": "+8",
+                    "nextEvent": "26"
+                }
+            },
+            {
+                "text": "I don't have time for math",
+                "consequence": {
+                    "text": "Yeah exactly, we are here to play, not for Mathematics ! But isn't Mathematics a game...? *confuse* Anyway !",
+                    "shield" : "+18",
+                    "energy": "+25",
+                    "maxPassenger": "+1",
+                    "nextEvent": "26"
+                }
+            },
+
+            {
+                "text": " I want to leave..",
+                "consequence": {
+                    "text": "Leave this place"
+                }
+            }
+
+        ]
+    },
+    {
+        "id": "26",
+        "canBeRandomEvent": "false",
+        "text": "I bet you didn't expect the previous one. Here goes another random one for you ! Was this game made for the Ludum Dare 42 ?",
+        "choices": [
+
+            {
+                "text": "Yes",
+                "consequence": {
+                    "text": "Of course it is ! ",
+                    "maxPassenger " : "+5",
+                    "shield" : "+30",
+                    "energy" : "+30",
+                    "nextEvent": "7"
+
+                }
+            },
+            {
+                "text": "No",
+                "consequence": {
+                    "text": "Well, in fact, you're not that wrong",
+                    "search" : "+15",
+                    "energy": "+10",
+                    "nextEvent": "27"
+
+                }
+            },
+            {
+                "text": "Maybe, I don't know, can you repeat the question ?",
+                "consequence": {
+                    "text": "That reminds me something, some genius thing...",
+                    "shield" : "+10",
+                    "energy": "+25",
+                    "search": "+10",
+                    "nextEvent": "27"
+
+                }
+            },
+
+            {
+                "text": " I want to leave..",
+                "consequence": {
+                    "text": "Leave this place"
+                }
+            }
+
+        ]
+    },
+
+    {
+        "id": "27",
+        "canBeRandomEvent": "false",
+        "text": "What a surprise, I found a question for you ! What's this game's purpose ?",
+        "choices": [
+
+            {
+                "text": "Saving Humanity",
+                "consequence": {
+                    "text": "How I see... You care about people uh ? Then take this.",
+                    "maxPassenger " : "+10",
+                    "civilian" : "+5",
+                    "nextEvent":"28"
+                }
+            },
+            {
+                "text": "Collecting people as ressources",
+                "consequence": {
+                    "text": "You just see numbers, not people... That's strange but whatever...",
+                    "shield" : "+15",
+                    "search": "+10"
+                }
+            },
+            {
+                "text": "Showing your skills",
+                "consequence": {
+                    "text": "Ah, at least someone with a decent sense of observation ! I like you. Well, if skills are so important for you... Then let's spice things up a little ! ",
+                    "shield" : "-10",
+                    "search": "-25",
+                    "civilian": "-10"
+                }
+            },
+
+            {
+                "text": " I want to leave..",
+                "consequence": {
+                    "text": "Leave this place"
+                }
+            }
+          ]
+        },
+    {
+        "id": "28",
+        "canBeRandomEvent": "false",
+        "text": "Oh wow, you reach the last one ! Here we are ! What was the answer to the first question ?",
+        "choices": [
+
+            {
+                "text": "19",
+                "consequence": {
+                    "text": "Ooooooooooooooh...Nope. ",
+                    "energy" : "-5",
+                    "search" : "-5"
+                }
+            },
+            {
+                "text": "Your mom",
+                "consequence": {
+                    "text": "My mom makes some good cakes, you know ?",
+                    "shield" : "-15",
+                    "search": "-10"
+                }
+            },
+            {
+                "text": "Luigi",
+                "consequence": {
+                    "text": "Annnnnnd that the way i like it !",
+                    "maxPassenger" : "+10",
+                    "search": "+25",
+                    "shield": "+15",
+                    "civilian": "+5",
+                    "energy": "+30"
+
+                }
+            },
+
+            {
+                "text": " I want to leave..",
+                "consequence": {
+                    "text": "Leave this place"
+                }
+            }
+        ]
+      },
+
+      {
+          "id": "29",
+          "canBeRandomEvent": "true",
+          "text": "You may be a top driver and all, but some people really can't handle it... As you glance in the rear-view mirror, you see a middle-aged woman's face turning green. As you are about to tell her to take the bag in the seat in front of her, it's already too late... ",
+          "choices": [
+
+              {
+                  "text": "The woman pukes everywhere like an everlasting freaking geyser. The passenger are starting to panic and some of them begin to puke as well, hopefully for you they are smart enough to use the bag left for that purpose...",
+                  "consequence": {
+                      "text": "You have to land on the first inhabitable planet you come across, and to clean your ship from floor to ceiling. It's time consuming and most importantly energy consuming... but there is a silver lining, a few people want to join you",
+                      "energy" : "-20",
+                      "passenger" : "+5"
+                  }
+              }
+          ]
+        },
+        {
+            "id": "30",
+            "canBeRandomEvent": "true",
+            "text": "You arrive in the system of your next stop, but something is wrong... You are welcomed by a field of asteroids instead of a blueish planet. ",
+            "choices": [
+
+                {
+                    "text": "You're taken off guard. The passengers are panicking, you hear some of them praying gods you don't even know about. You stay calm and against all odds, you manage to dodge everything, or at least the big ones...",
+                    "consequence": {
+                        "text": "The small asteroids hit your hull and you can hear the impacts. It sounds like hundreds arrows hitting a single target *bang bang bang bang*. Your shield hold on but it took huge damages",
+                        "shield" : "-75"
+                }
+                }
+            ]
+          },
+
+          {
+              "id": "31",
+              "canBeRandomEvent": "true",
+              "text": "You enter a binary star system, two bright stars shine upon several planets. Two of them have rings, the lights and colors are such a magnificent sight, serenity takes over your ship. A smile quickly grows on everyone's face, eyes widened and gazes lose themselves into the endless beauty of space.",
+              "choices": [
+
+                  {
+                      "text": "Dazed by this scenery, you didn't realize how fast time ticked away. But your engineers and soldiers' morale seems boosted which impacts their efficiency. ",
+                      "consequence": {
+                          "text": "Their work pays off",
+                          "energy" : "+15",
+                          "shield" : "+15"
+                      }
+                  }
+              ]
+            },
+            {
+                "id": "32",
+                "canBeRandomEvent": "true",
+                "text": "As you travel through space, you often encounter other space ships and space related phenomenons. But today you and your passenger are witnessing something unique, that only a very few people have been able to see... Dancing around a giant gas planet is a small pod of Selahw Ecaps, a sort of cetacean living in space. It has been said that they went extinct a long time ago. Obviously, they did not, and they have found a way to live away from the routes used by any species.You recall some ancient texts you once read when waiting for your wife to come back from going window shopping. They said that they were a very gentle specie that helped the first deep space travelers to avoid dangerous area. They were also able to travel at the speed of light and that's why many started to hunt them down... The pod seems to have noticed you, it is moving towards your ship. ",
+                "choices": [
+
+                    {
+                        "text": "It circles it, and before you are able to do anything, tendrils are wrapped around your ship. ",
+                        "consequence": {
+                            "text": "You instantly travel at the speed of light and end up at your destination, you have no idea how these creatures knew where you wanting to go but here you are. Your shield has stored up energy from the creature",
+                            "energy" : "+15",
+                            "shield" : "+5"
+                    }
+                    }
+                ]
+              }
+
 
 ]

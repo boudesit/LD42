@@ -3,7 +3,7 @@ var gameWin = function(game){
 
 gameWin.prototype = {
   create: function(){
-      winSound = game.add.audio('gameover', 1 , true);
+      winSound = game.add.audio('gamewin', 1 , true);
       this.spriteBG = this.game.add.tileSprite(0, 0, 525, 900, 'backgroundWin');
       this.spriteBG.animations.add('gamewin');
       this.spriteBG.animations.play('gamewin', 5, true);
@@ -15,10 +15,20 @@ gameWin.prototype = {
           winSound.resume();
       }
 
-      var style = { font: "32px Comic Sans MS", fill: "#ffffff", align: "center" };
-    	text = game.add.text(0, 100,"Total Energy : " + this.game.totalEnergy, style);
-      text = game.add.text(0, 150,"Total Shield : " + this.game.totalShield, style);
-      text = game.add.text(0, 200,"Total Passenger : " + this.game.totalPassenger, style);
+      this.openWindowsSprite = this.game.add.sprite(12, 250, 'animDialogueOpen');
+      this.openWindowsSprite.animations.add('OpenDialog', [50]);
+      this.openWindowsSprite.animations.play('OpenDialog', 5, true);
+
+      var style = {
+      	font: "bold 16px Arial",
+      	fill: "#fff",
+      	boundsAlignH: "center",
+      	boundsAlignV: "middle",
+      	wordWrap: true,
+      	wordWrapWidth: 450
+      };
+
+      text = game.add.text(50, 400,"Congratulation ! You have gathered "+ this.game.totalPassenger +" people, that is enough to put your plan in motion, but that was the easiest part. Now the real deal begins !" , style);
 
     this.restartButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
     this.restartButton.onDown.add(this.playTheGame, this);
