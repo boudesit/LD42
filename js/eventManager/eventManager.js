@@ -20,7 +20,7 @@ function eventManager(game, passengerManager, resourceManager, barManager, trave
 
 eventManager.prototype.create = function create() {
 	this.events = dataEvents;
-
+	this.game.input.onDown.add(actionOnClickNextEvent, this);
 	this.openWindowsSprite = this.game.add.sprite(12, 110, 'animDialogueOpen');
 
 	this.animDial = this.openWindowsSprite.animations.add('OpenDialog');
@@ -111,11 +111,12 @@ async function actionOnClickChoice(button) {
 	if (this.canClickButton) {
 		this.cleanEvent(this.currentEvent);
 
-		let consequenceButton = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.nexElementPosY - 50, 'button', actionOnClickNextEvent, this, 2, 1, 0);
-		let consequenceText = this.game.add.text(this.currentEvent.posX + 50, this.currentEvent.nexElementPosY - 40, button.consequence.text, style);
-		consequenceButton.width = 500;
-		consequenceButton.height = consequenceText.height + 10;
-		this.currentEvent.consequenceButton = { "button": consequenceButton, "text": consequenceText };
+		//let consequenceButton = this.game.add.button(this.currentEvent.posX + 5, this.currentEvent.nexElementPosY - 50, 'button', actionOnClickNextEvent, this, 2, 1, 0);
+		 let consequenceText = this.game.add.text(50,300, button.consequence.text, style);
+		 this.currentEvent.consequenceText = consequenceText;
+		//consequenceButton.width = 500;
+		//consequenceButton.height = consequenceText.height + 10;
+	//	this.currentEvent.consequenceButton = { "button": consequenceButton, "text": consequenceText };
 
 		this.nextEventId = button.consequence.nextEvent;
 		this.canClickButton = false;
@@ -172,9 +173,9 @@ eventManager.prototype.cleanEvent = function cleanEvent(event) {
 }
 
 eventManager.prototype.cleanConsequence = function cleanConsequence(event) {
-	if (event && event.consequenceButton) {
-		event.consequenceButton.button.destroy();
-		event.consequenceButton.text.destroy();
+	if (event && event.consequenceText) {
+		//event.consequenceButton.button.destroy();
+		event.consequenceText.destroy();
 	}
 }
 
